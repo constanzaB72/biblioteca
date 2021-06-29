@@ -68,6 +68,11 @@ public class Cliente {
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	@Override
+	public String toString() {
+		return "Cliente N*:"+ idCliente +"  "+ "Nombre: " + nombre +" "+ apellidoPa +" "+ apellidoMa +" // "+  "Fecha de Nacimiento : "+ fechaNacimiento;
+	}
+	
 	
 
 }

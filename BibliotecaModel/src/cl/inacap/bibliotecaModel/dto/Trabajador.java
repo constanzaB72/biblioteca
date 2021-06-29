@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Trabajador {
 
-	private int idCliente;
+	private int idTrabajador;
 	private String rut;
 	private String nombre;
 	private String apellidoPa;
@@ -32,12 +32,7 @@ public class Trabajador {
 	public void setCorreos(ArrayList<String> correos) {
 		this.correos = correos;
 	}
-	public int getIdCliente() {
-		return idCliente;
-	}
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
-	}
+	
 	public String getRut() {
 		return rut;
 	}
@@ -67,6 +62,12 @@ public class Trabajador {
 	}
 	public void setFechaContrato(String fechaContrato) {
 		this.fechaContrato = fechaContrato;
+	}
+	public int getIdTrabajador() {
+		return idTrabajador;
+	}
+	public void setIdTrabajador(int idTrabajador) {
+		this.idTrabajador = idTrabajador;
 	}
 	
 	

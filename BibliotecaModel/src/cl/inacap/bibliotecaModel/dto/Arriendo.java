@@ -6,9 +6,9 @@ import java.util.Date;
 public class Arriendo {
 
 	private int idArriendo;
-	private Date fechaArriendo;
-	private Date fechaDevolucion;
-	private Date fechaEntrega;
+	private String fechaArriendo;
+	private String fechaDevolucion;
+	private String fechaEntrega;
 	private int diasRetraso;
 	private int multa;
 	private int costoTotal;
@@ -22,22 +22,23 @@ public class Arriendo {
 	public void setIdArriendo(int idArriendo) {
 		this.idArriendo = idArriendo;
 	}
-	public Date getFechaArriendo() {
+	
+	public String getFechaArriendo() {
 		return fechaArriendo;
 	}
-	public void setFechaArriendo(Date fechaArriendo) {
+	public void setFechaArriendo(String fechaArriendo) {
 		this.fechaArriendo = fechaArriendo;
 	}
-	public Date getFechaDevolucion() {
+	public String getFechaDevolucion() {
 		return fechaDevolucion;
 	}
-	public void setFechaDevolucion(Date fechaDevolucion) {
+	public void setFechaDevolucion(String fechaDevolucion) {
 		this.fechaDevolucion = fechaDevolucion;
 	}
-	public Date getFechaEntrega() {
+	public String getFechaEntrega() {
 		return fechaEntrega;
 	}
-	public void setFechaEntrega(Date fechaEntrega) {
+	public void setFechaEntrega(String fechaEntrega) {
 		this.fechaEntrega = fechaEntrega;
 	}
 	public int getDiasRetraso() {

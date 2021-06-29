@@ -1,11 +1,11 @@
 package cl.inacap.bibliotecaModel.dto;
 
-import java.util.Date;
+
 
 public class Boleta {
  
 	private int folio;
-	private Date fechaVenta;
+	private String fechaVenta;
 	private String horaVenta;
 	private String metodoPago;
 	private Cliente cliente;
@@ -29,10 +29,11 @@ public class Boleta {
 	public void setFolio(int folio) {
 		this.folio = folio;
 	}
-	public Date getFechaVenta() {
+	
+	public String getFechaVenta() {
 		return fechaVenta;
 	}
-	public void setFechaVenta(Date fechaVenta) {
+	public void setFechaVenta(String fechaVenta) {
 		this.fechaVenta = fechaVenta;
 	}
 	public String getHoraVenta() {

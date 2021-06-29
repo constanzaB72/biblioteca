@@ -21,6 +21,10 @@ public class DetalleArriendo {
 	public Ejemplar getEjemplar() {
 		return ejemplar;
 	}
+	@Override
+	public String toString() {
+		return "DetalleArriendo [idDetalleArriendo=" + idDetalleArriendo + ", costoLibro=" + costoLibro + "]";
+	}
 	public void setEjemplar(Ejemplar ejemplar) {
 		this.ejemplar = ejemplar;
 	}
