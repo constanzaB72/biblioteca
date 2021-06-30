@@ -31,15 +31,62 @@ public class LibrosDAO {
 			
 			while(rs.next()) { 
 				Libro l = new Libro();
-				l.setIsbn(0);
-
+				l.setIsbn(rs.getString(1));
+				l.setTitulo(rs.getString(2));
+				l.setNumPagina(rs.getInt(3));
+				l.setPrecio(rs.getInt(4));
+				l.setAnioPublicacion(Integer.parseInt(rs.getString(5)));
+				
+				if(l.getIdiomas() == null) {
+					String queryLibro = "SELECT ISBN,idIdioma FROM BibliotecaV2.Libro_Idioma WHERE ISBN=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+					
+					String isbn = "";
+					int idIdioma = 0;
+					
+					while(r.next()) {
+						isbn = r.getString(1);
+						idIdioma = r.getInt(2);
+					}
+					
+					String queryIdioma = "SELECT Idioma FROM BibliotecaV2.Idiomas WHERE idIdioma=?";
+					PreparedStatement c = db.getCon().prepareStatement(queryIdioma);
+					c.setInt(1, idIdioma);
+					ResultSet re = c.executeQuery();
+					
+					List<String> idiomas = new ArrayList<String>();
+					
+					for(int i=1; i < 5; ++i) {
+						while(re.next()) {
+							if(re.getString(i) == null) {
+								System.out.println("No existen Idiomas!");
+							}else {
+								idiomas.add(re.getString(i));
+							}
+							
+						}
+					}
+					
+				l.setIdiomas((ArrayList<String>) idiomas);		
+				
+				}
+				
+				
+				l.setAutores(null);
+				l.setCategorias(null);
+				l.setEditorial("kaka");
+				l.setEstado("kiki");
+				
+				
 				
 				//Guardamos en la lista
-				
+				libros.add(l);
 			}
 			
 			rs.close();
-			return libros ;
+			return libros;
 			
 		}catch(Exception ex) {
 			System.out.println("Se Produjo un error al Consultar");
@@ -48,9 +95,5 @@ public class LibrosDAO {
 			db.desconectar();
 		}
 	}
-	
-	
-	
-	
 	
 }

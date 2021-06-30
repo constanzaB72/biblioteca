@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Libro {
 
-	private int isbn;
+	private String isbn;
 	private String titulo;
 	private int numPagina;
 	private int precio;
@@ -15,10 +15,11 @@ public class Libro {
 	private ArrayList<String> categorias;
 	private ArrayList<String> idiomas;
 	
-	public int getIsbn() {
+	
+	public String getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 	public String getTitulo() {
@@ -74,6 +75,11 @@ public class Libro {
 	}
 	public void setIdiomas(ArrayList<String> idiomas) {
 		this.idiomas = idiomas;
+	}
+	@Override
+	public String toString() {
+		return "Libro [isbn=" + isbn + ", titulo=" + titulo + ", numPagina=" + numPagina + ", precio=" + precio
+				+ ", anioPublicacion=" + anioPublicacion + ", estado=" + estado + ", idiomas=" + idiomas + "]";
 	}
 	
 }
