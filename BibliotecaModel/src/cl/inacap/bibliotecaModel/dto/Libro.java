@@ -11,7 +11,7 @@ public class Libro {
 	private int anioPublicacion;
 	private String estado;
 	private String editorial;
-	private ArrayList<Autor> autores;
+	private ArrayList<String> autores;
 	private ArrayList<String> categorias;
 	private ArrayList<String> idiomas;
 	
@@ -58,10 +58,11 @@ public class Libro {
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
-	public ArrayList<Autor> getAutores() {
+	
+	public ArrayList<String> getAutores() {
 		return autores;
 	}
-	public void setAutores(ArrayList<Autor> autores) {
+	public void setAutores(ArrayList<String> autores) {
 		this.autores = autores;
 	}
 	public ArrayList<String> getCategorias() {
@@ -79,7 +80,9 @@ public class Libro {
 	@Override
 	public String toString() {
 		return "Libro [isbn=" + isbn + ", titulo=" + titulo + ", numPagina=" + numPagina + ", precio=" + precio
-				+ ", anioPublicacion=" + anioPublicacion + ", estado=" + estado + ", idiomas=" + idiomas + "]";
+				+ ", anioPublicacion=" + anioPublicacion + ", estado=" + estado + ", editorial=" + editorial
+				+ ", autores=" + autores + ", categorias=" + categorias + ", idiomas=" + idiomas + "]";
 	}
+	
 	
 }

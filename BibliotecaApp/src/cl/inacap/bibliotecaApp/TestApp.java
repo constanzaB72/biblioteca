@@ -3,7 +3,9 @@ package cl.inacap.bibliotecaApp;
 import java.util.List;
 
 import cl.inacap.bibliotecaModel.dao.LibrosDAO;
+import cl.inacap.bibliotecaModel.dao.VentasDAO;
 import cl.inacap.bibliotecaModel.dto.Libro;
+import cl.inacap.bibliotecaModel.dto.Venta;
 
 public class TestApp {
 
@@ -23,7 +25,17 @@ public class TestApp {
 			
 		}
 		
+		List<Venta> ventas = new VentasDAO().getAll();
 		
+		if(ventas.isEmpty()) {
+			System.out.println("La lista esta vacia!");
+		}else {
+			
+			for(Venta venta : ventas) {
+				System.out.println(venta);
+			}
+			
+		}
 		
 		
 		
