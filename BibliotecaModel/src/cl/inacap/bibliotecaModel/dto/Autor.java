@@ -31,5 +31,10 @@ public class Autor {
 	public void setApellidoMa(String apellidoMa) {
 		this.apellidoMa = apellidoMa;
 	}
+	@Override
+	public String toString() {
+		return "Autor [idAutor=" + idAutor + ", nombre=" + nombre + ", apellidoPa=" + apellidoPa + ", apellidoMa="
+				+ apellidoMa + "]";
+	}
 	
 }

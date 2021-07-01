@@ -1,6 +1,6 @@
 package cl.inacap.bibliotecaModel.dto;
 
-
+import java.util.ArrayList;
 
 public class Factura {
 
@@ -8,6 +8,8 @@ public class Factura {
 	private String fechaCompra;
 	private String horaCompra;
 	private String metodoPago;
+	
+	private ArrayList<DetalleFactura> detalleFactura;
 	
 	public int getFolio() {
 		return folio;
@@ -33,6 +35,11 @@ public class Factura {
 	}
 	public void setMetodoPago(String metodoPago) {
 		this.metodoPago = metodoPago;
+	}
+	@Override
+	public String toString() {
+		return "Factura [folio=" + folio + ", fechaCompra=" + fechaCompra + ", horaCompra=" + horaCompra
+				+ ", metodoPago=" + metodoPago + "]";
 	}
 	
 }

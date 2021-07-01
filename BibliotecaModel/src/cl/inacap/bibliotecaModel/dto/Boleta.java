@@ -1,6 +1,6 @@
 package cl.inacap.bibliotecaModel.dto;
 
-
+import java.util.ArrayList;
 
 public class Boleta {
  
@@ -8,26 +8,27 @@ public class Boleta {
 	private String fechaVenta;
 	private String horaVenta;
 	private String metodoPago;
-	private Cliente cliente;
-	private Trabajador trabajador;
+	private int idCliente;
+	private int idTrabajador;
 	
-	public Cliente getCliente() {
-		return cliente;
-	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	public Trabajador getTrabajador() {
-		return trabajador;
-	}
-	public void setTrabajador(Trabajador trabajador) {
-		this.trabajador = trabajador;
-	}
+	private ArrayList <DetalleBoleta> detalleBoletas;
 	public int getFolio() {
 		return folio;
 	}
 	public void setFolio(int folio) {
 		this.folio = folio;
+	}
+	public int getIdCliente() {
+		return idCliente;
+	}
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
+	}
+	public int getIdTrabajador() {
+		return idTrabajador;
+	}
+	public void setIdTrabajador(int idTrabajador) {
+		this.idTrabajador = idTrabajador;
 	}
 	
 	public String getFechaVenta() {
@@ -47,6 +48,11 @@ public class Boleta {
 	}
 	public void setMetodoPago(String metodoPago) {
 		this.metodoPago = metodoPago;
+	}
+	@Override
+	public String toString() {
+		return "Boleta [folio=" + folio + ", fechaVenta=" + fechaVenta + ", horaVenta=" + horaVenta + ", metodoPago="
+				+ metodoPago + ", idCliente=" + idCliente + ", idTrabajador=" + idTrabajador + "]";
 	}
 	
 	

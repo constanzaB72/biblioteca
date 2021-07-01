@@ -3,26 +3,31 @@ package cl.inacap.bibliotecaModel.dto;
 public class DetalleVenta {
 
 	private int idDetalleVenta;
-	private Ejemplar ejemplar;
-	private Venta venta;
-	
+	private String isbn;
+	private int idVenta;
 	public int getIdDetalleVenta() {
 		return idDetalleVenta;
 	}
 	public void setIdDetalleVenta(int idDetalleVenta) {
 		this.idDetalleVenta = idDetalleVenta;
 	}
-	public Ejemplar getEjemplar() {
-		return ejemplar;
+	public String getIsbn() {
+		return isbn;
 	}
-	public void setEjemplar(Ejemplar ejemplar) {
-		this.ejemplar = ejemplar;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
-	public Venta getVenta() {
-		return venta;
+	public int getIdVenta() {
+		return idVenta;
 	}
-	public void setVenta(Venta venta) {
-		this.venta = venta;
+	public void setIdVenta(int idVenta) {
+		this.idVenta = idVenta;
 	}
+	@Override
+	public String toString() {
+		return "DetalleVenta [idDetalleVenta=" + idDetalleVenta + ", isbn=" + isbn + ", idVenta=" + idVenta + "]";
+	}
+	
+	
 	
 }

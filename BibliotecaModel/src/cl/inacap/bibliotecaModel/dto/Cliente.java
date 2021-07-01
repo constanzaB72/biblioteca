@@ -70,9 +70,8 @@ public class Cliente {
 	}
 	@Override
 	public String toString() {
-		return "Cliente N*:"+ idCliente +"  "+ "Nombre: " + nombre +" "+ apellidoPa +" "+ apellidoMa +" // "+  "Fecha de Nacimiento : "+ fechaNacimiento;
+		return "Cliente [idCliente=" + idCliente + ", rut=" + rut + ", nombre=" + nombre + ", apellidoPa=" + apellidoPa
+				+ ", apellidoMa=" + apellidoMa + ", fechaNacimiento=" + fechaNacimiento + "]";
 	}
 	
-	
-
 }

@@ -1,34 +1,60 @@
 package cl.inacap.bibliotecaModel.dto;
 
+import java.util.ArrayList;
+
 public class Venta {
 
 	private int idVenta;
-	private Cliente cliente;
-	private Trabajador trabajador;
-	private Boleta boleta;
+	private int idCliente;
+	private int idTrabajador;
+	private int folio;
 	
+	private ArrayList<DetalleVenta> detalleVenta;
+
 	public int getIdVenta() {
 		return idVenta;
 	}
+
 	public void setIdVenta(int idVenta) {
 		this.idVenta = idVenta;
 	}
-	public Cliente getCliente() {
-		return cliente;
+
+	public int getIdCliente() {
+		return idCliente;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
-	public Trabajador getTrabajador() {
-		return trabajador;
+
+	public int getIdTrabajador() {
+		return idTrabajador;
 	}
-	public void setTrabajador(Trabajador trabajador) {
-		this.trabajador = trabajador;
+
+	public void setIdTrabajador(int idTrabajador) {
+		this.idTrabajador = idTrabajador;
 	}
-	public Boleta getBoleta() {
-		return boleta;
+
+	public int getFolio() {
+		return folio;
 	}
-	public void setBoleta(Boleta boleta) {
-		this.boleta = boleta;
-	} 
+
+	public void setFolio(int folio) {
+		this.folio = folio;
+	}
+
+	public ArrayList<DetalleVenta> getDetalleVenta() {
+		return detalleVenta;
+	}
+
+	public void setDetalleVenta(ArrayList<DetalleVenta> detalleVenta) {
+		this.detalleVenta = detalleVenta;
+	}
+
+	@Override
+	public String toString() {
+		return "Venta [idVenta=" + idVenta + ", idCliente=" + idCliente + ", idTrabajador=" + idTrabajador + ", folio="
+				+ folio + ", detalleVenta=" + detalleVenta + "]";
+	}
+	
 }

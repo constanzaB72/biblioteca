@@ -1,28 +1,36 @@
 package cl.inacap.bibliotecaModel.dto;
 
+import java.util.ArrayList;
+
 public class Compra {
 
 	private int idCompra;
-	private Distribuidor distribuidor;
-	private Boleta boleta;
+	private int idDistribuidor;
+	private int folio;
 	
+	private ArrayList<DetalleCompra> detalleCompra;
 	public int getIdCompra() {
 		return idCompra;
 	}
 	public void setIdCompra(int idCompra) {
 		this.idCompra = idCompra;
 	}
-	public Distribuidor getDistribuidor() {
-		return distribuidor;
+	public int getIdDistribuidor() {
+		return idDistribuidor;
 	}
-	public void setDistribuidor(Distribuidor distribuidor) {
-		this.distribuidor = distribuidor;
+	public void setIdDistribuidor(int idDistribuidor) {
+		this.idDistribuidor = idDistribuidor;
 	}
-	public Boleta getBoleta() {
-		return boleta;
+	public int getFolio() {
+		return folio;
 	}
-	public void setBoleta(Boleta boleta) {
-		this.boleta = boleta;
+	public void setFolio(int folio) {
+		this.folio = folio;
 	}
+	@Override
+	public String toString() {
+		return "Compra [idCompra=" + idCompra + ", idDistribuidor=" + idDistribuidor + ", folio=" + folio + "]";
+	}
+	
 	
 }

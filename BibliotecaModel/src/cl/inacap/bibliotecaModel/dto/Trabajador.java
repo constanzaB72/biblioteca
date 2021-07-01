@@ -69,6 +69,12 @@ public class Trabajador {
 	public void setIdTrabajador(int idTrabajador) {
 		this.idTrabajador = idTrabajador;
 	}
+	@Override
+	public String toString() {
+		return "Trabajador [idTrabajador=" + idTrabajador + ", rut=" + rut + ", nombre=" + nombre + ", apellidoPa="
+				+ apellidoPa + ", apellidoMa=" + apellidoMa + ", fechaContrato=" + fechaContrato + ", telefonos="
+				+ telefonos + ", direcciones=" + direcciones + ", correos=" + correos + "]";
+	}
 	
 	
 }

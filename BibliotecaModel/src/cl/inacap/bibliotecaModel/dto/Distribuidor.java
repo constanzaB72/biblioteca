@@ -45,5 +45,11 @@ public class Distribuidor {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	@Override
+	public String toString() {
+		return "Distribuidor [idDistribuidor=" + idDistribuidor + ", rut=" + rut + ", nombreEmpresa=" + nombreEmpresa
+				+ ", anioVinculo=" + anioVinculo + ", direccion=" + direccion + ", telefono=" + telefono + "]";
+	}
+	
 	
 }

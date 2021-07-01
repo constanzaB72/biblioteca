@@ -2,19 +2,18 @@ package cl.inacap.bibliotecaModel.dto;
 
 public class DetalleCompra {
 
-	private int detalleCompra;
+	private int idDetalleCompra;
 	private String libroComprado;
 	private int cantidadLibro;
-	private Compra compra;
-	private Distribuidor distribuidor;
-	private Ejemplar ejemplar;
-	private Boleta boleta;
-	
-	public int getDetalleCompra() {
-		return detalleCompra;
+	private int idCompra;
+	private int idDistribuidor;
+	private String isbn;
+	private int idBoleta;
+	public int getIdDetalleCompra() {
+		return idDetalleCompra;
 	}
-	public void setDetalleCompra(int detalleCompra) {
-		this.detalleCompra = detalleCompra;
+	public void setIdDetalleCompra(int idDetalleCompra) {
+		this.idDetalleCompra = idDetalleCompra;
 	}
 	public String getLibroComprado() {
 		return libroComprado;
@@ -28,29 +27,37 @@ public class DetalleCompra {
 	public void setCantidadLibro(int cantidadLibro) {
 		this.cantidadLibro = cantidadLibro;
 	}
-	public Compra getCompra() {
-		return compra;
+	public int getIdCompra() {
+		return idCompra;
 	}
-	public void setCompra(Compra compra) {
-		this.compra = compra;
+	public void setIdCompra(int idCompra) {
+		this.idCompra = idCompra;
 	}
-	public Distribuidor getDistribuidor() {
-		return distribuidor;
+	public int getIdDistribuidor() {
+		return idDistribuidor;
 	}
-	public void setDistribuidor(Distribuidor distribuidor) {
-		this.distribuidor = distribuidor;
+	public void setIdDistribuidor(int idDistribuidor) {
+		this.idDistribuidor = idDistribuidor;
 	}
-	public Ejemplar getEjemplar() {
-		return ejemplar;
+	public String getIsbn() {
+		return isbn;
 	}
-	public void setEjemplar(Ejemplar ejemplar) {
-		this.ejemplar = ejemplar;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
-	public Boleta getBoleta() {
-		return boleta;
+	public int getIdBoleta() {
+		return idBoleta;
 	}
-	public void setBoleta(Boleta boleta) {
-		this.boleta = boleta;
+	public void setIdBoleta(int idBoleta) {
+		this.idBoleta = idBoleta;
 	}
+	@Override
+	public String toString() {
+		return "DetalleCompra [idDetalleCompra=" + idDetalleCompra + ", libroComprado=" + libroComprado
+				+ ", cantidadLibro=" + cantidadLibro + ", idCompra=" + idCompra + ", idDistribuidor=" + idDistribuidor
+				+ ", isbn=" + isbn + ", idBoleta=" + idBoleta + "]";
+	}
+	
+	
 	
 }

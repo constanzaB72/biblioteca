@@ -2,39 +2,20 @@ package cl.inacap.bibliotecaModel.dto;
 
 public class DetalleFactura {
 
-	private int detalleFactura;
+	private int idDetalleFactura;
 	private int precioLibroNeto;
 	private int precioLibroIva;
 	private int iva;
 	private int cantidadLibro;
-	private Factura factura;
-	private Ejemplar ejemplar;
-	private Distribuidor distribuidor;
+	private int folio;
+	private String isbn;
+	private int idDistribuidor;
 	
-	
-	public Factura getFactura() {
-		return factura;
+	public int getIdDetalleFactura() {
+		return idDetalleFactura;
 	}
-	public void setFactura(Factura factura) {
-		this.factura = factura;
-	}
-	public Ejemplar getEjemplar() {
-		return ejemplar;
-	}
-	public void setEjemplar(Ejemplar ejemplar) {
-		this.ejemplar = ejemplar;
-	}
-	public Distribuidor getDistribuidor() {
-		return distribuidor;
-	}
-	public void setDistribuidor(Distribuidor distribuidor) {
-		this.distribuidor = distribuidor;
-	}
-	public int getDetalleFactura() {
-		return detalleFactura;
-	}
-	public void setDetalleFactura(int detalleFactura) {
-		this.detalleFactura = detalleFactura;
+	public void setIdDetalleFactura(int idDetalleFactura) {
+		this.idDetalleFactura = idDetalleFactura;
 	}
 	public int getPrecioLibroNeto() {
 		return precioLibroNeto;
@@ -60,5 +41,30 @@ public class DetalleFactura {
 	public void setCantidadLibro(int cantidadLibro) {
 		this.cantidadLibro = cantidadLibro;
 	}
+	public int getFolio() {
+		return folio;
+	}
+	public void setFolio(int folio) {
+		this.folio = folio;
+	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public int getIdDistribuidor() {
+		return idDistribuidor;
+	}
+	public void setIdDistribuidor(int idDistribuidor) {
+		this.idDistribuidor = idDistribuidor;
+	}
+	@Override
+	public String toString() {
+		return "DetalleFactura [idDetalleFactura=" + idDetalleFactura + ", precioLibroNeto=" + precioLibroNeto
+				+ ", precioLibroIva=" + precioLibroIva + ", iva=" + iva + ", cantidadLibro=" + cantidadLibro
+				+ ", folio=" + folio + ", isbn=" + isbn + ", idDistribuidor=" + idDistribuidor + "]";
+	}
+	
 	
 }

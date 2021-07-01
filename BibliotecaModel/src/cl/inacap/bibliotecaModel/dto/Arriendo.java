@@ -12,8 +12,8 @@ public class Arriendo {
 	private int diasRetraso;
 	private int multa;
 	private int costoTotal;
-	private Cliente cliente;
-	private Trabajador trabajador;
+	private int idCliente;
+	private int idTrabajador;
 	
 	private ArrayList<DetalleArriendo> detalleArriendos;
 	public int getIdArriendo() {
@@ -59,17 +59,17 @@ public class Arriendo {
 	public void setCostoTotal(int costoTotal) {
 		this.costoTotal = costoTotal;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public int getIdCliente() {
+		return idCliente;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
-	public Trabajador getTrabajador() {
-		return trabajador;
+	public int getIdTrabajador() {
+		return idTrabajador;
 	}
-	public void setTrabajador(Trabajador trabajador) {
-		this.trabajador = trabajador;
+	public void setIdTrabajador(int idTrabajador) {
+		this.idTrabajador = idTrabajador;
 	}
 	public ArrayList<DetalleArriendo> getDetalleArriendos() {
 		return detalleArriendos;
@@ -77,6 +77,14 @@ public class Arriendo {
 	public void setDetalleArriendos(ArrayList<DetalleArriendo> detalleArriendos) {
 		this.detalleArriendos = detalleArriendos;
 	}
+	@Override
+	public String toString() {
+		return "Arriendo [idArriendo=" + idArriendo + ", fechaArriendo=" + fechaArriendo + ", fechaDevolucion="
+				+ fechaDevolucion + ", fechaEntrega=" + fechaEntrega + ", diasRetraso=" + diasRetraso + ", multa="
+				+ multa + ", costoTotal=" + costoTotal + ", idCliente=" + idCliente + ", idTrabajador=" + idTrabajador
+				+ ", detalleArriendos=" + detalleArriendos + "]";
+	}
+	
 	
 	
 }
