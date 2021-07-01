@@ -1,7 +1,7 @@
 package cl.inacap.bibliotecaModel.dto;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class Arriendo {
 

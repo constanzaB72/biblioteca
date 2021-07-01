@@ -9,6 +9,8 @@ public class DetalleBoleta {
 	private int cantidadLibro;
 	private int precioLibroIva;
 	private int iva;
+	
+	
 	public int getIdDetalleBoleta() {
 		return idDetalleBoleta;
 	}

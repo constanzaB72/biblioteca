@@ -2,10 +2,14 @@ package cl.inacap.bibliotecaApp;
 
 import java.util.List;
 
+import cl.inacap.bibliotecaModel.dao.ClientesDAO;
+import cl.inacap.bibliotecaModel.dao.EjemplarDAO;
 import cl.inacap.bibliotecaModel.dao.LibrosDAO;
-import cl.inacap.bibliotecaModel.dao.VentasDAO;
+import cl.inacap.bibliotecaModel.dto.Cliente;
+import cl.inacap.bibliotecaModel.dto.Ejemplar;
 import cl.inacap.bibliotecaModel.dto.Libro;
-import cl.inacap.bibliotecaModel.dto.Venta;
+
+
 
 public class TestApp {
 
@@ -25,19 +29,32 @@ public class TestApp {
 			
 		}
 		
-		List<Venta> ventas = new VentasDAO().getAll();
+		List<Cliente> clientes = new ClientesDAO().getAll();
 		
-		if(ventas.isEmpty()) {
+		if(clientes.isEmpty()) {
 			System.out.println("La lista esta vacia!");
 		}else {
 			
-			for(Venta venta : ventas) {
-				System.out.println(venta);
+			for(Cliente cliente : clientes) {
+				System.out.println(cliente);
 			}
 			
 		}
 		
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		
+		List<Ejemplar> ejemplares = new EjemplarDAO().getAll();
+		
+		if(ejemplares.isEmpty()) {
+			System.out.println("HEY! esta vacio!");
+		}else {
+			
+			for(Ejemplar ejemplar : ejemplares) {
+				System.out.println(ejemplar);
+			}
+			
+			
+		}
 		
 	}	
 }

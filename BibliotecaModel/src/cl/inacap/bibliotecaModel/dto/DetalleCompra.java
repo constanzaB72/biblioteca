@@ -7,8 +7,8 @@ public class DetalleCompra {
 	private int cantidadLibro;
 	private int idCompra;
 	private int idDistribuidor;
-	private String isbn;
-	private int idBoleta;
+	private int numSerie;
+	private int folio;
 	public int getIdDetalleCompra() {
 		return idDetalleCompra;
 	}
@@ -39,23 +39,24 @@ public class DetalleCompra {
 	public void setIdDistribuidor(int idDistribuidor) {
 		this.idDistribuidor = idDistribuidor;
 	}
-	public String getIsbn() {
-		return isbn;
+	
+	public int getNumSerie() {
+		return numSerie;
 	}
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setNumSerie(int numSerie) {
+		this.numSerie = numSerie;
 	}
-	public int getIdBoleta() {
-		return idBoleta;
+	public int getFolio() {
+		return folio;
 	}
-	public void setIdBoleta(int idBoleta) {
-		this.idBoleta = idBoleta;
+	public void setFolio(int folio) {
+		this.folio = folio;
 	}
 	@Override
 	public String toString() {
 		return "DetalleCompra [idDetalleCompra=" + idDetalleCompra + ", libroComprado=" + libroComprado
 				+ ", cantidadLibro=" + cantidadLibro + ", idCompra=" + idCompra + ", idDistribuidor=" + idDistribuidor
-				+ ", isbn=" + isbn + ", idBoleta=" + idBoleta + "]";
+				+ ", NumSerie=" + numSerie + ", Folio " + folio  + "]";
 	}
 	
 	

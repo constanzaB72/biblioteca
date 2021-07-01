@@ -31,6 +31,12 @@ public class Compra {
 	public String toString() {
 		return "Compra [idCompra=" + idCompra + ", idDistribuidor=" + idDistribuidor + ", folio=" + folio + "]";
 	}
+	public ArrayList<DetalleCompra> getDetalleCompra() {
+		return detalleCompra;
+	}
+	public void setDetalleCompra(ArrayList<DetalleCompra> detalleCompra) {
+		this.detalleCompra = detalleCompra;
+	}
 	
 	
 }

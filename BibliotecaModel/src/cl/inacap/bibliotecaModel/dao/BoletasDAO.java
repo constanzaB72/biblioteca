@@ -26,8 +26,8 @@ public class BoletasDAO {
 			while(rs.next()) {
 				Boleta b = new Boleta();
 				b.setFolio(rs.getInt(1));
-				//b.setCliente(rs.getString(2));
-				//b.setTrabajador(rs.getString(3));
+				b.setIdCliente(rs.getInt(2));
+				b.setIdTrabajador(rs.getInt(3));
 				b.setFechaVenta(rs.getString(4));
 				b.setHoraVenta(rs.getString(5));
 				b.setMetodoPago(rs.getString(6));

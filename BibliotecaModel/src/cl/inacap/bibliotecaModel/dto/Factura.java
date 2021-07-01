@@ -36,6 +36,13 @@ public class Factura {
 	public void setMetodoPago(String metodoPago) {
 		this.metodoPago = metodoPago;
 	}
+	
+	public ArrayList<DetalleFactura> getDetalleFactura() {
+		return detalleFactura;
+	}
+	public void setDetalleFactura(ArrayList<DetalleFactura> detalleFactura) {
+		this.detalleFactura = detalleFactura;
+	}
 	@Override
 	public String toString() {
 		return "Factura [folio=" + folio + ", fechaCompra=" + fechaCompra + ", horaCompra=" + horaCompra

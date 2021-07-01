@@ -49,6 +49,13 @@ public class Boleta {
 	public void setMetodoPago(String metodoPago) {
 		this.metodoPago = metodoPago;
 	}
+	
+	public ArrayList<DetalleBoleta> getDetalleBoletas() {
+		return detalleBoletas;
+	}
+	public void setDetalleBoletas(ArrayList<DetalleBoleta> detalleBoletas) {
+		this.detalleBoletas = detalleBoletas;
+	}
 	@Override
 	public String toString() {
 		return "Boleta [folio=" + folio + ", fechaVenta=" + fechaVenta + ", horaVenta=" + horaVenta + ", metodoPago="

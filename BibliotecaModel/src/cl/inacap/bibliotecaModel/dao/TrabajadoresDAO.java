@@ -33,6 +33,51 @@ private DB db = new DB();
 				t.setApellidoPa(rs.getString(5));
 				t.setFechaContrato(rs.getString(6));
 				
+				if(t.getTelefonos() == null) {
+					String queryLibro = "SELECT Telefono FROM BibliotecaV2.TelefonosTrabajadores WHERE idTrabajador=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+					
+					List<String> telefonos = new ArrayList<String>();
+					
+					while(r.next()) {
+						telefonos.add(r.getString(1));
+					}
+					
+					t.setTelefonos((ArrayList<String>) telefonos);
+				}
+				
+				if(t.getDirecciones() == null) {
+					String queryLibro = "SELECT Direccion FROM BibliotecaV2.DireccionesTrabajadores WHERE idTrabajador=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+					
+					List<String> direcciones = new ArrayList<String>();
+					
+					while(r.next()) {
+						direcciones.add(r.getString(1));
+					}
+					
+					t.setDirecciones((ArrayList<String>) direcciones);
+				}
+				
+				if(t.getCorreos() == null ) {
+					String queryLibro = "SELECT Correo FROM BibliotecaV2.CorreosTrabajadores WHERE idTrabajador=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+					
+					List<String> correos = new ArrayList<String>();
+					
+					while(r.next()) {
+						correos.add(r.getString(1));
+					}
+					
+					t.setCorreos((ArrayList<String>) correos);
+					
+				}
 				
 				//Guardamos en la lista
 				trabajadores.add(t);

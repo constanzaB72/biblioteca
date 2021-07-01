@@ -28,7 +28,9 @@ public class VentasDAO {
 			while(rs.next()) {
 				Venta v = new Venta();
 				v.setIdVenta(rs.getInt(1));
-				//FALTA MODIFICAR LOS TIPOS DE DATOS EN LA CLASE VENTA! QUE RABIAAA!!!
+				v.setIdTrabajador(rs.getInt(2));
+				v.setIdCliente(rs.getInt(3));
+				v.setFolio(rs.getInt(4));
 				
 				//Guardamos en la lista
 				ventas.add(v);

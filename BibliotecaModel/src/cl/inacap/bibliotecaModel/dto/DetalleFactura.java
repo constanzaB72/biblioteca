@@ -5,10 +5,10 @@ public class DetalleFactura {
 	private int idDetalleFactura;
 	private int precioLibroNeto;
 	private int precioLibroIva;
+	private int numSerie;
 	private int iva;
 	private int cantidadLibro;
 	private int folio;
-	private String isbn;
 	private int idDistribuidor;
 	
 	public int getIdDetalleFactura() {
@@ -35,6 +35,13 @@ public class DetalleFactura {
 	public void setIva(int iva) {
 		this.iva = iva;
 	}
+	
+	public int getNumSerie() {
+		return numSerie;
+	}
+	public void setNumSerie(int numSerie) {
+		this.numSerie = numSerie;
+	}
 	public int getCantidadLibro() {
 		return cantidadLibro;
 	}
@@ -47,12 +54,6 @@ public class DetalleFactura {
 	public void setFolio(int folio) {
 		this.folio = folio;
 	}
-	public String getIsbn() {
-		return isbn;
-	}
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
 	public int getIdDistribuidor() {
 		return idDistribuidor;
 	}
@@ -63,7 +64,7 @@ public class DetalleFactura {
 	public String toString() {
 		return "DetalleFactura [idDetalleFactura=" + idDetalleFactura + ", precioLibroNeto=" + precioLibroNeto
 				+ ", precioLibroIva=" + precioLibroIva + ", iva=" + iva + ", cantidadLibro=" + cantidadLibro
-				+ ", folio=" + folio + ", isbn=" + isbn + ", idDistribuidor=" + idDistribuidor + "]";
+				+ ", folio=" + folio  + ", idDistribuidor=" + idDistribuidor + "]";
 	}
 	
 	
