@@ -4,7 +4,7 @@ public class DetalleArriendo {
 
 	private int idDetalleArriendo;
 	private int costoLibro;
-	private String isbn;
+	private int NumSerie;
 	
 	public int getIdDetalleArriendo() {
 		return idDetalleArriendo;
@@ -19,17 +19,18 @@ public class DetalleArriendo {
 		this.costoLibro = costoLibro;
 	}
 	
-	public String getIsbn() {
-		return isbn;
+	public int getNumSerie() {
+		return NumSerie;
 	}
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setNumSerie(int numSerie) {
+		NumSerie = numSerie;
 	}
 	@Override
 	public String toString() {
-		return "DetalleArriendo [idDetalleArriendo=" + idDetalleArriendo + ", costoLibro=" + costoLibro + ", isbn="
-				+ isbn + "]";
+		return "DetalleArriendo [idDetalleArriendo=" + idDetalleArriendo + ", costoLibro=" + costoLibro + ", NumSerie="
+				+ NumSerie + "]";
 	}
+	
 	
 	
 	
