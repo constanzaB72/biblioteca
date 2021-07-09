@@ -32,7 +32,7 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		contentPane.setLayout(null);
 		
 		JLabel lblHeaderRegistrar = new JLabel("New label");
-		lblHeaderRegistrar.setIcon(new ImageIcon("C:\\Users\\Nita\\OneDrive - INACAP\\Desktop\\Dise\u00F1o de Aplicaciones Ev2\\recursos\\fastheader.jpg"));
+		lblHeaderRegistrar.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/fastheader.jpg")));
 		lblHeaderRegistrar.setBounds(0, 0, 800, 80);
 		contentPane.add(lblHeaderRegistrar);
 		

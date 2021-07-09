@@ -31,7 +31,7 @@ public class MenuFrame extends JFrameBiblioteca {
 		getContentPane().add(lblTituloMenu);
 		
 		JLabel lblCompraIcono = new JLabel("");
-		lblCompraIcono.setIcon(new ImageIcon("C:\\Users\\Nita\\OneDrive - INACAP\\Desktop\\Dise\u00F1o de Aplicaciones Ev2\\recursos\\usuario.png"));
+		lblCompraIcono.setIcon(new ImageIcon(MenuFrame.class.getResource("/img/userP.png")));
 		lblCompraIcono.setBounds(309, 205, 80, 80);
 		getContentPane().add(lblCompraIcono);
 		
@@ -41,12 +41,12 @@ public class MenuFrame extends JFrameBiblioteca {
 		getContentPane().add(lblVenderMenu);
 		
 		JLabel lblVentaIcono = new JLabel("");
-		lblVentaIcono.setIcon(new ImageIcon("C:\\Users\\Nita\\OneDrive - INACAP\\Desktop\\Dise\u00F1o de Aplicaciones Ev2\\recursos\\usuario.png"));
+		lblVentaIcono.setIcon(new ImageIcon(MenuFrame.class.getResource("/img/userP.png")));
 		lblVentaIcono.setBounds(440, 205, 80, 80);
 		getContentPane().add(lblVentaIcono);
 		
 		JLabel lblArrendarIcono = new JLabel("");
-		lblArrendarIcono.setIcon(new ImageIcon("C:\\Users\\Nita\\OneDrive - INACAP\\Desktop\\Dise\u00F1o de Aplicaciones Ev2\\recursos\\usuario.png"));
+		lblArrendarIcono.setIcon(new ImageIcon(MenuFrame.class.getResource("/img/userP.png")));
 		lblArrendarIcono.setBounds(589, 205, 80, 80);
 		getContentPane().add(lblArrendarIcono);
 		
@@ -73,7 +73,7 @@ public class MenuFrame extends JFrameBiblioteca {
 		getContentPane().add(lblNombreMenu);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Nita\\OneDrive - INACAP\\Desktop\\Dise\u00F1o de Aplicaciones Ev2\\recursos\\fastLateral.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(MenuFrame.class.getResource("/img/fastLateral.jpg")));
 		lblNewLabel.setBounds(0, 0, 220, 600);
 		getContentPane().add(lblNewLabel);
 	}
