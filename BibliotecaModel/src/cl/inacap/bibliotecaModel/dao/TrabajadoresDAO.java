@@ -98,5 +98,22 @@ private DB db = new DB();
 	
 	
 	}	
+//Login
+	public boolean usuarioValido(String usuario, String password) {		
+		try {
+			db.conectar();
+			String query = "SELECT Rut,Password FROM BibliotecaV2.Trabajadores where Rut = " + usuario + " and Password = " + password;
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			ResultSet rs = st.executeQuery();
+			boolean valido=rs.getRow() == 0 ? false : true;
+			rs.close();
+			return  valido;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}finally {
+			db.desconectar();
+		}
+	}
 	
 }

@@ -13,7 +13,16 @@ public class Trabajador {
 	private ArrayList<String> telefonos;
 	private ArrayList<String> direcciones;
 	private ArrayList<String> correos;
+	private String Password;
 	
+	
+	
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
 	public ArrayList<String> getTelefonos() {
 		return telefonos;
 	}
@@ -73,7 +82,7 @@ public class Trabajador {
 	public String toString() {
 		return "Trabajador [idTrabajador=" + idTrabajador + ", rut=" + rut + ", nombre=" + nombre + ", apellidoPa="
 				+ apellidoPa + ", apellidoMa=" + apellidoMa + ", fechaContrato=" + fechaContrato + ", telefonos="
-				+ telefonos + ", direcciones=" + direcciones + ", correos=" + correos + "]";
+				+ telefonos + ", direcciones=" + direcciones + ", correos=" + correos + ", Password=" + Password + "]";
 	}
 	
 	
