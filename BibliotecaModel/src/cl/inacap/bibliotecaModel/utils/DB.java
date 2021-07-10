@@ -21,7 +21,9 @@ public class DB {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			//CONECCION POR EL DRIVER
-			this.con = DriverManager.getConnection("jdbc:mysql://localhost:33060/BibliotecaV2?serverTimeZone=UTC", "root", "secret");
+			//this.con = DriverManager.getConnection("jdbc:mysql://localhost:33060/BibliotecaV2?serverTimeZone=UTC", "root", "secret");
+			
+			this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BibliotecaV2?serverTimeZone=UTC", "root", "");
 			
 			
 			return true;

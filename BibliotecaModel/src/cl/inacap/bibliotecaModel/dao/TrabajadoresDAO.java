@@ -102,12 +102,16 @@ private DB db = new DB();
 	public boolean usuarioValido(String usuario, String password) {		
 		try {
 			db.conectar();
-			String query = "SELECT Rut,Password FROM BibliotecaV2.Trabajadores where Rut = " + usuario + " and Password = " + password;
+			String query = "SELECT Rut,Password FROM BibliotecaV2.Trabajadores where Rut = ? and Password = ?";
 			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, usuario);
+			st.setString(2, password);
 			ResultSet rs = st.executeQuery();
-			boolean valido=rs.getRow() == 0 ? false : true;
-			rs.close();
-			return  valido;
+			while(rs.next()) {
+				rs.close();
+				return true;			
+			}
+			return  false;
 		} catch (Exception e) {
 			System.out.println(e);
 			return false;
