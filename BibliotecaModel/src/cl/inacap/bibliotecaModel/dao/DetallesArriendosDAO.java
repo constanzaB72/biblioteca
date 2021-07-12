@@ -105,7 +105,7 @@ public class DetallesArriendosDAO {
 		}
 	}
 	
-	public void insertDetalleArriendo(Arriendo arriendo,List<Libro> libros,List<Ejemplar> ejemplares, int repetir) {
+	public void insertDetalleArriendo(Arriendo arriendo,List<Libro> libros,List<Ejemplar> ejemplares) {
 		try {
 			db.conectar();
 				for(Ejemplar ejemplar : ejemplares) {

@@ -1,5 +1,9 @@
 package cl.inacap.bibliotecaModel.utils;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Generador {
 	
 	public int generarNumSerie() {
@@ -28,5 +32,21 @@ public class Generador {
 		return result;
 	}
 
-
+	public String generarFechaActual() {
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate fecha = LocalDate.now();
+		String fechaActual = fecha.format(formatter2);
+		
+		return fechaActual;
+	}
+	
+	
+	public String generarHoraActual() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+		LocalTime hora = LocalTime.now();
+		String horaActual = hora.format(formatter);
+		
+		
+		return horaActual;
+	}
 }

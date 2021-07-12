@@ -11,6 +11,8 @@ import cl.inacap.bibliotecaModel.utils.DB;
 public class DistribuidorDAO {
 	
 private DB db = new DB();
+
+public static List<String> erroresDistribuidoresDAO = new ArrayList<String>();
 	
 	public List<Distribuidor> getAll(){
 		
@@ -42,12 +44,74 @@ private DB db = new DB();
 			return distribuidores;
 			
 		}catch(Exception ex) {
-			System.out.println("Se Produjo un error al Consultar");
+			erroresDistribuidoresDAO.add("Se Produjo un error al Consultar");
 			return null;
 		}finally {
 			db.desconectar();
 		}
 	}
 	
+	public void insertDistribuidor(Distribuidor distribuidor) {
+		try {
+			db.conectar();
+			
+			String query = "INSERT INTO Distribuidores(idDistribuidor, Rut, NombreEmpresa, AnioVinculo, Direccion, Telefono) VALUES(?,?,?,?,?,?)";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setInt(1, distribuidor.getIdDistribuidor());
+			st.setString(2, distribuidor.getRut());
+			st.setString(3, distribuidor.getNombreEmpresa());
+			st.setInt(4, distribuidor.getAnioVinculo());
+			st.setString(5, distribuidor.getDireccion());
+			st.setString(6, distribuidor.getTelefono());
+			
+			st.executeUpdate();
+			
+			System.out.println("Distribuidor Ingresado Con Exito!");
+			
+		}catch(Exception ex) {
+			erroresDistribuidoresDAO.add("Se Produjo un error al ingresar el Distribuidor!");
+		}finally {
+			db.desconectar();
+		}
+	}
+	
+	public void updateDistribuidor(Distribuidor distribuidor, String telefono) {
+		try {
+			db.conectar();
+			
+			String query = "UPDATE BibliotecaV2.Distribuidores SET Telefono =? WHERE idDistribuidor =?";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, telefono);
+			st.setInt(2, distribuidor.getIdDistribuidor());
+			
+			st.executeUpdate();
+			
+			System.out.println("Se Actualizó el Telefono con Exito!");
+			
+			
+		}catch(Exception ex) {
+			
+		}finally {
+			db.desconectar();
+		}
+	}
+	
+	public void deleteDistribuidor(Distribuidor distribuidor) {
+		try {
+			db.conectar();
+			
+			String query = "DELETE FROM Distribuidores WHERE idDistribuidor=?";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setInt(1, distribuidor.getIdDistribuidor());
+			st.executeUpdate();
+			
+			System.out.println("Distribuidor Eliminado con Exito!");
+			
+		}catch(Exception ex) {
+			erroresDistribuidoresDAO.add("Se Produjo un error al Eliminar el Distribuidor!");
+		}finally {
+			db.desconectar();
+		}
+	}
 	
 }
