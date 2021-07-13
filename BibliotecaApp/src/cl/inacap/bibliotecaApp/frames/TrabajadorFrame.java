@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.SystemColor;
 import javax.swing.JButton;
 
 public class TrabajadorFrame extends JFrameBiblioteca {
@@ -18,17 +17,17 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		getContentPane().setForeground(Color.BLACK);
 		getContentPane().setLayout(null);
 		
-		JButton btnSalirMenu = new JButton("SALIR");
-		btnSalirMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSalirMenu.setBounds(34, 450, 150, 30);
-		getContentPane().add(btnSalirMenu);
+		JButton btnSalirTrabajador = new JButton("SALIR");
+		btnSalirTrabajador.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnSalirTrabajador.setBounds(43, 396, 150, 30);
+		getContentPane().add(btnSalirTrabajador);
 		
-		JLabel lblTituloMenu = new JLabel("\u00BFQu\u00E9 desea hacer?");
-		lblTituloMenu.setBackground(Color.BLACK);
-		lblTituloMenu.setForeground(Color.DARK_GRAY);
-		lblTituloMenu.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblTituloMenu.setBounds(236, 43, 341, 30);
-		getContentPane().add(lblTituloMenu);
+		JLabel lblTituloTrabajador = new JLabel("¿Que desea hacer?");
+		lblTituloTrabajador.setBackground(Color.BLACK);
+		lblTituloTrabajador.setForeground(Color.DARK_GRAY);
+		lblTituloTrabajador.setFont(new Font("Tahoma", Font.BOLD, 26));
+		lblTituloTrabajador.setBounds(341, 30, 350, 30);
+		getContentPane().add(lblTituloTrabajador);
 		
 		JLabel lblCompraIcono = new JLabel("");
 		lblCompraIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/comprar.png")));
@@ -60,26 +59,17 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		lblArrendarMenu.setBounds(599, 287, 122, 30);
 		getContentPane().add(lblArrendarMenu);
 		
-		JLabel lblBienvenidoMenu = new JLabel("Bienvenido");
-		lblBienvenidoMenu.setForeground(Color.WHITE);
-		lblBienvenidoMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblBienvenidoMenu.setBounds(45, 173, 117, 25);
-		getContentPane().add(lblBienvenidoMenu);
+		JLabel lblBienvenidoTrabajador = new JLabel("Bienvenido");
+		lblBienvenidoTrabajador.setForeground(Color.WHITE);
+		lblBienvenidoTrabajador.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblBienvenidoTrabajador.setBounds(54, 155, 117, 25);
+		getContentPane().add(lblBienvenidoTrabajador);
 		
-		JLabel lblNombreMenu = new JLabel("Camilo");
-		lblNombreMenu.setForeground(Color.WHITE);
-		lblNombreMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNombreMenu.setBounds(75, 403, 69, 25);
-		getContentPane().add(lblNombreMenu);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/fastLateral.jpg")));
-		lblNewLabel.setBounds(0, 0, 220, 600);
-		getContentPane().add(lblNewLabel);
-		
-		JLabel lblArrendarIcono_1 = new JLabel("");
-		lblArrendarIcono_1.setBounds(589, 218, 80, 80);
-		getContentPane().add(lblArrendarIcono_1);
+		JLabel lblNombreTrabajador = new JLabel("Camilo");
+		lblNombreTrabajador.setForeground(Color.WHITE);
+		lblNombreTrabajador.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNombreTrabajador.setBounds(83, 360, 69, 25);
+		getContentPane().add(lblNombreTrabajador);
 		
 		JLabel lblEjemplaresIcono = new JLabel("");
 		lblEjemplaresIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/libros.png")));
@@ -100,5 +90,15 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		lbl.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lbl.setBounds(589, 514, 150, 30);
 		getContentPane().add(lbl);
+		
+		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/userP.png")));
+		lblAvatar.setBounds(54, 212, 130, 130);
+		getContentPane().add(lblAvatar);
+		
+		JLabel lblLateralColor = new JLabel("");
+		lblLateralColor.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/lateralColor.jpg")));
+		lblLateralColor.setBounds(0, 0, 230, 600);
+		getContentPane().add(lblLateralColor);
 	}
 }

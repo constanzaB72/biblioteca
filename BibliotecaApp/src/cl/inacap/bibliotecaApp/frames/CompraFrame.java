@@ -1,7 +1,10 @@
 package cl.inacap.bibliotecaApp.frames;
 
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -17,12 +20,29 @@ public class CompraFrame extends JFrameBiblioteca {
 		
 		JButton btnVolverMenu = new JButton("MEN\u00DA");
 		btnVolverMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnVolverMenu.setBounds(34, 450, 150, 30);
+		btnVolverMenu.setBounds(40, 450, 150, 30);
 		getContentPane().add(btnVolverMenu);
 		
-		JLabel lblLateralComprar = new JLabel("Aqui va el icono de Comprar");
-		lblLateralComprar.setBounds(10, 0, 200, 600);
-		getContentPane().add(lblLateralComprar);
+		JLabel lblComprarTexto = new JLabel("ARRENDAR");
+		lblComprarTexto.setForeground(Color.WHITE);
+		lblComprarTexto.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblComprarTexto.setBounds(58, 353, 122, 25);
+		getContentPane().add(lblComprarTexto);
+		
+		JLabel lblComprarTexto2 = new JLabel("LIBROS");
+		lblComprarTexto2.setForeground(Color.WHITE);
+		lblComprarTexto2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblComprarTexto2.setBounds(72, 380, 91, 25);
+		getContentPane().add(lblComprarTexto2);
+		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setIcon(new ImageIcon(CompraFrame.class.getResource("/img/Comprarg.png")));
+		lblAvatar.setBounds(54, 190, 130, 130);
+		getContentPane().add(lblAvatar);
+		
+		JLabel lblLateralColor = new JLabel("");
+		lblLateralColor.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/lateralColor.jpg")));
+		lblLateralColor.setBounds(0, 0, 230, 600);
+		getContentPane().add(lblLateralColor);
 		
 		JComboBox cbxLibros = new JComboBox();
 		cbxLibros.setBounds(261, 244, 200, 30);
@@ -48,17 +68,17 @@ public class CompraFrame extends JFrameBiblioteca {
 		getContentPane().add(lblCantidadCompra);
 		
 		JComboBox cbxCantidad = new JComboBox();
-		cbxCantidad.setBounds(491, 244, 200, 30);
+		cbxCantidad.setBounds(492, 244, 200, 30);
 		getContentPane().add(cbxCantidad);
 		
 		JLabel lblCostoCompra = new JLabel("Costo: ");
 		lblCostoCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCostoCompra.setBounds(261, 296, 200, 30);
+		lblCostoCompra.setBounds(261, 306, 200, 30);
 		getContentPane().add(lblCostoCompra);
 		
 		txtCosto = new JTextField();
 		txtCosto.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtCosto.setBounds(261, 326, 200, 30);
+		txtCosto.setBounds(261, 336, 200, 30);
 		getContentPane().add(txtCosto);
 		txtCosto.setColumns(10);
 		
@@ -69,7 +89,7 @@ public class CompraFrame extends JFrameBiblioteca {
 		
 		JButton btnComprar = new JButton("COMPRAR");
 		btnComprar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnComprar.setBounds(514, 325, 150, 30);
+		btnComprar.setBounds(513, 336, 150, 30);
 		getContentPane().add(btnComprar);
 		
 	}

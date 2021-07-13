@@ -16,57 +16,63 @@ public class ClienteFrame extends JFrameBiblioteca {
 	private JPanel contentPane;
 
 	public ClienteFrame() {
-		getContentPane().setBackground(SystemColor.activeCaption);
+		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setForeground(Color.BLACK);
 		getContentPane().setLayout(null);
 		
-		JButton btnSalirMenu = new JButton("SALIR");
-		btnSalirMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSalirMenu.setBounds(34, 450, 150, 30);
-		getContentPane().add(btnSalirMenu);
+		JButton btnSalirCliente = new JButton("SALIR");
+		btnSalirCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnSalirCliente.setBounds(43, 396, 150, 30);
+		getContentPane().add(btnSalirCliente);
 		
-		JLabel lblTituloMenu = new JLabel("Que desea hacer?");
-		lblTituloMenu.setBackground(Color.BLACK);
-		lblTituloMenu.setForeground(Color.WHITE);
-		lblTituloMenu.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblTituloMenu.setBounds(236, 43, 341, 30);
-		getContentPane().add(lblTituloMenu);
+		JLabel lblTituloCliente = new JLabel("¿Que desea hacer?");
+		lblTituloCliente.setBackground(Color.BLACK);
+		lblTituloCliente.setForeground(Color.DARK_GRAY);
+		lblTituloCliente.setFont(new Font("Tahoma", Font.BOLD, 26));
+		lblTituloCliente.setBounds(350, 37, 341, 30);
+		getContentPane().add(lblTituloCliente);
 		
 		JLabel lblCompraIcono = new JLabel("");
-		lblCompraIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/userP.png")));
-		lblCompraIcono.setBounds(368, 205, 80, 80);
+		lblCompraIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/comprar.png")));
+		lblCompraIcono.setBounds(379, 211, 65, 65);
 		getContentPane().add(lblCompraIcono);
 		
 		JLabel lblArrendarIcono = new JLabel("");
-		lblArrendarIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/userP.png")));
-		lblArrendarIcono.setBounds(535, 205, 80, 80);
+		lblArrendarIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/arrendar.png")));
+		lblArrendarIcono.setBounds(572, 211, 65, 65);
 		getContentPane().add(lblArrendarIcono);
 		
-		JLabel lblComprarMenu = new JLabel("COMPRAR");
-		lblComprarMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarMenu.setBounds(356, 287, 111, 30);
-		getContentPane().add(lblComprarMenu);
+		JLabel lblComprarCliente = new JLabel("COMPRAR");
+		lblComprarCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblComprarCliente.setBounds(360, 287, 110, 30);
+		getContentPane().add(lblComprarCliente);
 		
-		JLabel lblArrendarMenu = new JLabel("ARRENDAR");
-		lblArrendarMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblArrendarMenu.setBounds(520, 287, 117, 30);
-		getContentPane().add(lblArrendarMenu);
+		JLabel lblArrendarCliente = new JLabel("ARRENDAR");
+		lblArrendarCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblArrendarCliente.setBounds(546, 287, 122, 30);
+		getContentPane().add(lblArrendarCliente);
 		
-		JLabel lblBienvenidoMenu = new JLabel("Bienvenido");
-		lblBienvenidoMenu.setForeground(Color.WHITE);
-		lblBienvenidoMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblBienvenidoMenu.setBounds(45, 173, 117, 25);
-		getContentPane().add(lblBienvenidoMenu);
+		JLabel lblBienvenidoCliente = new JLabel("Bienvenido");
+		lblBienvenidoCliente.setForeground(Color.WHITE);
+		lblBienvenidoCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblBienvenidoCliente.setBounds(54, 155, 117, 25);
+		getContentPane().add(lblBienvenidoCliente);
 		
-		JLabel lblNombreMenu = new JLabel("Camilo");
-		lblNombreMenu.setForeground(Color.WHITE);
-		lblNombreMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNombreMenu.setBounds(75, 403, 69, 25);
-		getContentPane().add(lblNombreMenu);
+		JLabel lblNombreCliente = new JLabel("Camilo");
+		lblNombreCliente.setForeground(Color.WHITE);
+		lblNombreCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNombreCliente.setBounds(83, 360, 69, 25);
+		getContentPane().add(lblNombreCliente);
 		
-		JLabel lblPanelLateral = new JLabel("New label");
-		lblPanelLateral.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/fastLateral.jpg")));
-		lblPanelLateral.setBounds(0, 0, 220, 600);
-		getContentPane().add(lblPanelLateral);
+		
+		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/userP.png")));
+		lblAvatar.setBounds(54, 212, 130, 130);
+		getContentPane().add(lblAvatar);
+		
+		JLabel lblLateralColor = new JLabel("");
+		lblLateralColor.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/lateralColor.jpg")));
+		lblLateralColor.setBounds(0, 0, 230, 600);
+		getContentPane().add(lblLateralColor);
 	}
 }
