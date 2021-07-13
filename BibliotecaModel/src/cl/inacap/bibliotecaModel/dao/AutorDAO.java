@@ -42,9 +42,6 @@ public class AutorDAO {
 			db.desconectar();
 		}
 		
-	
-		
-		
 	}
 	
 	

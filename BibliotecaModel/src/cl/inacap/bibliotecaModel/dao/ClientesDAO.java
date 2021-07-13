@@ -13,6 +13,8 @@ public class ClientesDAO {
 	
 	private DB db = new DB();
 	
+	public static List<String> erroresClientesDAO = new ArrayList<String>();
+	
 	
 	public List<Cliente> getAll() {
 		try {
@@ -87,7 +89,7 @@ public class ClientesDAO {
 			
 		}catch(Exception ex) {
 		
-			System.out.println("Se Produjo un error al consultar");
+			erroresClientesDAO.add("Se Produjo un error al consultar");
 			return null;
 		
 		}finally {
@@ -95,4 +97,118 @@ public class ClientesDAO {
 		}
 	
 	
-}}
+	}
+	
+	
+	public void insertCliente(Cliente cliente, List<String> telefonos, List<String> correos, List<String> direcciones) {
+		try {
+			db.conectar();
+			
+			String query = "INSERT INTO Clientes(Rut, Nombre, ApellidoMa, ApellidoPa, FechaNacimiento,Password) VALUES(?,?,?,?,?,?)";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, cliente.getRut());
+			st.setString(2, cliente.getNombre());
+			st.setString(3, cliente.getApellidoMa());
+			st.setString(4, cliente.getApellidoPa());
+			st.setString(5, cliente.getFechaNacimiento());
+			st.setString(6, cliente.getPassword());
+			
+			st.executeUpdate();
+			
+			String queryIdCliente = "SELECT idCliente FROM BibliotecaV2.Clientes WHERE Rut =?";
+			PreparedStatement o = db.getCon().prepareStatement(queryIdCliente);
+			o.setString(1, cliente.getRut());
+			ResultSet rs = o.executeQuery();
+			
+			while(rs.next()) {
+				String queryTel = "INSERT INTO TelefonosClientes(idCliente, Telefono) VALUES(?,?)";
+				PreparedStatement s = db.getCon().prepareStatement(queryTel);
+				for(String telefono : telefonos) {
+					s.setInt(1, rs.getInt(1));
+					s.setString(2, telefono);
+					s.executeUpdate();
+				}
+				
+				String queryCorre = "INSERT INTO CorreosClientes(idCliente, Correo) VALUES(?,?)";
+				PreparedStatement p = db.getCon().prepareStatement(queryCorre);
+				for(String correo : correos) {
+					p.setInt(1, rs.getInt(1));
+					p.setString(2, correo);
+					p.executeUpdate();
+				}
+				
+				String queryDire = "INSERT INTO DireccionesClientes(idCliente, Direccion) VALUES(?,?)";
+				PreparedStatement t = db.getCon().prepareStatement(queryDire);
+				for(String direccion : direcciones) {
+					t.setInt(1, rs.getInt(1));
+					t.setString(2, direccion);
+					t.executeUpdate();
+				}
+			}
+			
+
+			System.out.println("Cliente ingresado con exito!");
+			
+			
+		}catch(Exception ex) {
+			erroresClientesDAO.add("Se Produjo un Error al Insertar el Cliente");
+		}finally {
+			db.desconectar();
+		}
+	}
+	
+	public void updateTelefono(Cliente cliente, List<String> telefonos) {
+		try {
+			db.conectar();
+		}catch(Exception ex) {
+			
+		}finally {
+			db.desconectar();
+		}
+	}
+	
+	public void deleteCliente(Cliente cliente) {
+		try {
+			db.conectar();
+			
+			String queryIdCliente = "SELECT idCliente FROM BibliotecaV2.Clientes WHERE Rut =?";
+			PreparedStatement o = db.getCon().prepareStatement(queryIdCliente);
+			o.setString(1, cliente.getRut());
+			ResultSet rs = o.executeQuery();
+			
+			while(rs.next()) {
+				String queryTel = "DELETE FROM TelefonosClientes WHERE idCliente =?";
+				PreparedStatement s = db.getCon().prepareStatement(queryTel);
+				s.setInt(1, rs.getInt(1));
+				s.executeUpdate();
+				
+				String queryCorre = "DELETE FROM CorreosClientes WHERE idCliente =?";
+				PreparedStatement t = db.getCon().prepareStatement(queryCorre);
+				t.setInt(1, rs.getInt(1));
+				t.executeUpdate();
+				
+				String queryDirec = "DELETE FROM DireccionesClientes WHERE idCliente =?";
+				PreparedStatement p = db.getCon().prepareStatement(queryDirec);
+				p.setInt(1, rs.getInt(1));
+				p.executeUpdate();
+				
+				
+				String query = "DELETE FROM Clientes WHERE idCliente =?";
+				PreparedStatement st = db.getCon().prepareStatement(query);
+				st.setInt(1, rs.getInt(1));
+				st.executeUpdate();
+			}
+			
+			
+			
+			
+			System.err.println("Cliente Eliminado con EXITO!");
+			
+		}catch(Exception ex) {
+			erroresClientesDAO.add("Se Produjo un Error Al Eliminar al Cliente!");
+		}finally {
+			db.desconectar();
+		}
+	}
+	
+}

@@ -13,6 +13,7 @@ public class Cliente {
 	private ArrayList<String> telefonos;
 	private ArrayList<String> direcciones;
 	private ArrayList<String> correos;
+	private String Password;
 	
 	public ArrayList<String> getTelefonos() {
 		return telefonos;
@@ -37,6 +38,12 @@ public class Cliente {
 	}
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
+	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
 	}
 	public String getRut() {
 		return rut;

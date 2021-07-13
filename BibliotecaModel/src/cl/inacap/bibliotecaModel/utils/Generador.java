@@ -1,10 +1,14 @@
 package cl.inacap.bibliotecaModel.utils;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Generador {
+	
+	DB db = new DB();
 	
 	public int generarNumSerie() {
 		
@@ -48,5 +52,27 @@ public class Generador {
 		
 		
 		return horaActual;
+	}
+	
+	public int generarFolioBoleta() {
+		try {
+			db.conectar();
+			String query = "SELECT Folio FROM BibliotecaV2.Boletas WHERE Folio=(SELECT MAX(Folio) FROM BibliotecaV2.Boletas)";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			ResultSet rs = st.executeQuery();
+			
+			int folio = 0;
+			while(rs.next()) {
+				folio = rs.getInt(1) + 1;
+			}
+			
+			return folio;
+			
+		}catch(Exception ex) {
+			System.out.println("Se Produjo un Error al Generar el FOLIO");
+			return 0;
+		}finally {
+			db.desconectar();
+		}
 	}
 }

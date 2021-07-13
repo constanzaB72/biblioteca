@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.inacap.bibliotecaModel.dto.Autor;
 import cl.inacap.bibliotecaModel.dto.Ejemplar;
 import cl.inacap.bibliotecaModel.dto.Libro;
 import cl.inacap.bibliotecaModel.utils.DB;
@@ -196,7 +197,7 @@ public class LibrosDAO {
 		}
 	}
 	
-	public void insertLibro(Libro libro) {
+	public void insertLibro(Libro libro, List<String> idiomas, List<String> autores, List<String> categorias) {
 		try {
 			
 			// GUARDAMOS LOS PRIMERO PARAMETROS DE LA TABLA LIBROS
@@ -212,8 +213,40 @@ public class LibrosDAO {
 			st.executeUpdate();
 						
 			
-			//GUARDAMOS LOS PARAMETROS EN LA TABLA AUTOR
-			//GUARDAMOS LOS PARAMETROS EN LA TABLA LIBRO_AUTOR
+			//PREGUNTAR Y GUARDAMOS LOS PARAMETROS EN LA TABLA AUTOR
+			for(String autor : autores) {
+				String query = "SELECT idAutor, Nombre, ApellidoPa, ApellidoMa FROM Autores";
+				PreparedStatement s = db.getCon().prepareStatement(query);
+				ResultSet rs = s.executeQuery();
+				
+				while(rs.next()) {
+					if(autor.equals(rs.getString(2))) {
+						System.out.println("Autor Registrado");
+					}else {
+						String query2 = "INSERT INTO Autores(Nombre) VALUES(?)";
+						PreparedStatement p = db.getCon().prepareStatement(query2);
+						p.setString(1, autor);
+						p.executeUpdate();
+					}
+				}
+				//PREGUNTAR Y GUARDAMOS LOS PARAMETROS EN LA TABLA LIBRO_AUTOR
+				int idAutor = 0;
+				String query1 = "SELECT idAutor, Nombre FROM Autores WHERE Nombre =?";
+				PreparedStatement so = db.getCon().prepareStatement(query1);
+				so.setString(1, autor);
+				ResultSet r = so.executeQuery();
+				while(r.next()) {
+					idAutor = r.getInt(1);
+				}
+				
+				String query3 = "INSERT INTO Libro_Autor(ISBN, idAutor) VALUES(?,?)";
+				PreparedStatement t = db.getCon().prepareStatement(query3);
+				t.setString(1, libro.getIsbn());
+				t.setInt(2, idAutor);
+				t.executeUpdate();
+			}
+			
+			
 			
 			//GUARDAMOS LOS PARAMETROS EN LA TABLA IDIOMAS
 			//GUARDAMOS LOS PARAMETROS EN LA TABLA LIBRO_IDIOMA
@@ -223,7 +256,7 @@ public class LibrosDAO {
 			
 			//GUARDAMOS LOS PARAMETROS EN LA TABLA EDITORIAL
 			
-			
+			System.out.println("Libro Ingresado Con EXITOP!!");
 			
 		}catch(Exception ex) {
 			erroresLibrosDAO.add("Se Produjo un error al Insertar el Libro!");

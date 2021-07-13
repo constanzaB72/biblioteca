@@ -1,31 +1,31 @@
 package cl.inacap.bibliotecaApp;
 
 
+
 import java.sql.PreparedStatement;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import cl.inacap.bibliotecaModel.dao.ArriendosDAO;
+import cl.inacap.bibliotecaModel.dao.BoletasDAO;
 import cl.inacap.bibliotecaModel.dao.ClientesDAO;
 import cl.inacap.bibliotecaModel.dao.ComprasDAO;
-import cl.inacap.bibliotecaModel.dao.DetallesArriendosDAO;
+import cl.inacap.bibliotecaModel.dao.DetallesBoletasDAO;
 import cl.inacap.bibliotecaModel.dao.DetallesComprasDAO;
 import cl.inacap.bibliotecaModel.dao.DetallesFacturasDAO;
-import cl.inacap.bibliotecaModel.dao.DistribuidorDAO;
+
 import cl.inacap.bibliotecaModel.dao.EjemplarDAO;
 import cl.inacap.bibliotecaModel.dao.FacturasDAO;
 import cl.inacap.bibliotecaModel.dao.LibrosDAO;
-import cl.inacap.bibliotecaModel.dto.Arriendo;
+import cl.inacap.bibliotecaModel.dao.VentasDAO;
+import cl.inacap.bibliotecaModel.dto.Boleta;
 import cl.inacap.bibliotecaModel.dto.Cliente;
-import cl.inacap.bibliotecaModel.dto.Compra;
-import cl.inacap.bibliotecaModel.dto.DetalleArriendo;
+import cl.inacap.bibliotecaModel.dto.DetalleBoleta;
 import cl.inacap.bibliotecaModel.dto.Distribuidor;
 import cl.inacap.bibliotecaModel.dto.Ejemplar;
 import cl.inacap.bibliotecaModel.dto.Factura;
 import cl.inacap.bibliotecaModel.dto.Libro;
+import cl.inacap.bibliotecaModel.dto.Trabajador;
 import cl.inacap.bibliotecaModel.utils.DB;
 import cl.inacap.bibliotecaModel.utils.Generador;
 
@@ -41,7 +41,7 @@ public class TestApp {
 		// ------  CARGA Y PROPAGACION DE ERRORES ENTRE CAPAS ------
 		
 		List<String> erroresLibros = new LibrosDAO().erroresLibrosDAO;
-		List<String> erroresEjemplares = new EjemplarDAO().erroresEjemplaresDAO;
+		
 		
 		
 		
@@ -67,13 +67,59 @@ public class TestApp {
 			}
 		}
 		
-		List<Cliente> clientes = new ClientesDAO().getAll();
+		List<String> telefonos = new ArrayList<String>();
+		List<String> correos = new ArrayList<String>();
+		List<String> direcciones = new ArrayList<String>();
 		
-		if(clientes.isEmpty()) {
+		List<String> autores = new ArrayList<String>();
+		List<String> idiomas = new ArrayList<String>();
+		List<String> categorias = new ArrayList<String>();
+		
+		telefonos.add("+56923876188");
+		telefonos.add("+56922897631");
+		correos.add("Pupu@Gmail.com");
+		correos.add("Gustavito@Hotmail.com");
+		correos.add("PerezGustavo@Outloock.com");
+		direcciones.add("Calle SemiFalsa #123,  Villa Alemana");
+		
+		autores.add("Pedro Pascal");
+		autores.add("Ruben Brito");
+		
+		//ClientesDAO clientes = new ClientesDAO();
+		Cliente c = new Cliente();
+		c.setIdCliente(2);
+		c.setRut("19.872.716-9");
+		c.setNombre("Gustavo");
+		c.setApellidoMa("Rutia");
+		c.setApellidoPa("Perez");
+		c.setFechaNacimiento("28-03-1999");
+		c.setPassword("1234567");
+		
+		//clientes.insertCliente(c, telefonos, correos, direcciones);
+		//clientes.deleteCliente(c);
+		
+		
+		//TrabajadoresDAO trabajadores = new TrabajadoresDAO();
+		//Trabajador t = new Trabajador();
+		//t.setIdTrabajador(3);
+		//t.setRut("19.872.716-9");
+		//t.setNombre("Gustavo");
+		//t.setApellidoMa("Rutia");
+		//t.setApellidoPa("Perez");
+		//t.setFechaContrato("28-03-1999");
+		//t.setPassword("1234567");
+		
+		//trabajadores.insertTrabajador(t, telefonos, correos, direcciones);
+		//trabajadores.deleteTrabajador(t);
+		
+		
+		List<Cliente> clientes2 = new ClientesDAO().getAll();
+		
+		if(clientes2.isEmpty()) {
 			System.out.println("La lista esta vacia!");
 		}else {
 			
-			for(Cliente cliente : clientes) {
+			for(Cliente cliente : clientes2) {
 				System.out.println(cliente);
 			}
 			
@@ -83,33 +129,82 @@ public class TestApp {
 		EjemplarDAO ejemplarDAO = new EjemplarDAO();
 		
 		Libro libro = new Libro();
-		libro.setIsbn("9784166202134");
-		libro.setTitulo("Paranoia2");
+		libro.setIsbn("9784166202199");
+		libro.setTitulo("Paranoia1");
 		libro.setNumPagina(621);
 		libro.setPrecio(20100);
 		libro.setAnioPublicacion(1998);
 		
-		//libroDAO.insertLibro(libro);
+		//libroDAO.insertLibro(libro, idiomas, autores, categorias);
 		//ejemplarDAO.insertEjemplar(libro);
 		//libroDAO.updatePrecioLibro(libro);
 		//libroDAO.deleteLibro(libro);
 		
+	//REVISAR ERROR SE DUPLICA CUANDO ESTOY EN EL LOOP 
 		
-		System.out.println("Libro Guardado con Exito");
+	/**
+	 * try {
+		db.conectar();
+		for(String autor : autores) {
+			String query = "SELECT idAutor, Nombre, ApellidoPa, ApellidoMa FROM BibliotecaV2.Autores";
+			PreparedStatement s = db.getCon().prepareStatement(query);
+			ResultSet rs = s.executeQuery();
+			
+			int exist = 0;
+			while(rs.next()) {
+				if(autor == rs.getString(2)) {
+					System.out.println("Autor Registrado");
+					exist++;
+				}
+				
+			}
+			
+			if(exist == 0) {
+				String query2 = "INSERT INTO Autores(Nombre) VALUES(?)";
+				PreparedStatement p = db.getCon().prepareStatement(query2);
+				p.setString(1, autor);
+				p.executeUpdate();
+				
+				
+				//PREGUNTAR Y GUARDAMOS LOS PARAMETROS EN LA TABLA LIBRO_AUTOR
+				int idAutor = 0;
+				String query1 = "SELECT idAutor, Nombre FROM Autores WHERE Nombre =?";
+				PreparedStatement so = db.getCon().prepareStatement(query1);
+				so.setString(1, autor);
+				ResultSet r = so.executeQuery();
+				while(r.next()) {
+					idAutor = r.getInt(1);
+				}
+				
+				String query3 = "INSERT INTO Libro_Autor(ISBN, idAutor) VALUES(?,?)";
+				PreparedStatement t = db.getCon().prepareStatement(query3);
+				t.setString(1, libro.getIsbn());
+				t.setInt(2, idAutor);
+				t.executeUpdate();
+			}
+			
+			
+		}
 		
+	 * 
+	 * 
+	 * 	
+	 */
+
 		
-		
-		
-		
-		
+
 		System.out.println("-------------------------------------------------------------------------------------------------------------");
 	
 		
-		FacturasDAO facturas = new FacturasDAO();
-		DetallesFacturasDAO detalleFacturas = new DetallesFacturasDAO();
-		ComprasDAO compras = new ComprasDAO();
-		DetallesComprasDAO detallesCompras = new DetallesComprasDAO();
+		//FacturasDAO facturas = new FacturasDAO();
+		//DetallesFacturasDAO detalleFacturas = new DetallesFacturasDAO();
+		//ComprasDAO compras = new ComprasDAO();
+		//DetallesComprasDAO detallesCompras = new DetallesComprasDAO();
+		//DetallesBoletasDAO detallesBoleta = new DetallesBoletasDAO();
+		//BoletasDAO boleta = new BoletasDAO();
+		//VentasDAO venta = new VentasDAO();
 		Generador generar = new Generador();
+		
 		
 		Distribuidor di =  new Distribuidor();
 		di.setIdDistribuidor(1);
@@ -138,11 +233,31 @@ public class TestApp {
 		li.setPrecio(12000);
 		libros2.add(li);
 		
-		Factura f = new Factura();
-		f.setFolio(2);
-		f.setHoraCompra(generar.generarHoraActual());
-		f.setFechaCompra(generar.generarFechaActual());
-		f.setMetodoPago("Efectivo");
+		//Boleta b = new Boleta();
+		//b.setFolio(generar.generarFolioBoleta());
+		//b.setFechaVenta(generar.generarFechaActual());
+		//b.setHoraVenta(generar.generarHoraActual());
+		//b.setIdCliente(c.getIdCliente());
+		//b.setIdTrabajador(t.getIdTrabajador());
+		//b.setMetodoPago("Tarjeta");
+		
+		//venta.deleteVenta(b);
+		//boleta.insertBoleta(b, c, t);
+		//boleta.deleteBoleta(b);
+		//detallesBoleta.insertDetalles(ejemplares2, libros2, b);
+		//venta.insertVenta(b, c, t);
+		
+		//
+		
+		
+		
+		
+		
+		//Factura f = new Factura();
+		//f.setFolio(2);
+		//f.setHoraCompra(generar.generarHoraActual());
+		//f.setFechaCompra(generar.generarFechaActual());
+		//f.setMetodoPago("Efectivo");
 	
 		//Compra c = new Compra();
 		//c.setIdCompra(1);
