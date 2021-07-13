@@ -5,6 +5,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -16,6 +19,7 @@ public class LoginFrame extends JFrameBiblioteca {
 	private JPanel contentPane;
 	private JTextField txtUsuarioLogin;
 	private JPasswordField passFContrasenaLogin;
+	private JButton btnIngresar;
 	
 	public LoginFrame() {		
 		contentPane = new JPanel();
@@ -67,7 +71,7 @@ public class LoginFrame extends JFrameBiblioteca {
 		lbLogoLogin.setBounds(0, 0, 265, 563);
 		contentPane.add(lbLogoLogin);
 		
-		JButton btnIngresar = new JButton("INGRESAR");
+		btnIngresar = new JButton("INGRESAR");
 		btnIngresar.setForeground(Color.BLACK);
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnIngresar.setBounds(599, 491, 150, 30);
@@ -77,4 +81,24 @@ public class LoginFrame extends JFrameBiblioteca {
 		passFContrasenaLogin.setBounds(275, 495, 200, 30);
 		contentPane.add(passFContrasenaLogin);
 	}
+
+	public JTextField getTxtUsuarioLogin() {
+		return txtUsuarioLogin;
+	}
+
+	public void setTxtUsuarioLogin(JTextField txtUsuarioLogin) {
+		this.txtUsuarioLogin = txtUsuarioLogin;
+	}
+
+	public JPasswordField getPassFContrasenaLogin() {
+		return passFContrasenaLogin;
+	}
+
+	public void setPassFContrasenaLogin(JPasswordField passFContrasenaLogin) {
+		this.passFContrasenaLogin = passFContrasenaLogin;
+	}
+	public void addIngresarListener(ActionListener ing) {
+		btnIngresar.addActionListener(ing);
+		}
+	
 }

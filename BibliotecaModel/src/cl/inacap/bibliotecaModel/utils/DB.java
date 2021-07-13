@@ -23,6 +23,8 @@ public class DB {
 			//CONECCION POR EL DRIVER
 			this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BibliotecaV2?serverTimeZone=UTC", "root", "");
 			
+			//this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BibliotecaV2?serverTimeZone=UTC", "root", "");
+			
 			
 			return true;
 			
