@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import cl.inacap.bibliotecaApp.frames.ArriendoFrame;
 import cl.inacap.bibliotecaApp.frames.CompraFrame;
 import cl.inacap.bibliotecaApp.frames.LoginFrame;
-import cl.inacap.bibliotecaApp.frames.MenuFrame;
+import cl.inacap.bibliotecaApp.frames.TrabajadorFrame;
 import cl.inacap.bibliotecaApp.frames.RegistrarFrame;
 import cl.inacap.bibliotecaApp.frames.VentaFrame;
 

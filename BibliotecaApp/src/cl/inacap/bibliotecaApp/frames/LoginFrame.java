@@ -70,7 +70,7 @@ public class LoginFrame extends JFrameBiblioteca {
 		JButton btnIngresar = new JButton("INGRESAR");
 		btnIngresar.setForeground(Color.BLACK);
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnIngresar.setBounds(576, 495, 150, 30);
+		btnIngresar.setBounds(599, 491, 150, 30);
 		contentPane.add(btnIngresar);
 		
 		passFContrasenaLogin = new JPasswordField();
