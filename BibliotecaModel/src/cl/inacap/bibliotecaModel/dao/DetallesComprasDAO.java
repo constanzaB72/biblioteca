@@ -44,7 +44,7 @@ public class DetallesComprasDAO {
 			return detalles;
 			
 		}catch(Exception ex) {
-			System.out.println("Se Produjo un error al Consultar");
+			erroresDetallesCompras.add("Se Produjo un error al Consultar");
 			return null;
 		}finally {
 			db.desconectar();
@@ -81,7 +81,7 @@ public class DetallesComprasDAO {
 			rs.close();
 			return detalles;
 		}catch(Exception ex) {
-			System.out.println("Se produjo un error al Consultar!");
+			erroresDetallesCompras.add("Se produjo un error al Consultar!");
 			return null;
 		}finally {
 			db.desconectar();

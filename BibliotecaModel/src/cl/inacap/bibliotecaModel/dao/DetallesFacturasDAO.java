@@ -50,7 +50,7 @@ public class DetallesFacturasDAO {
 			return detalles;
 
 		} catch (Exception ex) {
-			System.out.println("Se Produjo un error al Consultar");
+			erroresDetallesFacturasDAO.add("Se Produjo un error al Consultar");
 			return null;
 		} finally {
 			db.desconectar();
@@ -88,7 +88,7 @@ public class DetallesFacturasDAO {
 			rs.close();
 			return detalles;
 		} catch (Exception ex) {
-			System.out.println("Se produjo un error al Consultar!");
+			erroresDetallesFacturasDAO.add("Se produjo un error al Consultar!");
 			return null;
 		} finally {
 			db.desconectar();

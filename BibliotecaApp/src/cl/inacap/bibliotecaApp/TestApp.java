@@ -45,19 +45,11 @@ public class TestApp {
 		
 		
 		
-		List<Libro> libros = new LibrosDAO().getAll();
+	
 		
 		 DB db = new DB();
 		
-		if(libros.isEmpty()) {
-			System.out.println("HEY! está VACIO!");
-		}else {
-			
-			for(Libro libro3 : libros) {
-				System.out.println(libro3);
-			}
-			
-		}
+		
 		
 		if(erroresLibros.isEmpty()) {
 			System.out.println("MMMM vacio prro");
@@ -84,6 +76,11 @@ public class TestApp {
 		
 		autores.add("Pedro Pascal");
 		autores.add("Ruben Brito");
+		idiomas.add("ING");
+		idiomas.add("ESC");
+		categorias.add("Infantil");
+		categorias.add("Imaginacion");
+		categorias.add("Magia");
 		
 		//ClientesDAO clientes = new ClientesDAO();
 		Cliente c = new Cliente();
@@ -134,67 +131,27 @@ public class TestApp {
 		libro.setNumPagina(621);
 		libro.setPrecio(20100);
 		libro.setAnioPublicacion(1998);
+		libro.setEditorial("Editorial Chalaila");
 		
 		//libroDAO.insertLibro(libro, idiomas, autores, categorias);
 		//ejemplarDAO.insertEjemplar(libro);
 		//libroDAO.updatePrecioLibro(libro);
 		//libroDAO.deleteLibro(libro);
 		
-	//REVISAR ERROR SE DUPLICA CUANDO ESTOY EN EL LOOP 
-		
-	/**
-	 * try {
-		db.conectar();
-		for(String autor : autores) {
-			String query = "SELECT idAutor, Nombre, ApellidoPa, ApellidoMa FROM BibliotecaV2.Autores";
-			PreparedStatement s = db.getCon().prepareStatement(query);
-			ResultSet rs = s.executeQuery();
-			
-			int exist = 0;
-			while(rs.next()) {
-				if(autor == rs.getString(2)) {
-					System.out.println("Autor Registrado");
-					exist++;
-				}
-				
-			}
-			
-			if(exist == 0) {
-				String query2 = "INSERT INTO Autores(Nombre) VALUES(?)";
-				PreparedStatement p = db.getCon().prepareStatement(query2);
-				p.setString(1, autor);
-				p.executeUpdate();
-				
-				
-				//PREGUNTAR Y GUARDAMOS LOS PARAMETROS EN LA TABLA LIBRO_AUTOR
-				int idAutor = 0;
-				String query1 = "SELECT idAutor, Nombre FROM Autores WHERE Nombre =?";
-				PreparedStatement so = db.getCon().prepareStatement(query1);
-				so.setString(1, autor);
-				ResultSet r = so.executeQuery();
-				while(r.next()) {
-					idAutor = r.getInt(1);
-				}
-				
-				String query3 = "INSERT INTO Libro_Autor(ISBN, idAutor) VALUES(?,?)";
-				PreparedStatement t = db.getCon().prepareStatement(query3);
-				t.setString(1, libro.getIsbn());
-				t.setInt(2, idAutor);
-				t.executeUpdate();
-			}
-			
-			
-		}
-		
-	 * 
-	 * 
-	 * 	
-	 */
-
 		
 
 		System.out.println("-------------------------------------------------------------------------------------------------------------");
-	
+		List<Libro> libros = new LibrosDAO().getAll();
+		
+		if(libros.isEmpty()) {
+			System.out.println("HEY! está VACIO!");
+		}else {
+			
+			for(Libro libro3 : libros) {
+				System.out.println(libro3);
+			}
+			
+		}
 		
 		//FacturasDAO facturas = new FacturasDAO();
 		//DetallesFacturasDAO detalleFacturas = new DetallesFacturasDAO();
