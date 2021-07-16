@@ -211,4 +211,25 @@ public class ClientesDAO {
 		}
 	}
 	
+	public boolean usuarioValido(String usuario, String password) {		
+		try {
+			db.conectar();
+			String query = "SELECT Rut,Password FROM BibliotecaV2.Clientes where Rut = ? and Password = ?";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, usuario);
+			st.setString(2, password);
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				rs.close();
+				return true;			
+			}
+			return  false;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}finally {
+			db.desconectar();
+		}
+	}
+	
 }

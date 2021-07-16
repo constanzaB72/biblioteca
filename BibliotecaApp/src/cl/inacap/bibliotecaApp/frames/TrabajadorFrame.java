@@ -2,6 +2,9 @@ package cl.inacap.bibliotecaApp.frames;
 
 
 import javax.swing.JPanel;
+
+import cl.inacap.bibliotecaModel.dto.Trabajador;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -11,8 +14,9 @@ import javax.swing.JButton;
 public class TrabajadorFrame extends JFrameBiblioteca {
 
 	private JPanel contentPane;
+	private JLabel lblNombreTrabajador;
 
-	public TrabajadorFrame() {
+	public TrabajadorFrame(Trabajador trabajador) {
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setForeground(Color.BLACK);
 		getContentPane().setLayout(null);
@@ -65,7 +69,7 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		lblBienvenidoTrabajador.setBounds(54, 155, 117, 25);
 		getContentPane().add(lblBienvenidoTrabajador);
 		
-		JLabel lblNombreTrabajador = new JLabel("Camilo");
+		lblNombreTrabajador = new JLabel(trabajador.getNombre());
 		lblNombreTrabajador.setForeground(Color.WHITE);
 		lblNombreTrabajador.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNombreTrabajador.setBounds(83, 360, 69, 25);
@@ -101,4 +105,13 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		lblLateralColor.setBounds(0, 0, 230, 600);
 		getContentPane().add(lblLateralColor);
 	}
+
+	public JLabel getLblNombreTrabajador() {
+		return lblNombreTrabajador;
+	}
+
+	public void setLblNombreTrabajador(JLabel lblNombreTrabajador) {
+		this.lblNombreTrabajador = lblNombreTrabajador;
+	}
+	
 }

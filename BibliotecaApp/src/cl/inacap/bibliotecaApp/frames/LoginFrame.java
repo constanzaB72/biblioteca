@@ -20,7 +20,7 @@ public class LoginFrame extends JFrameBiblioteca {
 	private JTextField txtUsuarioLogin;
 	private JPasswordField passFContrasenaLogin;
 	private JButton btnIngresar;
-	
+	private JComboBox cbTipoLogin;
 	public LoginFrame() {		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,19 +52,17 @@ public class LoginFrame extends JFrameBiblioteca {
 		contentPane.add(txtUsuarioLogin);
 		txtUsuarioLogin.setColumns(10);
 		
-		JComboBox cbTipoLogin = new JComboBox();
+		cbTipoLogin = new JComboBox();
 		cbTipoLogin.setBounds(576, 415, 200, 30);
+		cbTipoLogin.addItem("Seleccione");
+		cbTipoLogin.addItem("Trabajador");
+		cbTipoLogin.addItem("Cliente");
 		contentPane.add(cbTipoLogin);
 		
 		JLabel lblTipoLogin = new JLabel("Tipo Usuario: ");
 		lblTipoLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTipoLogin.setBounds(576, 386, 200, 30);
 		contentPane.add(lblTipoLogin);
-		
-		JLabel lblIconoLogin = new JLabel("");
-		lblIconoLogin.setIcon(new ImageIcon(LoginFrame.class.getResource("/img/usuario.png")));
-		lblIconoLogin.setBounds(547, 417, 28, 28);
-		contentPane.add(lblIconoLogin);
 		
 		JLabel lbLogoLogin = new JLabel("");
 		lbLogoLogin.setIcon(new ImageIcon(LoginFrame.class.getResource("/img/fastlogo.jpg")));
@@ -100,5 +98,13 @@ public class LoginFrame extends JFrameBiblioteca {
 	public void addIngresarListener(ActionListener ing) {
 		btnIngresar.addActionListener(ing);
 		}
+
+	public JComboBox getCbTipoLogin() {
+		return cbTipoLogin;
+	}
+
+	public void setCbTipoLogin(JComboBox cbTipoLogin) {
+		this.cbTipoLogin = cbTipoLogin;
+	}
 	
 }

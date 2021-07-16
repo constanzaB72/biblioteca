@@ -230,5 +230,87 @@ public static List<String> erroresTrabajadoresDAO = new ArrayList<String>();
 			db.desconectar();
 		}
 	}
+//	TrabajadorController
+	public Trabajador findByRut(String rut) {
+		try {
+			Trabajador trabajador = new Trabajador();
+			db.conectar();
+			
+			String query = "SELECT idTrabajador,Rut,Nombre,ApellidoMa,ApellidoPa,FechaContrato FROM BibliotecaV2.Trabajadores where Rut=?";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, rut);
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				
+				trabajador.setIdTrabajador(Integer.parseInt(rs.getString(1)));;
+				trabajador.setRut(rs.getString(2));
+				trabajador.setNombre(rs.getString(3));
+				trabajador.setApellidoMa(rs.getString(4));
+				trabajador.setApellidoPa(rs.getString(5));
+				trabajador.setFechaContrato(rs.getString(6));
+				
+				if(trabajador.getTelefonos() == null) {
+					String queryLibro = "SELECT Telefono FROM BibliotecaV2.TelefonosTrabajadores WHERE idTrabajador=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+					
+					List<String> telefonos = new ArrayList<String>();
+					
+					while(r.next()) {
+						telefonos.add(r.getString(1));
+					}
+					
+					trabajador.setTelefonos((ArrayList<String>) telefonos);
+				}
+				
+				if(trabajador.getDirecciones() == null) {
+					String queryLibro = "SELECT Direccion FROM BibliotecaV2.DireccionesTrabajadores WHERE idTrabajador=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+					
+					List<String> direcciones = new ArrayList<String>();
+					
+					while(r.next()) {
+						direcciones.add(r.getString(1));
+					}
+					
+					trabajador.setDirecciones((ArrayList<String>) direcciones);
+				}
+				
+				if(trabajador.getCorreos() == null ) {
+					String queryLibro = "SELECT Correo FROM BibliotecaV2.CorreosTrabajadores WHERE idTrabajador=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+					
+					List<String> correos = new ArrayList<String>();
+					
+					while(r.next()) {
+						correos.add(r.getString(1));
+					}
+					
+					trabajador.setCorreos((ArrayList<String>) correos);
+					
+				}
+				
+				return trabajador;
+			}
+			
+			rs.close();
+			return trabajador;
+			
+		}catch(Exception ex) {
+			erroresTrabajadoresDAO.add("Se produjo un error al consultar");
+			return null;
+		
+		}finally {
+			db.desconectar();
+		}
+	
+	
+	
+	}	
 	
 }
