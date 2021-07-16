@@ -8,10 +8,31 @@ import java.util.List;
 import cl.inacap.bibliotecaModel.dto.Autor;
 import cl.inacap.bibliotecaModel.utils.DB;
 
+/**
+ * 
+ * Esta Clase es creada para la obtencion completa de la clase y entidad Autor extraida desde la Tabla Autores.
+ * Implementa la clase DB la cual permite la conexion directa hacia la base de datos.
+ * Se relaciona con la Clase Autor.
+ * 
+ * CREADA EL DIA 1-07-2021
+ * 
+ * @author Camilo Moya
+ * 
+ */
 public class AutorDAO {
-	
+	/**
+	 * Clase que nos permite una conexion directa hacia la base de datos
+	 */
 	private DB db = new DB();
 	
+	/**
+	 * Metodo que realiza una consulta a la base de datos trayendo todos los datos pertenecientes a la tabla Autores.
+	 * Luego de recorrer el resultado en un loop While , crea una clase autor y la guarda en una lista de clase Autor, guardando todos los autores traidos desde
+	 * la base de datos.
+	 * 
+	 * @author Camilo Moya
+	 * @return
+	 */
 	public List<Autor> getAll(){
 		
 		try {

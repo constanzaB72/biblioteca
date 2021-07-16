@@ -64,6 +64,7 @@ public class LoginFrame extends JFrameBiblioteca {
 		lblTipoLogin.setBounds(576, 386, 200, 30);
 		contentPane.add(lblTipoLogin);
 		
+
 		JLabel lbLogoLogin = new JLabel("");
 		lbLogoLogin.setIcon(new ImageIcon(LoginFrame.class.getResource("/img/fastlogo.jpg")));
 		lbLogoLogin.setBounds(0, 0, 265, 563);

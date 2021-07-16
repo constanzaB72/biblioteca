@@ -11,12 +11,53 @@ import cl.inacap.bibliotecaModel.dto.Libro;
 import cl.inacap.bibliotecaModel.utils.DB;
 import cl.inacap.bibliotecaModel.utils.Generador;
 
+/**
+ * 
+ * Esta Clase es creada para la obtencion,creacion,actualizacion y eliminacion
+ * de la clase y entidad Libro. Implementa la clase DB la cual permite la
+ * conexion directa hacia la base de datos. Se relaciona con la Clase Libro.
+ * 
+ * CREADA EL DIA 28-06-2021
+ * 
+ * 
+ * @author Camilo Moya
+ * 
+ */
 public class LibrosDAO {
-
+	/**
+	 * Clase que nos permite una conexion directa hacia la base de datos
+	 */
 	private DB db = new DB();
-
+	/**
+	 * Lista static de String o Cadena que nos permite guardar los errores que
+	 * posiblemente se produzcan al ocurrir un fallo en cualquiera de los metodos.
+	 * Esta lista sera propagada luego en el Main, para exponer los errores
+	 * ocurridos en pantalla.
+	 */
 	public static List<String> erroresLibrosDAO = new ArrayList<String>();
 
+	/**
+	 * Metodo encargado de Consultar a la base de datos todos las tablas y atributos
+	 * relacionados con la Tabla Libro. Estas consultas se realizan a las tablas
+	 * Libro, Autor, Libro_Autor, Idioma, Libro_Idioma, Categoria , Libro_Categoria
+	 * , Editorial. Al comienzo realiza una consulta a la tabla Libros, trayendo la
+	 * mayoria de los datos de la clase Libro. Mediante un Loop While , recorremos
+	 * los datos de la consulta a la tabla libros, pero ademas dentro del mismo loop
+	 * realizamos consultas hacia la tabla Libro_Idioma en donde corresponda el ISBN
+	 * del libro, dando como resultado un IdIdioma, luego de eso consultamos a que
+	 * idioma corresponde ese id, mediante la consulta a la tabla Idioma. Luego
+	 * recorremos ese reultado y los guardamos en uns lista de Tipo String, que
+	 * luego será agregada a la clase Libro. Este principio se cumple en todas las
+	 * demas subconsultas, tanto para Categorias y para Autores . En editoriales es
+	 * una consulta simple, solo consulta y devuelve 1 resultado que debe ser
+	 * asignado a la clase Libro. Cada vez que se crea una nueva clase libro se
+	 * agrega a la lista de Tipo Libro que será retornada al finalizar el metodo.
+	 * 
+	 * 
+	 * @author Camilo Moya
+	 * @return Lista de Tipo Libro
+	 * @exception Agrega el error a la lista erroresLibrosDAO
+	 */
 	public List<Libro> getAll() {
 		try {
 
@@ -89,13 +130,13 @@ public class LibrosDAO {
 
 						String isbn = "";
 						int idAutor = 0;
-						
+
 						List<String> autores = new ArrayList<String>();
 
 						while (r.next()) {
 							isbn = r.getString(1);
 							idAutor = r.getInt(2);
-							
+
 							String queryAutor = "SELECT Nombre FROM BibliotecaV2.Autores WHERE idAutor=?";
 							PreparedStatement c = db.getCon().prepareStatement(queryAutor);
 							c.setInt(1, idAutor);
@@ -193,6 +234,25 @@ public class LibrosDAO {
 		}
 	}
 
+	/**
+	 * Metodo que se encarga de Insertar un libro hacia la tabla Libros. El Metodo
+	 * recibe 4 parametros, un objeto libro y 3 listas de tipo String. Como primer
+	 * paso realiza la insercion del libro en la tabla libros, luego recorre las
+	 * listas tanto de idiomas, autores, categorias para luego consultar si en sus
+	 * respectivas tablas existen, si existen se agrega el ISBN del libro
+	 * directamente al la tabla Libro_Autor o idioma o caegoria. Si no existe, se
+	 * inserta un nuevo autor, idioma o categoria y se le agrega el ISBN a su tabla
+	 * Libro_idioma o autor o categoria. Y asi susecivamente. Finalmente al
+	 * terminar, se muestra en la consola un mensaje de confirmacion.
+	 * 
+	 * 
+	 * @author Camilo Moya
+	 * @param libro
+	 * @param idiomas
+	 * @param autores
+	 * @param categorias
+	 * @exception Agrega el error a la lista erroresLibrosDAO
+	 */
 	public void insertLibro(Libro libro, List<String> idiomas, List<String> autores, List<String> categorias) {
 		try {
 
@@ -220,13 +280,13 @@ public class LibrosDAO {
 					while (rs.next()) {
 						if (autor.equalsIgnoreCase(rs.getString(2).trim())) {
 							System.out.println("Autor Registrado");
-							
+
 							String query3 = "INSERT INTO Libro_Autor(ISBN, idAutor) VALUES(?,?)";
 							PreparedStatement t = db.getCon().prepareStatement(query3);
 							t.setString(1, libro.getIsbn());
 							t.setInt(2, rs.getInt(1));
 							t.executeUpdate();
-							
+
 							exist++;
 						}
 
@@ -275,7 +335,7 @@ public class LibrosDAO {
 					while (rs.next()) {
 						if (idioma.equalsIgnoreCase(rs.getString(2).trim())) {
 							System.out.println("Idioma Registrado");
-							
+
 							String query3 = "INSERT INTO Libro_Idioma(ISBN, idIdioma) VALUES(?,?)";
 							PreparedStatement t = db.getCon().prepareStatement(query3);
 							t.setString(1, libro.getIsbn());
@@ -310,7 +370,7 @@ public class LibrosDAO {
 					}
 
 				}
-				
+
 				System.out.println("Idioma Ingresado con EXITO!");
 
 			} catch (Exception ex) {
@@ -318,7 +378,6 @@ public class LibrosDAO {
 			} finally {
 				db.desconectar();
 			}
-		
 
 			// GUARDAMOS LOS PARAMETROS EN LA TABLA CATEGORIAS
 			try {
@@ -332,13 +391,13 @@ public class LibrosDAO {
 					while (rs.next()) {
 						if (categoria.equalsIgnoreCase(rs.getString(2).trim())) {
 							System.out.println("Categoria Registrada");
-							
+
 							String query3 = "INSERT INTO Libro_Categoria(ISBN, idCategoria) VALUES(?,?)";
 							PreparedStatement t = db.getCon().prepareStatement(query3);
 							t.setString(1, libro.getIsbn());
 							t.setInt(2, rs.getInt(1));
 							t.executeUpdate();
-							
+
 							exist++;
 						}
 
@@ -368,7 +427,7 @@ public class LibrosDAO {
 					}
 
 				}
-				
+
 				System.out.println("Categoria Ingresada con EXITO!");
 
 			} catch (Exception ex) {
@@ -376,24 +435,23 @@ public class LibrosDAO {
 			} finally {
 				db.desconectar();
 			}
-		
-			//INSERTAR LA EDITORIAL 
+
+			// INSERTAR LA EDITORIAL
 			try {
 				db.conectar();
-				
-				String query ="INSERT INTO Editoriales(ISBN, Editorial) VALUES(?,?)";
+
+				String query = "INSERT INTO Editoriales(ISBN, Editorial) VALUES(?,?)";
 				PreparedStatement sta = db.getCon().prepareStatement(query);
 				sta.setString(1, libro.getIsbn());
 				sta.setString(2, libro.getEditorial());
 				sta.executeUpdate();
-				
+
 				System.out.println("Se registro le Editorial con EXITO!");
-			}catch(Exception ex) {
+			} catch (Exception ex) {
 				erroresLibrosDAO.add("Se Produjo un Error al ingresar la Editorial!");
-			}finally {
+			} finally {
 				db.desconectar();
 			}
-	
 
 			System.out.println("Libro Ingresado Con EXITO!!");
 
@@ -404,6 +462,16 @@ public class LibrosDAO {
 		}
 	}
 
+	/**
+	 * Metodo encargado de Actualizar el Precio del Libro. Recibe 1 parametro, un
+	 * objeto libro del cual se extraen los datos para realizar la consulta de
+	 * Update. Si todo sale bien , finalmente se muestra un mensaje de confirmacion
+	 * en la consola.
+	 * 
+	 * @author Camilo Moya
+	 * @param libro
+	 * @exception Agrega el error a la lista erroresLibrosDAO
+	 */
 	public void updatePrecioLibro(Libro libro) {
 		try {
 			db.conectar();
@@ -420,6 +488,16 @@ public class LibrosDAO {
 		}
 	}
 
+	/**
+	 * Metodo encargado de Eliminar un Libro. Recibe 1 parametro, un objeto Libro,
+	 * del cual se extrae su ISBN unico para realizar una qeury con sentencia WHERE
+	 * ISBN = libro.getIsbn(). Una vez realizada la eliminacion se muestra en
+	 * consola un mensaje de Confirmacion.
+	 * 
+	 * @author Camilo Moya
+	 * @param libro
+	 * @exception Agrega el error a la lista erroresLibrosDAO
+	 */
 	public void deleteLibro(Libro libro) {
 		try {
 			db.conectar();
@@ -428,6 +506,8 @@ public class LibrosDAO {
 			st.setString(1, libro.getIsbn());
 
 			st.executeUpdate();
+
+			System.out.println("Libro Eliminado con EXITO!");
 
 		} catch (Exception ex) {
 			erroresLibrosDAO.add("Se Produjo un error al Eliminar el Libro!");
