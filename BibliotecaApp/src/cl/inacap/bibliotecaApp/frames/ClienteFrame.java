@@ -5,22 +5,26 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import cl.inacap.bibliotecaModel.dto.Cliente;
+
 public class ClienteFrame extends JFrameBiblioteca {
 
 	private JPanel contentPane;
+	private JButton btnSalirCliente;
 
-	public ClienteFrame() {
+	public ClienteFrame(Cliente cliente) {
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setForeground(Color.BLACK);
 		getContentPane().setLayout(null);
 		
-		JButton btnSalirCliente = new JButton("SALIR");
+		btnSalirCliente = new JButton("SALIR");
 		btnSalirCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnSalirCliente.setBounds(43, 396, 150, 30);
 		getContentPane().add(btnSalirCliente);
@@ -58,7 +62,7 @@ public class ClienteFrame extends JFrameBiblioteca {
 		lblBienvenidoCliente.setBounds(54, 155, 117, 25);
 		getContentPane().add(lblBienvenidoCliente);
 		
-		JLabel lblNombreCliente = new JLabel("Camilo");
+		JLabel lblNombreCliente = new JLabel(cliente.getNombre());
 		lblNombreCliente.setForeground(Color.WHITE);
 		lblNombreCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNombreCliente.setBounds(83, 360, 69, 25);
@@ -74,5 +78,8 @@ public class ClienteFrame extends JFrameBiblioteca {
 		lblLateralColor.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/lateralColor.jpg")));
 		lblLateralColor.setBounds(0, 0, 230, 600);
 		getContentPane().add(lblLateralColor);
+	}
+	public void addSalirListener(ActionListener ing) {
+		btnSalirCliente.addActionListener(ing);
 	}
 }

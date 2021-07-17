@@ -11,10 +11,7 @@ import java.awt.BorderLayout;
 
 public class EjemplaresJIFrame extends JInternalFrame {
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -27,29 +24,25 @@ public class EjemplaresJIFrame extends JInternalFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
 	public EjemplaresJIFrame() {
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setBackground(Color.LIGHT_GRAY);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 700, 500);
-		String[] columnNames = { "N° de Serie", "ISBN", "Título" };
+		String[] columnNames = { "Id Detalle de Arriendo", "N° de Serie", "Costo" };
 		String[][] data = {
-	            { "123456", "1234567890123", "Papelucho" },
-	            { "123456", "1234567890123", "Sherlock Holmes" },
-	            { "123456", "1234567890123", "Sherlock Holmes" },
-	            { "123456", "1234567890123", "Puerto Estelar" },
-	            { "123456", "1234567890123", "Ana Frank" }        
+	            { "123456", "12345", "$1000" },
+	            { "123456", "12345", "$1000" },
+	            { "123456", "12345", "$1000" },
+	            { "123456", "12345", "$1000" },
+	            { "123456", "12345", "$1000" }        
 		};
 		table = new JTable(data,columnNames);
-		table.setBounds(30, 40, 200, 300);
-		table.setBorder(getBorder());
+		table.setBounds(30, 40, 100, 200);
 		JScrollPane sp = new JScrollPane(table);		
-		getContentPane().add(sp, BorderLayout.CENTER);
+		sp.setBounds(0, 0, 690, 471);
+		getContentPane().add(sp);
 		this.setVisible(true);
 	}
 }

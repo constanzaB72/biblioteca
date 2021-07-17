@@ -3,7 +3,6 @@ package cl.inacap.bibliotecaModel.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import cl.inacap.bibliotecaModel.dto.Trabajador;

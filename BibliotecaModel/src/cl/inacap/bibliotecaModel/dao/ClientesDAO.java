@@ -315,4 +315,85 @@ public class ClientesDAO {
 			db.desconectar();
 		}
 	}
+	public Cliente findByRut(String rut) {
+		try {
+			Cliente c = new Cliente();
+			List<Cliente> clientes = new ArrayList<Cliente>();
+			db.conectar();
+
+			String query = "SELECT idCliente,Rut,Nombre,ApellidoMa,ApellidoPa,FechaNacimiento FROM BibliotecaV2.Clientes WHERE Rut=?";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, rut);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				
+				c.setIdCliente(Integer.parseInt(rs.getString(1)));
+				c.setRut(rs.getString(2));
+				c.setNombre(rs.getString(3));
+				c.setApellidoMa(rs.getString(4));
+				c.setApellidoPa(rs.getString(5));
+				c.setFechaNacimiento(rs.getString(6));
+
+				// ---- GUARDAMOS TELEFONOS ----
+				if (c.getTelefonos() == null) {
+					String queryLibro = "SELECT Telefono FROM BibliotecaV2.TelefonosClientes WHERE idCliente=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+
+					List<String> telefonos = new ArrayList<String>();
+
+					while (r.next()) {
+						telefonos.add(r.getString(1));
+					}
+					c.setTelefonos((ArrayList<String>) telefonos);
+				}
+				// ---- GUARDAMOS CORREOS ----
+				if (c.getCorreos() == null) {
+					String queryLibro = "SELECT Correo FROM BibliotecaV2.CorreosClientes WHERE idCliente=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+
+					List<String> correos = new ArrayList<String>();
+
+					while (r.next()) {
+						correos.add(r.getString(1));
+					}
+
+					c.setCorreos((ArrayList<String>) correos);
+				}
+				// ---- GUARDAMOS LAS DIRECCIONES ----
+				if (c.getDirecciones() == null) {
+					String queryLibro = "SELECT Direccion FROM BibliotecaV2.DireccionesClientes WHERE idCliente=?";
+					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+					con.setString(1, rs.getString(1));
+					ResultSet r = con.executeQuery();
+
+					List<String> direcciones = new ArrayList<String>();
+
+					while (r.next()) {
+						direcciones.add(r.getString(1));
+					}
+
+					c.setDirecciones((ArrayList<String>) direcciones);
+				}
+
+				return c;
+			}
+
+			rs.close();
+			return c;
+
+		} catch (Exception ex) {
+
+			erroresClientesDAO.add("Se produjo un error al consultar");
+			return null;
+
+		} finally {
+			db.desconectar();
+		}
+
+	}
+
 }

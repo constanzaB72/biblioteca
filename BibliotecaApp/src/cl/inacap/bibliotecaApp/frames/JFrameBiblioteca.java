@@ -13,6 +13,8 @@ public class JFrameBiblioteca extends JFrame {
 		this.setBackground(Color.LIGHT_GRAY);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 800, 600);
+
+		this.setLocationRelativeTo(null);
 	}
 
 }

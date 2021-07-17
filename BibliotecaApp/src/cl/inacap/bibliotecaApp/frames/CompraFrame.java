@@ -18,21 +18,21 @@ public class CompraFrame extends JFrameBiblioteca {
 	public CompraFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnVolverMenu = new JButton("MEN\u00DA");
+		JButton btnVolverMenu = new JButton("MENU");
 		btnVolverMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnVolverMenu.setBounds(40, 450, 150, 30);
 		getContentPane().add(btnVolverMenu);
 		
-		JLabel lblComprarTexto = new JLabel("ARRENDAR");
+		JLabel lblComprarTexto = new JLabel("COMPRAR");
 		lblComprarTexto.setForeground(Color.WHITE);
 		lblComprarTexto.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarTexto.setBounds(58, 353, 122, 25);
+		lblComprarTexto.setBounds(71, 355, 113, 25);
 		getContentPane().add(lblComprarTexto);
 		
 		JLabel lblComprarTexto2 = new JLabel("LIBROS");
 		lblComprarTexto2.setForeground(Color.WHITE);
 		lblComprarTexto2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarTexto2.setBounds(72, 380, 91, 25);
+		lblComprarTexto2.setBounds(81, 378, 91, 25);
 		getContentPane().add(lblComprarTexto2);
 		JLabel lblAvatar = new JLabel("");
 		lblAvatar.setIcon(new ImageIcon(CompraFrame.class.getResource("/img/Comprarg.png")));

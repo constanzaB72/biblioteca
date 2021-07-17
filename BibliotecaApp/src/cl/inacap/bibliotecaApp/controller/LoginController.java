@@ -11,6 +11,7 @@ import cl.inacap.bibliotecaModel.service.LoginService;
 public class LoginController {
 	LoginFrame loginFrame;
 	TrabajadorController trabajadorController;
+	ClienteController clienteController;
 	ClienteFrame clienteFrame;
 	LoginService loginService = new LoginService();
 
@@ -28,9 +29,9 @@ public class LoginController {
 			if (loginService.validarUsuario(usuario, pass,tipoUsuario)) {
 				System.out.println("usuario valido");
 				if(tipoUsuario.equals("Trabajador")) {
-				trabajadorController = new TrabajadorController(usuario);
+					trabajadorController = new TrabajadorController(usuario);
 				}else {
-					clienteFrame= new ClienteFrame();
+					clienteController = new ClienteController(usuario);
 				}
 				loginFrame.setVisible(false);
 			}else {
