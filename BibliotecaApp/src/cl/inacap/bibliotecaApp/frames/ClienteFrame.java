@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cl.inacap.bibliotecaModel.dto.Cliente;
+import javax.swing.SwingConstants;
 
 public class ClienteFrame extends JFrameBiblioteca {
 
@@ -57,21 +58,24 @@ public class ClienteFrame extends JFrameBiblioteca {
 		getContentPane().add(lblArrendarCliente);
 		
 		JLabel lblBienvenidoCliente = new JLabel("Bienvenido");
+		lblBienvenidoCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBienvenidoCliente.setForeground(Color.WHITE);
 		lblBienvenidoCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblBienvenidoCliente.setBounds(54, 155, 117, 25);
+		lblBienvenidoCliente.setBounds(0, 155, 230, 25);
 		getContentPane().add(lblBienvenidoCliente);
 		
 		JLabel lblNombreCliente = new JLabel(cliente.getNombre());
+		lblNombreCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreCliente.setForeground(Color.WHITE);
 		lblNombreCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNombreCliente.setBounds(83, 360, 69, 25);
+		lblNombreCliente.setBounds(0, 360, 230, 25);
 		getContentPane().add(lblNombreCliente);
 		
 		
 		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvatar.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/userP.png")));
-		lblAvatar.setBounds(54, 212, 130, 130);
+		lblAvatar.setBounds(0, 212, 230, 130);
 		getContentPane().add(lblAvatar);
 		
 		JLabel lblLateralColor = new JLabel("");

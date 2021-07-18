@@ -6,37 +6,47 @@ import javax.swing.JButton;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 public class CompraFrame extends JFrameBiblioteca {
 
 	private JTextField txtCosto;
+	private JComboBox cbxLibros; 
+	private JComboBox cbxDistribuidor;
+	private JButton btnVolverMenu;
 
 	public CompraFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnVolverMenu = new JButton("MENU");
+		btnVolverMenu = new JButton("MENU");
 		btnVolverMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnVolverMenu.setBounds(40, 450, 150, 30);
 		getContentPane().add(btnVolverMenu);
 		
 		JLabel lblComprarTexto = new JLabel("COMPRAR");
+		lblComprarTexto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblComprarTexto.setBackground(Color.WHITE);
 		lblComprarTexto.setForeground(Color.WHITE);
 		lblComprarTexto.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarTexto.setBounds(71, 355, 113, 25);
+		lblComprarTexto.setBounds(0, 342, 230, 25);
 		getContentPane().add(lblComprarTexto);
 		
 		JLabel lblComprarTexto2 = new JLabel("LIBROS");
+		lblComprarTexto2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComprarTexto2.setForeground(Color.WHITE);
 		lblComprarTexto2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarTexto2.setBounds(81, 378, 91, 25);
+		lblComprarTexto2.setBounds(0, 378, 230, 25);
 		getContentPane().add(lblComprarTexto2);
 		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvatar.setIcon(new ImageIcon(CompraFrame.class.getResource("/img/Comprarg.png")));
-		lblAvatar.setBounds(54, 190, 130, 130);
+		lblAvatar.setBounds(0, 190, 230, 130);
 		getContentPane().add(lblAvatar);
 		
 		JLabel lblLateralColor = new JLabel("");
@@ -44,7 +54,7 @@ public class CompraFrame extends JFrameBiblioteca {
 		lblLateralColor.setBounds(0, 0, 230, 600);
 		getContentPane().add(lblLateralColor);
 		
-		JComboBox cbxLibros = new JComboBox();
+		cbxLibros = new JComboBox();
 		cbxLibros.setBounds(261, 244, 200, 30);
 		getContentPane().add(cbxLibros);
 		
@@ -58,7 +68,7 @@ public class CompraFrame extends JFrameBiblioteca {
 		lblLibrosCompra.setBounds(261, 214, 200, 30);
 		getContentPane().add(lblLibrosCompra);
 		
-		JComboBox cbxDistribuidor = new JComboBox();
+		cbxDistribuidor = new JComboBox();
 		cbxDistribuidor.setBounds(261, 165, 200, 30);
 		getContentPane().add(cbxDistribuidor);
 		
@@ -89,8 +99,29 @@ public class CompraFrame extends JFrameBiblioteca {
 		
 		JButton btnComprar = new JButton("COMPRAR");
 		btnComprar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnComprar.setBounds(513, 336, 150, 30);
+		btnComprar.setBounds(578, 493, 150, 30);
 		getContentPane().add(btnComprar);
 		
 	}
+
+	public JComboBox getCbxLibros() {
+		return cbxLibros;
+	}
+
+	public void setCbxLibros(JComboBox cbxLibros) {
+		this.cbxLibros = cbxLibros;
+	}
+
+	public JComboBox getCbxDistribuidor() {
+		return cbxDistribuidor;
+	}
+
+	public void setCbxDistribuidor(JComboBox cbxDistribuidor) {
+		this.cbxDistribuidor = cbxDistribuidor;
+	}
+	public void addMenuListener(ActionListener ing) {
+		btnVolverMenu.addActionListener(ing);
+	}
+	
+	
 }

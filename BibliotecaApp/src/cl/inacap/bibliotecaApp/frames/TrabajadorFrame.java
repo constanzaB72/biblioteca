@@ -10,17 +10,22 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class TrabajadorFrame extends JFrameBiblioteca {
 
 	private JPanel contentPane;
 	private JLabel lblNombreTrabajador;
 	private JButton btnSalirTrabajador;
+	private JButton btnComprar;
+	private JButton btnVender;
+	private JButton btnArrendar;
 
 	public TrabajadorFrame(Trabajador trabajador) {
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setForeground(Color.BLACK);
-		getContentPane().setLayout(null);
+		getContentPane().setLayout(null);		
+		
 
 		btnSalirTrabajador = new JButton("SALIR");
 		btnSalirTrabajador.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -65,15 +70,17 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		getContentPane().add(lblArrendarMenu);
 
 		JLabel lblBienvenidoTrabajador = new JLabel("Bienvenido");
+		lblBienvenidoTrabajador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBienvenidoTrabajador.setForeground(Color.WHITE);
 		lblBienvenidoTrabajador.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblBienvenidoTrabajador.setBounds(54, 155, 117, 25);
+		lblBienvenidoTrabajador.setBounds(0, 155, 230, 25);
 		getContentPane().add(lblBienvenidoTrabajador);
 
 		lblNombreTrabajador = new JLabel(trabajador.getNombre());
+		lblNombreTrabajador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreTrabajador.setForeground(Color.WHITE);
 		lblNombreTrabajador.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNombreTrabajador.setBounds(83, 360, 69, 25);
+		lblNombreTrabajador.setBounds(0, 360, 230, 25);
 		getContentPane().add(lblNombreTrabajador);
 
 		JLabel lblEjemplaresIcono = new JLabel("");
@@ -97,14 +104,38 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		getContentPane().add(lbl);
 
 		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvatar.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/userP.png")));
-		lblAvatar.setBounds(54, 212, 130, 130);
+		lblAvatar.setBounds(0, 212, 230, 130);
 		getContentPane().add(lblAvatar);
 
 		JLabel lblLateralColor = new JLabel("");
 		lblLateralColor.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/lateralColor.jpg")));
 		lblLateralColor.setBounds(0, 0, 230, 600);
 		getContentPane().add(lblLateralColor);
+		
+		btnComprar = new JButton("");
+		btnComprar.setBounds(290, 211, 110, 106);
+		btnComprar.setOpaque(false);
+		btnComprar.setContentAreaFilled(false);		
+		btnComprar.setBorderPainted(false);
+		getContentPane().add(btnComprar);
+		
+		btnVender = new JButton("");
+		btnVender.setBounds(451, 211, 95, 106);
+		btnVender.setOpaque(false);
+		btnVender.setContentAreaFilled(false);
+		btnVender.setBorderPainted(false);
+		getContentPane().add(btnVender);
+		
+		btnArrendar = new JButton("");
+		btnArrendar.setBounds(599, 211, 122, 106);
+		btnArrendar.setOpaque(false);
+		btnArrendar.setContentAreaFilled(false);
+		btnArrendar.setBorderPainted(false);
+		getContentPane().add(btnArrendar);
+		
+		
 	}
 
 	public JLabel getLblNombreTrabajador() {
@@ -117,5 +148,14 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 
 	public void addSalirListener(ActionListener ing) {
 		btnSalirTrabajador.addActionListener(ing);
+	}
+	public void addVenderListener(ActionListener ing) {
+		btnVender.addActionListener(ing);
+	}
+	public void addComprarListener(ActionListener ing) {
+		btnComprar.addActionListener(ing);
+	}
+	public void addArrendarListener(ActionListener ing) {
+		btnArrendar.addActionListener(ing);
 	}
 }

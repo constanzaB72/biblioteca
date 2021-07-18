@@ -67,7 +67,7 @@ public class TrabajadoresDAO {
 
 			String query = "SELECT idTrabajador,Rut,Nombre,ApellidoMa,ApellidoPa,FechaContrato FROM BibliotecaV2.Trabajadores";
 			PreparedStatement st = db.getCon().prepareStatement(query);
-
+			
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				Trabajador t = new Trabajador();
@@ -219,7 +219,7 @@ public class TrabajadoresDAO {
 
 	/**
 	 * Metodo Void que recibe 1 parametro. El metodo se encarga de realizar la
-	 * actulizacion de los datos del objetov obtenido.
+	 * actualizacion de los datos del objeto obtenido.
 	 * 
 	 * @author Camilo Moya
 	 * @exception Se Agrega el error a la lista de Tipo String llamada

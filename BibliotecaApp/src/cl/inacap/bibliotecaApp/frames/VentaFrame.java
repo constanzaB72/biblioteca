@@ -3,41 +3,47 @@ package cl.inacap.bibliotecaApp.frames;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class VentaFrame extends JFrameBiblioteca {
 
 	private JTextField textRutCliente;
 	private JTextField txtCostoVenta;
+	private JButton btnVolverMenu;
 
 	public VentaFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnVolverMenu = new JButton("MENU");
+		btnVolverMenu = new JButton("MENU");
 		btnVolverMenu.setBounds(40, 450, 150, 30);
 		btnVolverMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
 		getContentPane().add(btnVolverMenu);
 		
 		JLabel lblVenderTexto = new JLabel("ARRENDAR");
+		lblVenderTexto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVenderTexto.setForeground(Color.WHITE);
 		lblVenderTexto.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblVenderTexto.setBounds(58, 353, 122, 25);
+		lblVenderTexto.setBounds(0, 353, 230, 25);
 		getContentPane().add(lblVenderTexto);
 		
 		JLabel lblVenderTexto2 = new JLabel("LIBROS");
+		lblVenderTexto2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVenderTexto2.setForeground(Color.WHITE);
 		lblVenderTexto2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblVenderTexto2.setBounds(72, 380, 91, 25);
+		lblVenderTexto2.setBounds(0, 380, 230, 25);
 		getContentPane().add(lblVenderTexto2);
 		
 		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvatar.setIcon(new ImageIcon(CompraFrame.class.getResource("/img/Comprarg.png")));
-		lblAvatar.setBounds(54, 190, 130, 130);
+		lblAvatar.setBounds(0, 190, 230, 130);
 		getContentPane().add(lblAvatar);
 		
 		JLabel lblLateralColor = new JLabel("");
@@ -92,5 +98,8 @@ public class VentaFrame extends JFrameBiblioteca {
 		lblTituloVenta.setBounds(340, 40, 300, 30);
 		lblTituloVenta.setFont(new Font("Tahoma", Font.BOLD, 26));
 		getContentPane().add(lblTituloVenta);
+	}
+	public void addMenuListener(ActionListener ing) {
+		btnVolverMenu.addActionListener(ing);
 	}
 }

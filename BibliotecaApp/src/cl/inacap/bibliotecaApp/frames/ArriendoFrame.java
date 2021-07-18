@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 
 public class ArriendoFrame extends JFrameBiblioteca {
 	private JTextField txtClienteArriendo;
@@ -24,20 +25,23 @@ public class ArriendoFrame extends JFrameBiblioteca {
 		getContentPane().add(btnVolverMenu);
 		
 		JLabel lblArrendarTexto = new JLabel("ARRENDAR");
+		lblArrendarTexto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblArrendarTexto.setForeground(Color.WHITE);
 		lblArrendarTexto.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblArrendarTexto.setBounds(58, 353, 122, 25);
+		lblArrendarTexto.setBounds(0, 353, 230, 25);
 		getContentPane().add(lblArrendarTexto);
 		
 		JLabel lblArrendarTexto2 = new JLabel("LIBROS");
+		lblArrendarTexto2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblArrendarTexto2.setForeground(Color.WHITE);
 		lblArrendarTexto2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblArrendarTexto2.setBounds(72, 380, 91, 25);
+		lblArrendarTexto2.setBounds(0, 380, 230, 25);
 		getContentPane().add(lblArrendarTexto2);
 		
 		JLabel lblAvatar = new JLabel("");
+		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvatar.setIcon(new ImageIcon(CompraFrame.class.getResource("/img/Arrendarg.png")));
-		lblAvatar.setBounds(54, 190, 130, 130);
+		lblAvatar.setBounds(0, 190, 230, 130);
 		getContentPane().add(lblAvatar);
 		
 		JLabel lblLateralColor = new JLabel("");

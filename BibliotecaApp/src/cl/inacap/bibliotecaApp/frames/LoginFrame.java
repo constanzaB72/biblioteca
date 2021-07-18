@@ -71,6 +71,10 @@ public class LoginFrame extends JFrameBiblioteca {
 		contentPane.add(lbLogoLogin);
 		
 		btnIngresar = new JButton("INGRESAR");
+		btnIngresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnIngresar.setForeground(Color.BLACK);
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnIngresar.setBounds(599, 491, 150, 30);

@@ -42,6 +42,7 @@ public class MultasJIFrame extends JInternalFrame {
 	            { "123456", "12345", "$1000" },
 	            { "123456", "12345", "$1000" }        
 		};
+		getContentPane().setLayout(null);
 		table = new JTable(data,columnNames);
 		table.setBounds(30, 40, 100, 200);
 		JScrollPane sp = new JScrollPane(table);		
