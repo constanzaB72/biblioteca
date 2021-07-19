@@ -67,7 +67,7 @@ public class TrabajadoresDAO {
 
 			String query = "SELECT idTrabajador,Rut,Nombre,ApellidoMa,ApellidoPa,FechaContrato FROM BibliotecaV2.Trabajadores";
 			PreparedStatement st = db.getCon().prepareStatement(query);
-			
+
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				Trabajador t = new Trabajador();
@@ -293,11 +293,10 @@ public class TrabajadoresDAO {
 	}
 
 	/**
-	 * Metodo encargado de realizar la validacion de usuario en el loggin.
-	 * Recibe 2 parametros, 2 Strings , password y usuario.
-	 * Luego realiza una consulta a la tabla Trabajadores.
-	 * Si existe el Usuario y conicide su contraseña , retorna TRUE.
-	 * Pero si no retorna FALSE.
+	 * Metodo encargado de realizar la validacion de usuario en el loggin. Recibe 2
+	 * parametros, 2 Strings , password y usuario. Luego realiza una consulta a la
+	 * tabla Trabajadores. Si existe el Usuario y conicide su contraseña , retorna
+	 * TRUE. Pero si no retorna FALSE.
 	 * 
 	 * 
 	 * @author Constanza Benavides
@@ -328,86 +327,102 @@ public class TrabajadoresDAO {
 		}
 	}
 
-//	TrabajadorController
+	/**
+	 * Metodo encargado de buscar a un Trabajador en la base de datos basados en un
+	 * parametro entregado llamado Rut El metodo recibe 1 parametro, una cadena de
+	 * texto llamada rut. El metodo consta de una consulta SQL hacia la base de
+	 * datos con una sentencia WHERE que busca la coincidencia entre el String rut
+	 * con la columna Rut de la base de datos si la encuentra, comienza a rellanar
+	 * sus atributos de clase y por ende comienza a realizar consultas a las tablas
+	 * enlazadas como telefonosTrabajadores, correosTrabajadores,
+	 * direccionesTrabajadores, para luego ser asignadas a una clase trabajador
+	 * creada al comienzo. Finalmente el Metodo nos retornará el trabajador de la
+	 * Clase Trabajador.
+	 * 
+	 * @author Lorena Perez
+	 * @param rut
+	 * @return trabajador
+	 * @exception Se Agrega el error a la lista de Tipo String llamada
+	 *               erroresTrabajadoresDAO
+	 */
 	public Trabajador findByRut(String rut) {
 		try {
 			Trabajador trabajador = new Trabajador();
 			db.conectar();
-			
+
 			String query = "SELECT idTrabajador,Rut,Nombre,ApellidoMa,ApellidoPa,FechaContrato FROM BibliotecaV2.Trabajadores where Rut=?";
 			PreparedStatement st = db.getCon().prepareStatement(query);
 			st.setString(1, rut);
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				
-				trabajador.setIdTrabajador(Integer.parseInt(rs.getString(1)));;
+			while (rs.next()) {
+
+				trabajador.setIdTrabajador(Integer.parseInt(rs.getString(1)));
+				;
 				trabajador.setRut(rs.getString(2));
 				trabajador.setNombre(rs.getString(3));
 				trabajador.setApellidoMa(rs.getString(4));
 				trabajador.setApellidoPa(rs.getString(5));
 				trabajador.setFechaContrato(rs.getString(6));
-				
-				if(trabajador.getTelefonos() == null) {
+
+				if (trabajador.getTelefonos() == null) {
 					String queryLibro = "SELECT Telefono FROM BibliotecaV2.TelefonosTrabajadores WHERE idTrabajador=?";
 					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
 					con.setString(1, rs.getString(1));
 					ResultSet r = con.executeQuery();
-					
+
 					List<String> telefonos = new ArrayList<String>();
-					
-					while(r.next()) {
+
+					while (r.next()) {
 						telefonos.add(r.getString(1));
 					}
-					
+
 					trabajador.setTelefonos((ArrayList<String>) telefonos);
 				}
-				
-				if(trabajador.getDirecciones() == null) {
+
+				if (trabajador.getDirecciones() == null) {
 					String queryLibro = "SELECT Direccion FROM BibliotecaV2.DireccionesTrabajadores WHERE idTrabajador=?";
 					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
 					con.setString(1, rs.getString(1));
 					ResultSet r = con.executeQuery();
-					
+
 					List<String> direcciones = new ArrayList<String>();
-					
-					while(r.next()) {
+
+					while (r.next()) {
 						direcciones.add(r.getString(1));
 					}
-					
+
 					trabajador.setDirecciones((ArrayList<String>) direcciones);
 				}
-				
-				if(trabajador.getCorreos() == null ) {
+
+				if (trabajador.getCorreos() == null) {
 					String queryLibro = "SELECT Correo FROM BibliotecaV2.CorreosTrabajadores WHERE idTrabajador=?";
 					PreparedStatement con = db.getCon().prepareStatement(queryLibro);
 					con.setString(1, rs.getString(1));
 					ResultSet r = con.executeQuery();
-					
+
 					List<String> correos = new ArrayList<String>();
-					
-					while(r.next()) {
+
+					while (r.next()) {
 						correos.add(r.getString(1));
 					}
-					
+
 					trabajador.setCorreos((ArrayList<String>) correos);
-					
+
 				}
-				
+
 				return trabajador;
 			}
-			
+
 			rs.close();
 			return trabajador;
-			
-		}catch(Exception ex) {
+
+		} catch (Exception ex) {
 			erroresTrabajadoresDAO.add("Se produjo un error al consultar");
 			return null;
-		
-		}finally {
+
+		} finally {
 			db.desconectar();
 		}
-	
-	
-	
+
 	}
 }
