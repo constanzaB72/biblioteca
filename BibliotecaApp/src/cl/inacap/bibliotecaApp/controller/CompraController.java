@@ -25,7 +25,7 @@ public class CompraController {
 		compraFrame= new CompraFrame();
 		List<Distribuidor> distribuidores =distribuidorDAO.getAll();
 		List<Libro> libros = librosDAO.getAll();
-		//SelectLibrosJIFrame listalibros =new SelectLibrosJIFrame(libros);
+		SelectLibrosJIFrame listalibros =new SelectLibrosJIFrame(libros);
 		compraFrame.addMenuListener(new MenuListener());
 		
 		for(Distribuidor distribuidor:distribuidores) {
