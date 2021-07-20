@@ -173,6 +173,7 @@ public class DetallesComprasDAO {
 
 		} catch (Exception ex) {
 			erroresDetallesCompras.add("Se Produjo un error al ingresar el Detalle");
+			System.out.println(ex);
 		} finally {
 			db.desconectar();
 		}

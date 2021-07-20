@@ -100,7 +100,7 @@ public class EjemplarDAO {
 	 * @param libro
 	 * @exception Agrega el error a la lista erroresEjemplaresDAO
 	 */
-	public void insertEjemplar(Libro libro) {
+	public int insertEjemplar(Libro libro) {
 
 		try {
 			List<Ejemplar> ejemplares = new EjemplarDAO().getAll();
@@ -132,13 +132,16 @@ public class EjemplarDAO {
 				st.setString(2, "Disponible");
 
 				st.executeUpdate();
+				
 			} else {
 				erroresEjemplaresDAO.add("El Ejemplar ya se encuentra REGISTRADO!");
 
 			}
-
+			return num;
 		} catch (Exception ex) {
 			erroresEjemplaresDAO.add("Se Produjo un Error al ingresar el Ejemplar!");
+			System.out.println(ex);
+			return -1;
 		} finally {
 			db.desconectar();
 		}

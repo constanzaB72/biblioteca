@@ -2,6 +2,7 @@ package cl.inacap.bibliotecaModel.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,23 +93,31 @@ public class ComprasDAO {
 	 * @param factura
 	 * @param distribuidor
 	 */
-	public void insertCompra(Compra compra, Factura factura, Distribuidor distribuidor) {
+	public Integer insertCompra(Factura factura, Distribuidor distribuidor) {
+		int idCompra=-1;
 		try {
 			db.conectar();
 
-			String query = "INSERT INTO Compras(idCompra, idDistribuidor, Folio) VALUES(?,?,?)";
-			PreparedStatement st = db.getCon().prepareStatement(query);
-			st.setInt(1, compra.getIdCompra());
-			st.setInt(2, distribuidor.getIdDistribuidor());
-			st.setInt(3, factura.getFolio());
-
+			//String query = "INSERT INTO Compras(idCompra, idDistribuidor, Folio) VALUES(?,?,?)";
+			String query = "INSERT INTO Compras(idDistribuidor, Folio) VALUES(?,?)";
+			PreparedStatement st = db.getCon().prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+			//st.setInt(1, compra.getIdCompra());
+			st.setInt(1, distribuidor.getIdDistribuidor());
+			st.setInt(2, factura.getFolio());
+			
 			st.executeUpdate();
+			ResultSet rs = st.getGeneratedKeys();
+			if(rs.next()) {
+				idCompra=rs.getInt(1);
+			}
 
 			System.out.println("Compra ingresada con Exito!");
-
-		} catch (Exception ex) {
+			return idCompra;
+		} catch (Exception ex) {			
 			erroresComprasDAO.add("Error al Ingresar la Compra!");
+			return idCompra;
 		} finally {
+			
 			db.desconectar();
 		}
 	}

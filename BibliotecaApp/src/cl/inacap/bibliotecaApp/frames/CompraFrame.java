@@ -1,6 +1,7 @@
 package cl.inacap.bibliotecaApp.frames;
 
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -11,16 +12,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTable;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
 
 public class CompraFrame extends JFrameBiblioteca {
-
-	private JTextField txtCosto;
-	private JComboBox cbxLibros; 
+	JTable table;
+	JTable tableLibros;
+	private JLabel txtCosto;
 	private JComboBox cbxDistribuidor;
 	private JButton btnVolverMenu;
+	private JButton btnComprar;
+	private JButton btnSeleccionarLibros;
+	private JComboBox cbxMetodoPago;
 
 	public CompraFrame() {
 		getContentPane().setLayout(null);
@@ -57,62 +61,66 @@ public class CompraFrame extends JFrameBiblioteca {
 		lblLateralColor.setBounds(0, 0, 230, 600);
 		getContentPane().add(lblLateralColor);
 		
-		cbxLibros = new JComboBox();
-		cbxLibros.setBounds(261, 189, 200, 30);
-		getContentPane().add(cbxLibros);
-		
 		JLabel lblDistribuidorCompra = new JLabel("Distribuidor: ");
 		lblDistribuidorCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblDistribuidorCompra.setBounds(261, 81, 200, 30);
+		lblDistribuidorCompra.setBounds(261, 110, 200, 30);
 		getContentPane().add(lblDistribuidorCompra);
 		
-		JLabel lblLibrosCompra = new JLabel("Libros: ");
-		lblLibrosCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblLibrosCompra.setBounds(261, 159, 200, 30);
-		getContentPane().add(lblLibrosCompra);
-		
 		cbxDistribuidor = new JComboBox();
-		cbxDistribuidor.setBounds(261, 110, 200, 30);
+		cbxDistribuidor.setBounds(261, 139, 200, 30);
 		getContentPane().add(cbxDistribuidor);
 		
-		JLabel lblCantidadCompra = new JLabel("Cantidad: ");
-		lblCantidadCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCantidadCompra.setBounds(491, 159, 200, 30);
-		getContentPane().add(lblCantidadCompra);
 		
-		JComboBox cbxCantidad = new JComboBox();
-		cbxCantidad.setBounds(492, 189, 200, 30);
-		getContentPane().add(cbxCantidad);
+		String[] columnNames2 = { "isbn", "titulo","Precio","Cantidad"};
+		DefaultTableModel model2 =new DefaultTableModel(columnNames2,0); 
+		tableLibros = new JTable(model2);
+		tableLibros.setBounds(30, 40, 100, 200);		
+		JScrollPane Sp2 = new JScrollPane(tableLibros);		
+		Sp2.setBounds(261, 262, 504, 118);
+		getContentPane().add(Sp2);
 		
-		JLabel lblCostoCompra = new JLabel("Costo: ");
+		JLabel lblCostoCompra = new JLabel("Costo total: ");
 		lblCostoCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCostoCompra.setBounds(261, 420, 200, 30);
+		lblCostoCompra.setBounds(261, 398, 200, 30);
 		getContentPane().add(lblCostoCompra);
 		
-		txtCosto = new JTextField();
+		txtCosto = new JLabel();
 		txtCosto.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtCosto.setBounds(261, 450, 200, 30);
+		txtCosto.setBounds(261, 427, 200, 30);
 		getContentPane().add(txtCosto);
-		txtCosto.setColumns(10);
 		
 		JLabel lblTituloCompra = new JLabel("Formulario de Compra");
 		lblTituloCompra.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblTituloCompra.setBounds(340, 40, 300, 30);
 		getContentPane().add(lblTituloCompra);
 		
-		JButton btnComprar = new JButton("COMPRAR");
+		btnComprar = new JButton("COMPRAR");
 		btnComprar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnComprar.setBounds(578, 493, 150, 30);
+		btnComprar.setBounds(577, 495, 150, 30);
 		getContentPane().add(btnComprar);
 		
-	}
-
-	public JComboBox getCbxLibros() {
-		return cbxLibros;
-	}
-
-	public void setCbxLibros(JComboBox cbxLibros) {
-		this.cbxLibros = cbxLibros;
+		btnSeleccionarLibros = new JButton("Seleccionar libros");
+		btnSeleccionarLibros.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSeleccionarLibros.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnSeleccionarLibros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSeleccionarLibros.setBounds(261, 191, 200, 30);
+		getContentPane().add(btnSeleccionarLibros);
+		
+		JLabel lblListadoDeLibros = new JLabel("Listado de libros: ");
+		lblListadoDeLibros.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblListadoDeLibros.setBounds(261, 232, 200, 30);
+		getContentPane().add(lblListadoDeLibros);
+		
+		cbxMetodoPago = new JComboBox();
+		cbxMetodoPago.setBounds(565, 427, 200, 30);
+		cbxMetodoPago.addItem("Seleccione");
+		cbxMetodoPago.addItem("Seleccione");
+		cbxMetodoPago.addItem("Seleccione");
+		getContentPane().add(cbxMetodoPago);
+		
 	}
 
 	public JComboBox getCbxDistribuidor() {
@@ -124,6 +132,76 @@ public class CompraFrame extends JFrameBiblioteca {
 	}
 	public void addMenuListener(ActionListener ing) {
 		btnVolverMenu.addActionListener(ing);
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	public JTable getTable2() {
+		return tableLibros;
+	}
+
+	public void setTable2(JTable table2) {
+		this.tableLibros = table2;
+	}
+
+	public JLabel getTxtCosto() {
+		return txtCosto;
+	}
+
+	public void setTxtCosto(JLabel txtCosto) {
+		this.txtCosto = txtCosto;
+	}
+
+	public JButton getBtnVolverMenu() {
+		return btnVolverMenu;
+	}
+
+	public void setBtnVolverMenu(JButton btnVolverMenu) {
+		this.btnVolverMenu = btnVolverMenu;
+	}
+
+	public JButton getBtnComprar() {
+		return btnComprar;
+	}
+
+	public void setBtnComprar(JButton btnComprar) {
+		this.btnComprar = btnComprar;
+	}
+
+	public JButton getBtnSeleccionarLibros() {
+		return btnSeleccionarLibros;
+	}
+
+	public void setBtnSeleccionarLibros(JButton btnSeleccionarLibros) {
+		this.btnSeleccionarLibros = btnSeleccionarLibros;
 	}	
+	public void addCompraListener(ActionListener ing) {
+		btnComprar.addActionListener(ing);
+	}
+	public void addSelectListener(ActionListener ing) {
+		btnSeleccionarLibros.addActionListener(ing);
+	}
+
+	public JTable getTableLibros() {
+		return tableLibros;
+	}
+
+	public void setTableLibros(JTable tableLibros) {
+		this.tableLibros = tableLibros;
+	}
+
+	public JComboBox getCbxMetodoPago() {
+		return cbxMetodoPago;
+	}
+
+	public void setCbxMetodoPago(JComboBox cbxMetodoPago) {
+		this.cbxMetodoPago = cbxMetodoPago;
+	}
 	
 }

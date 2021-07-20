@@ -165,15 +165,18 @@ public class DetallesFacturasDAO {
 			Distribuidor distribuidor) {
 		try {
 			db.conectar();
+			//TODO hay que buscar otra forma de validar el num  de serie ya que esta al estar la tabla vacia
+			//no entra a ciclo del insert
+			/*
+			 * String query1 = "SELECT NumSerie FROM BibliotecaV2.DetalleFacturas";
+			 * PreparedStatement s = db.getCon().prepareStatement(query1);
+			 * 
+			 * ResultSet rs = s.executeQuery();
+			 */
 
-			String query1 = "SELECT NumSerie FROM BibliotecaV2.DetalleFacturas";
-			PreparedStatement s = db.getCon().prepareStatement(query1);
-
-			ResultSet rs = s.executeQuery();
-
-			while (rs.next()) {
+			//while (rs.next()) {
 				for (Ejemplar ejemplar : ejemplares) {
-					if (ejemplar.getNumSerie() != rs.getInt(1)) {
+					//if (ejemplar.getNumSerie() != rs.getInt(1)) {
 						for (Libro libro : libros) {
 							if (ejemplar.getIsbn() == libro.getIsbn()) {
 								int costoIva = (libro.getPrecio()) + (int) (libro.getPrecio() * 0.19);
@@ -194,11 +197,12 @@ public class DetallesFacturasDAO {
 								System.out.println("Detalle Ingresado con Exito!");
 							}
 						}
-					}
+					//}
 				}
-			}
+			//}
 		} catch (Exception ex) {
 			erroresDetallesFacturasDAO.add("Error al Insertar los Detalles");
+			System.out.println(ex);
 		} finally {
 			db.desconectar();
 		}

@@ -75,4 +75,25 @@ public class Generador {
 			db.desconectar();
 		}
 	}
+	public int generarFolioFactura() {
+		try {
+			db.conectar();
+			String query = "SELECT Folio FROM BibliotecaV2.Facturas WHERE Folio=(SELECT MAX(Folio) FROM BibliotecaV2.Facturas)";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			ResultSet rs = st.executeQuery();
+			
+			int folio = 0;
+			while(rs.next()) {
+				folio = rs.getInt(1) + 1;
+			}
+			
+			return folio;
+			
+		}catch(Exception ex) {
+			System.out.println("Se Produjo un Error al Generar el FOLIO");
+			return 0;
+		}finally {
+			db.desconectar();
+		}
+	}
 }

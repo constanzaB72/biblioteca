@@ -30,7 +30,7 @@ public class SelectLibrosJIFrame extends JFrame {
 		getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 700, 500);
-		String[] columnNames = { "isbn", "titulo",""};
+		String[] columnNames = { "isbn", "titulo", ""};
 		DefaultTableModel model =new DefaultTableModel(columnNames,0); 
 		if(listaLibros!=null & !listaLibros.isEmpty()) {
 			for(int fila=0;fila<listaLibros.size();fila++) {
@@ -40,7 +40,8 @@ public class SelectLibrosJIFrame extends JFrame {
 		}
 		
 		table = new JTable(model);
-		DefaultTableModel model2 =new DefaultTableModel(columnNames,0); 
+		String[] columnNames2 = { "isbn", "titulo","Precio","Cantidad", ""};
+		DefaultTableModel model2 =new DefaultTableModel(columnNames2,0); 
 		table2 = new JTable(model2);
 		table2.setBounds(30, 40, 100, 200);		
 		JScrollPane sp2 = new JScrollPane(table2);		
@@ -63,7 +64,8 @@ public class SelectLibrosJIFrame extends JFrame {
 		        int fila = Integer.valueOf( e.getActionCommand() );
 		        String isbn= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 0);
 		        String titulo= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 1);
-		        Object[] columna=new Object[] {isbn,titulo,"Quitar"};
+		        String precio= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 2);
+		        Object[] columna=new Object[] {isbn,titulo,listaLibros.get(fila).getPrecio(),"","Quitar"};
 		        ((DefaultTableModel)table2.getModel()).addRow(columna);	       
 		        
 		        ((DefaultTableModel)auxTable.getModel()).removeRow(fila);
@@ -80,6 +82,7 @@ public class SelectLibrosJIFrame extends JFrame {
 		        int fila = Integer.valueOf( e.getActionCommand() );
 		        String isbn= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 0);
 		        String titulo= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 1);
+		        //String precio=(String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 2);
 		        Object[] columna=new Object[] {isbn,titulo,"Agregar"};
 		        ((DefaultTableModel)table.getModel()).addRow(columna);	       
 		        
@@ -91,7 +94,7 @@ public class SelectLibrosJIFrame extends JFrame {
 		};
 		ButtonColumn buttonColumn = new ButtonColumn(table, Agregar, 2);	
 		buttonColumn.setMnemonic(KeyEvent.VK_D);
-		ButtonColumn buttonColumnTable2 = new ButtonColumn(table2, Quitar, 2);	
+		ButtonColumn buttonColumnTable2 = new ButtonColumn(table2, Quitar, 4);	
 		buttonColumnTable2.setMnemonic(KeyEvent.VK_D);
 		
 		btnConfirmar = new JButton("Confirmar");
@@ -112,6 +115,12 @@ public class SelectLibrosJIFrame extends JFrame {
 	}
 	public void addCancelarAgregar(ActionListener ing) {
 		btnCancelar.addActionListener(ing);
+	}
+	public JTable getTable2() {
+		return table2;
+	}
+	public void setTable2(JTable table2) {
+		this.table2 = table2;
 	}
 	
 }
