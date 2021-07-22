@@ -2,14 +2,12 @@ package cl.inacap.bibliotecaApp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-import cl.inacap.bibliotecaApp.controller.TrabajadorController.ArrendarListener;
+import cl.inacap.bibliotecaApp.frames.CompraExitosa;
 import cl.inacap.bibliotecaApp.frames.CompraFrame;
 import cl.inacap.bibliotecaApp.frames.SelectLibrosJIFrame;
 import cl.inacap.bibliotecaModel.dao.ComprasDAO;
@@ -26,6 +24,7 @@ public class CompraController {
 	private String rut;
 	private String tipoUsuario;
 	private CompraFrame compraFrame;
+	private CompraExitosa compraExitosa; 
 	private DistribuidorDAO distribuidorDAO= new DistribuidorDAO();
 	private LibrosDAO librosDAO = new LibrosDAO();
 	private FacturasDAO facturasDAO =new FacturasDAO();
@@ -111,10 +110,21 @@ public class CompraController {
 			}
 			detallesComprasDAO.insertDetalleCompra(ejemplares, factura, compra, distribuidor);
 			detallesFacturasDAO.insertDetalleFactura(ejemplares, libros, factura, distribuidor);
+			compraExitosa =new CompraExitosa();
+			compraExitosa.setVisible(true);
+			compraExitosa.addFinalizarListener(new FinalizarListener());
 			
 			
 			
 			
+		}
+	}
+	
+	class FinalizarListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			compraFrame.dispose();
+			compraExitosa.setVisible(false);
+			compraExitosa.dispose();
 		}
 	}
 	class SelectListener implements ActionListener {

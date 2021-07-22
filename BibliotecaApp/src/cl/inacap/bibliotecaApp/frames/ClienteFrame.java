@@ -27,7 +27,7 @@ public class ClienteFrame extends JFrameBiblioteca {
 		
 		btnSalirCliente = new JButton("SALIR");
 		btnSalirCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSalirCliente.setBounds(43, 396, 150, 30);
+		btnSalirCliente.setBounds(40, 450, 150, 30);
 		getContentPane().add(btnSalirCliente);
 		
 		JLabel lblTituloCliente = new JLabel("¿Que desea hacer?");
@@ -39,22 +39,22 @@ public class ClienteFrame extends JFrameBiblioteca {
 		
 		JLabel lblCompraIcono = new JLabel("");
 		lblCompraIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/comprar.png")));
-		lblCompraIcono.setBounds(379, 211, 65, 65);
+		lblCompraIcono.setBounds(380, 210, 65, 65);
 		getContentPane().add(lblCompraIcono);
 		
 		JLabel lblArrendarIcono = new JLabel("");
 		lblArrendarIcono.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/arrendar.png")));
-		lblArrendarIcono.setBounds(572, 211, 65, 65);
+		lblArrendarIcono.setBounds(572, 210, 65, 65);
 		getContentPane().add(lblArrendarIcono);
 		
 		JLabel lblComprarCliente = new JLabel("COMPRAR");
 		lblComprarCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarCliente.setBounds(360, 287, 110, 30);
+		lblComprarCliente.setBounds(360, 288, 110, 30);
 		getContentPane().add(lblComprarCliente);
 		
 		JLabel lblArrendarCliente = new JLabel("ARRENDAR");
 		lblArrendarCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblArrendarCliente.setBounds(546, 287, 122, 30);
+		lblArrendarCliente.setBounds(546, 288, 122, 30);
 		getContentPane().add(lblArrendarCliente);
 		
 		JLabel lblBienvenidoCliente = new JLabel("Bienvenido");
@@ -68,14 +68,14 @@ public class ClienteFrame extends JFrameBiblioteca {
 		lblNombreCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreCliente.setForeground(Color.WHITE);
 		lblNombreCliente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNombreCliente.setBounds(0, 360, 230, 25);
+		lblNombreCliente.setBounds(0, 340, 230, 25);
 		getContentPane().add(lblNombreCliente);
 		
 		
 		JLabel lblAvatar = new JLabel("");
 		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvatar.setIcon(new ImageIcon(TrabajadorFrame.class.getResource("/img/userP.png")));
-		lblAvatar.setBounds(0, 212, 230, 130);
+		lblAvatar.setBounds(0, 190, 230, 130);
 		getContentPane().add(lblAvatar);
 		
 		JLabel lblLateralColor = new JLabel("");

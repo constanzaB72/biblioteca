@@ -28,8 +28,6 @@ public class CompraFrame extends JFrameBiblioteca {
 
 	public CompraFrame() {
 		getContentPane().setLayout(null);
-		String[] columnNames = { "isbn", "titulo","cantidad", "valor",""};
-		DefaultTableModel model =new DefaultTableModel(columnNames,0); 
 		
 		btnVolverMenu = new JButton("MENU");
 		btnVolverMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -41,14 +39,14 @@ public class CompraFrame extends JFrameBiblioteca {
 		lblComprarTexto.setBackground(Color.WHITE);
 		lblComprarTexto.setForeground(Color.WHITE);
 		lblComprarTexto.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarTexto.setBounds(0, 342, 230, 25);
+		lblComprarTexto.setBounds(0, 340, 230, 25);
 		getContentPane().add(lblComprarTexto);
 		
 		JLabel lblComprarTexto2 = new JLabel("LIBROS");
 		lblComprarTexto2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComprarTexto2.setForeground(Color.WHITE);
 		lblComprarTexto2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblComprarTexto2.setBounds(0, 378, 230, 25);
+		lblComprarTexto2.setBounds(0, 370, 230, 25);
 		getContentPane().add(lblComprarTexto2);
 		JLabel lblAvatar = new JLabel("");
 		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -117,8 +115,9 @@ public class CompraFrame extends JFrameBiblioteca {
 		cbxMetodoPago = new JComboBox();
 		cbxMetodoPago.setBounds(565, 427, 200, 30);
 		cbxMetodoPago.addItem("Seleccione");
-		cbxMetodoPago.addItem("Seleccione");
-		cbxMetodoPago.addItem("Seleccione");
+		cbxMetodoPago.addItem("Crédito");
+		cbxMetodoPago.addItem("Débito");
+		cbxMetodoPago.addItem("Efectivo");
 		getContentPane().add(cbxMetodoPago);
 		
 	}

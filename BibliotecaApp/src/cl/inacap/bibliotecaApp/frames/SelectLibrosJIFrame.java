@@ -28,7 +28,7 @@ public class SelectLibrosJIFrame extends JFrame {
 		this.setResizable(false);
 		this.setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 700, 500);
 		String[] columnNames = { "isbn", "titulo", ""};
 		DefaultTableModel model =new DefaultTableModel(columnNames,0); 
