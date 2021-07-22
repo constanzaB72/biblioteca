@@ -11,13 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class CompraExitosa extends JDialog {
+public class ArriendoExitoso extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnAceptar; 
 	private JLabel lblAlerta;
 
-	public CompraExitosa() {
+	public ArriendoExitoso() {
 		getContentPane().setLayout(null);
 		
 		lblAlerta = new JLabel("Arriendo registrado Exitosamente!");
