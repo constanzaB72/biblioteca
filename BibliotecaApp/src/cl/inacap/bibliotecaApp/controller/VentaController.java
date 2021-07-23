@@ -98,7 +98,6 @@ public class VentaController {
 			}
 			ventaFrame.dispose();
 			ventaExitosa.setVisible(false);
-			TrabajadorController trabajador = new TrabajadorController(rut);
 			ventaExitosa.dispose();
 		}
 	}
@@ -106,6 +105,7 @@ public class VentaController {
 	class SelectListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			selectEjemplarFrame = new SelectEjemplarFrame(ejemplares);
+			
 			selectEjemplarFrame.setVisible(true);
 			selectEjemplarFrame.addConfirmarAgregar(new AgregarListener());
 			selectEjemplarFrame.addCancelarAgregar(new CancelarAgregarListener());

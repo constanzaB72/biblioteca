@@ -130,6 +130,12 @@ public class SelectEjemplarFrame extends JFrame {
 		this.setVisible(true);
 
 	}
+	public JTable getTable() {
+		return table;
+	}
+	public void setTable(JTable table) {
+		this.table = table;
+	}
 	public void addConfirmarAgregar(ActionListener ing) {
 		btnConfirmar.addActionListener(ing);
 	}

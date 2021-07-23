@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -125,6 +127,17 @@ public class ArriendoFrame extends JFrameBiblioteca {
 		lblTiruloArriendo.setBounds(340, 40, 330, 30);
 		getContentPane().add(lblTiruloArriendo);
 }
+	
+	public void addSelectListener(ActionListener ing) {
+		btnSeleccionarLibros.addActionListener(ing);
+	}
+	public void addArrendarListener(ActionListener ing) {
+		btnArrendar.addActionListener(ing);
+	}
+	
+	public void addDateListener(PropertyChangeListener ing) {
+		dateChooser.addPropertyChangeListener(ing);
+	}
 
 	public JLabel getTxtCosto() {
 		return txtCosto;
@@ -173,5 +186,23 @@ public class ArriendoFrame extends JFrameBiblioteca {
 	public void setBtnVolverMenu(JButton btnVolverMenu) {
 		this.btnVolverMenu = btnVolverMenu;
 	}
+
+	public JTable getTableLibros() {
+		return tableLibros;
+	}
+
+	public void setTableLibros(JTable tableLibros) {
+		this.tableLibros = tableLibros;
+	}
+
+	public JDateChooser getDateChooser() {
+		return dateChooser;
+	}
+
+	public void setDateChooser(JDateChooser dateChooser) {
+		this.dateChooser = dateChooser;
+	}
+	
+	
 	
 }

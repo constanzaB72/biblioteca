@@ -190,7 +190,7 @@ public class DetallesArriendosDAO {
 				System.out.println(ejemplar);
 				for (Libro libro1 : libros) {
 					System.out.println(libro1);
-					if (ejemplar.getIsbn() == libro1.getIsbn()) {
+					if (ejemplar.getIsbn().equals(libro1.getIsbn())) {
 						String query = "INSERT INTO DetalleArriendos(NumSerie,idArriendo,CostoLibro) VALUES(?,?,?)";
 						PreparedStatement st = db.getCon().prepareStatement(query);
 						st.setInt(1, ejemplar.getNumSerie());
@@ -207,6 +207,7 @@ public class DetallesArriendosDAO {
 
 		} catch (Exception ex) {
 			erroresDetallesArriendo.add("Se produjo un error al ingresar el detalle!");
+			System.out.println(ex);
 		} finally {
 			db.desconectar();
 		}

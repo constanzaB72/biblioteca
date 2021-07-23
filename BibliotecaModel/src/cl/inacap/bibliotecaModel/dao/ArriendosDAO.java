@@ -3,6 +3,7 @@ package cl.inacap.bibliotecaModel.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,11 +104,12 @@ public class ArriendosDAO {
 	 * @exception Agrega el error a la lista erroresArriendosDAO
 	 */
 
-	public void crearArriendo(Arriendo arriendo, Cliente cliente, Trabajador trabajador) {
+	public int crearArriendo(Arriendo arriendo, Cliente cliente, Trabajador trabajador) {
+		int idArriendo=-1;
 		try {
 			db.conectar();
 			String query = "INSERT INTO Arriendos(idCliente, idTrabajador, FechaArriendo, FechaDevolucion, FechaEntrega, DiasRetraso, Multa, CostoTotal) VALUES(?,?,?,?,?,?,?,?)";
-			PreparedStatement st = db.getCon().prepareStatement(query);
+			PreparedStatement st = db.getCon().prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 			st.setInt(1, cliente.getIdCliente());
 			st.setInt(2, trabajador.getIdTrabajador());
 			st.setString(3, arriendo.getFechaArriendo());
@@ -118,9 +120,16 @@ public class ArriendosDAO {
 			st.setInt(8, arriendo.getCostoTotal());
 
 			st.executeUpdate();
+			ResultSet rs = st.getGeneratedKeys();
+			if(rs.next()) {
+				idArriendo=rs.getInt(1);
+			}
+			return idArriendo;
+
 
 		} catch (Exception ex) {
 			erroresArriendosDAO.add("Se Produjo un Error al ingresar el Arriendo!");
+			return idArriendo;
 		} finally {
 			db.desconectar();
 		}

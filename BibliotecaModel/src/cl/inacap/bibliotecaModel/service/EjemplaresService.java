@@ -1,5 +1,6 @@
 package cl.inacap.bibliotecaModel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cl.inacap.bibliotecaModel.dao.EjemplarDAO;
@@ -14,14 +15,13 @@ public class EjemplaresService {
 	}
 	
 	public List<Ejemplar> getAllEjemplaresDisponibles(){
-		List<Ejemplar> ejemplares = ejemplarDAO.getAll();
-		for(Ejemplar ejemplar:ejemplares) {
-			if(!ejemplar.getEstado().equalsIgnoreCase("Disponible")) {
-				ejemplares.remove(ejemplar);
-				continue;
-			}
-			ejemplar.setLibro(libroDAO.findByISBN(ejemplar.getIsbn()));
-			
+		List<Ejemplar> aux = ejemplarDAO.getAll();
+		List<Ejemplar> ejemplares =new ArrayList<Ejemplar>();
+		for(Ejemplar ejemplar:aux) {
+			if(ejemplar.getEstado().equalsIgnoreCase("Disponible")) {
+				ejemplar.setLibro(libroDAO.findByISBN(ejemplar.getIsbn()));
+				ejemplares.add(ejemplar);
+			}			
 		}
 		return ejemplares;
 	}
