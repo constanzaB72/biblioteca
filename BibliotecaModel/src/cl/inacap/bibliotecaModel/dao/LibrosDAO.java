@@ -515,4 +515,182 @@ public class LibrosDAO {
 			db.desconectar();
 		}
 	}
+	
+	public Libro findByISBN(String ISBN) {
+		try {
+			
+			db.conectar();
+			// CONSULTA DIRECTA A LA TABLA LIBROS
+			String query = "SELECT ISBN,Titulo,NumPagina,Precio,AnioPublicacion FROM BibliotecaV2.Libros where ISBN=?";
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, ISBN);
+			ResultSet rs = st.executeQuery();
+			erroresLibrosDAO.add("ESTO ES una PRUEBA de ERROR!");
+
+			// ----- COMIENZAN CONSULTAS PARA LA CREACION DE LOS LIBROS ------
+			Libro libro = new Libro();
+			while (rs.next()) {
+				
+				libro.setIsbn(rs.getString(1));
+				libro.setTitulo(rs.getString(2));
+				libro.setNumPagina(rs.getInt(3));
+				libro.setPrecio(rs.getInt(4));
+				libro.setAnioPublicacion(Integer.parseInt(rs.getString(5)));
+
+				// ---- CONSULTA IDIOMAS ----
+				try {
+					if (libro.getIdiomas() == null) {
+						String queryLibro = "SELECT ISBN,idIdioma FROM BibliotecaV2.Libro_Idioma WHERE ISBN=?";
+						PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+						con.setString(1, rs.getString(1));
+						ResultSet r = con.executeQuery();
+
+						String isbn = "";
+						int idIdioma = 0;
+
+						List<String> idiomas = new ArrayList<String>();
+
+						while (r.next()) {
+							isbn = r.getString(1);
+							idIdioma = r.getInt(2);
+
+							String queryIdioma = "SELECT Idioma FROM BibliotecaV2.Idiomas WHERE idIdioma=?";
+							PreparedStatement c = db.getCon().prepareStatement(queryIdioma);
+							c.setInt(1, idIdioma);
+							ResultSet re = c.executeQuery();
+
+							for (int i = 1; i < 5; ++i) {
+								while (re.next()) {
+									if (re.getString(i) == null) {
+										System.out.println("No existen Idiomas!");
+									} else {
+										idiomas.add(re.getString(i));
+									}
+								}
+							}
+						}
+
+						// ASIGNAMOS LOS VALORES AL ARRAYLIST DE IDIOMAS LIBRO
+						libro.setIdiomas((ArrayList<String>) idiomas);
+
+					}
+
+				} catch (Exception ex) {
+					erroresLibrosDAO.add("Se Produjo un Error al Consultar el Idioma!");
+				}
+
+				// ------- CONSULTA DE AUTORES -------
+				try {
+					if (libro.getAutores() == null) {
+						String queryLibro = "SELECT ISBN,idAutor FROM BibliotecaV2.Libro_Autor WHERE ISBN=?";
+						PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+						con.setString(1, rs.getString(1));
+						ResultSet r = con.executeQuery();
+
+						String isbn = "";
+						int idAutor = 0;
+
+						List<String> autores = new ArrayList<String>();
+
+						while (r.next()) {
+							isbn = r.getString(1);
+							idAutor = r.getInt(2);
+
+							String queryAutor = "SELECT Nombre FROM BibliotecaV2.Autores WHERE idAutor=?";
+							PreparedStatement c = db.getCon().prepareStatement(queryAutor);
+							c.setInt(1, idAutor);
+							ResultSet re = c.executeQuery();
+
+							for (int i = 1; i < 5; ++i) {
+								while (re.next()) {
+									if (re.getString(i) == null) {
+										System.out.println("No existen Autores!");
+									} else {
+										autores.add(re.getString(i));
+									}
+								}
+							}
+						}
+						// ASIGNAMOS LOS VALORES AL ARRAY
+						libro.setAutores((ArrayList<String>) autores);
+					}
+				} catch (Exception ex) {
+					erroresLibrosDAO.add("Se Produjo un Error al Consultar los Autores!");
+				}
+
+				// ------- CONSULTA DE CATEGORIAS -------
+				try {
+					if (libro.getCategorias() == null) {
+						String queryLibro = "SELECT ISBN,idCategoria FROM BibliotecaV2.Libro_Categoria WHERE ISBN=?";
+						PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+						con.setString(1, rs.getString(1));
+						ResultSet r = con.executeQuery();
+
+						String isbn = "";
+						int idCategoria = 0;
+
+						List<String> categorias = new ArrayList<String>();
+
+						while (r.next()) {
+							isbn = r.getString(1);
+							idCategoria = r.getInt(2);
+
+							String queryCate = "SELECT Categoria FROM BibliotecaV2.Categorias WHERE idCategoria=?";
+							PreparedStatement c = db.getCon().prepareStatement(queryCate);
+							c.setInt(1, idCategoria);
+							ResultSet re = c.executeQuery();
+
+							for (int i = 1; i < 5; ++i) {
+								while (re.next()) {
+									if (re.getString(i) == null) {
+										System.out.println("No existen Autores!");
+									} else {
+										categorias.add(re.getString(i));
+									}
+								}
+							}
+						}
+						// ASIGNAMOS LOS VALORES AL ARRAY
+						libro.setCategorias((ArrayList<String>) categorias);
+					}
+				} catch (Exception ex) {
+					erroresLibrosDAO.add("Se Produjo un error al consultar las Categorias!");
+				}
+
+				// ------- CONSULTA DE EDITORIAL -------
+				try {
+					if (libro.getEditorial() == null) {
+						String queryLibro = "SELECT Editorial FROM BibliotecaV2.Editoriales WHERE ISBN=?";
+						PreparedStatement con = db.getCon().prepareStatement(queryLibro);
+						con.setString(1, rs.getString(1));
+						ResultSet r = con.executeQuery();
+
+						String editorial = "";
+
+						while (r.next()) {
+							editorial = r.getString(1);
+						}
+
+						libro.setEditorial(editorial);
+
+					}
+				} catch (Exception ex) {
+					erroresLibrosDAO.add("Se produjo un error al Consultar la Editorial!");
+				}
+
+				// Guardamos en la lista
+				//libros.add(l);
+			}
+
+			rs.close();
+			return libro;
+
+		} catch (Exception ex) {
+			erroresLibrosDAO.add("Se Produjo un Error al consultar los Libros!");
+			return null;
+		} finally {
+			db.desconectar();
+		}
+	}
+	
 }

@@ -155,16 +155,16 @@ public class DetallesBoletasDAO {
 		try {
 			db.conectar();
 
-			String query1 = "SELECT NumSerie FROM BibliotecaV2.DetalleBoletas";
-			PreparedStatement s = db.getCon().prepareStatement(query1);
-
-			ResultSet rs = s.executeQuery();
-
-			while (rs.next()) {
+//			String query1 = "SELECT NumSerie FROM BibliotecaV2.DetalleBoletas";
+//			PreparedStatement s = db.getCon().prepareStatement(query1);
+//
+//			ResultSet rs = s.executeQuery();
+//
+//			while (rs.next()) {
 				for (Ejemplar ejemplar : ejemplares) {
-					if (ejemplar.getNumSerie() != rs.getInt(1)) {
+					//if (ejemplar.getNumSerie() != rs.getInt(1)) {
 						for (Libro libro : libros) {
-							if (ejemplar.getIsbn() == libro.getIsbn()) {
+							if (ejemplar.getIsbn().equalsIgnoreCase(libro.getIsbn())) {
 								int costoIva = (libro.getPrecio()) + (int) (libro.getPrecio() * 0.19);
 								int iva = (int) (libro.getPrecio() * 0.19);
 
@@ -182,9 +182,9 @@ public class DetallesBoletasDAO {
 								System.out.println("Detalle Ingresado con Exito!");
 							}
 						}
-					}
+					//}
 				}
-			}
+			//}
 
 		} catch (Exception ex) {
 			erroresDetallesBoletaDAO.add("Se Produjo un Error al ingresar los detalles");

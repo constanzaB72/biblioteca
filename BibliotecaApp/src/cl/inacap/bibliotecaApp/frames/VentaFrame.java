@@ -105,17 +105,8 @@ public class VentaFrame extends JFrameBiblioteca {
 		btnVender = new JButton("VENDER");
 		btnVender.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnVender.setBounds(577, 495, 150, 30);
-		getContentPane().add(btnVender);
+		getContentPane().add(btnVender);		
 		
-		btnSeleccionarLibros = new JButton("Seleccionar libros");
-		btnSeleccionarLibros.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSeleccionarLibros.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnSeleccionarLibros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSeleccionarLibros.setBounds(261, 191, 200, 30);
-		getContentPane().add(btnSeleccionarLibros);
 		
 		JLabel lblListadoDeLibros = new JLabel("Listado de libros: ");
 		lblListadoDeLibros.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -205,6 +196,15 @@ public class VentaFrame extends JFrameBiblioteca {
 	public void setCbxMetodoPago(JComboBox cbxMetodoPago) {
 		this.cbxMetodoPago = cbxMetodoPago;
 	}
+
+	public JTextField getTxtClienteVenta() {
+		return txtClienteVenta;
+	}
+
+	public void setTxtClienteVenta(JTextField txtClienteVenta) {
+		this.txtClienteVenta = txtClienteVenta;
+	}
+	
 	
 }
 

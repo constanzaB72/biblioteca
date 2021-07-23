@@ -28,10 +28,11 @@ public class ArriendoFrame extends JFrameBiblioteca {
 	private JTextField txtCostoArriendo;
 	private JButton btnSeleccionarLibros;
 	private JButton btnArrendar;
+	private JButton btnVolverMenu;
 
 	public ArriendoFrame() {
 		getContentPane().setLayout(null);
-		JButton btnVolverMenu = new JButton("MENU");
+		btnVolverMenu = new JButton("MENU");
 		btnVolverMenu.setBounds(40, 450, 150, 30);
 		btnVolverMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
 		getContentPane().add(btnVolverMenu);
@@ -100,39 +101,23 @@ public class ArriendoFrame extends JFrameBiblioteca {
 		getContentPane().add(lblEntregaArriendo);
 
 		dateChooser = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
-		dateChooser.setBounds(474, 390, 170, 30);
-		dateChooser.setMinSelectableDate(new Date());
-		getContentPane().add(dateChooser);
-		
-		JLabel lblEntregadoArriendo = new JLabel("Fecha de Entrega: ");
-		lblEntregadoArriendo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblEntregadoArriendo.setBounds(474, 360, 200, 30);
-		getContentPane().add(lblEntregadoArriendo);
-
-		dateChooser = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
 		dateChooser.setBounds(261, 390, 170, 30);
 		dateChooser.setMinSelectableDate(new Date());
 		getContentPane().add(dateChooser);
 		
-		
-		JRadioButton rdbtnMulta = new JRadioButton("Aplicar multa");
-		rdbtnMulta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		rdbtnMulta.setBounds(650, 390, 130, 30);
-		getContentPane().add(rdbtnMulta);
-		
 		JLabel lblCostoCompra = new JLabel("Costo total: ");
 		lblCostoCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCostoCompra.setBounds(261, 431, 200, 30);
+		lblCostoCompra.setBounds(534, 360, 200, 30);
 		getContentPane().add(lblCostoCompra);
 		
 		txtCosto = new JLabel();
 		txtCosto.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtCosto.setBounds(261, 461, 200, 30);
+		txtCosto.setBounds(534, 390, 200, 30);
 		getContentPane().add(txtCosto);
 		
 		btnArrendar = new JButton("ARRENDAR");
 		btnArrendar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnArrendar.setBounds(545, 489, 150, 30);
+		btnArrendar.setBounds(579, 476, 150, 30);
 		getContentPane().add(btnArrendar);
 		
 		JLabel lblTiruloArriendo = new JLabel("Formulario de Arriendo");
@@ -140,4 +125,53 @@ public class ArriendoFrame extends JFrameBiblioteca {
 		lblTiruloArriendo.setBounds(340, 40, 330, 30);
 		getContentPane().add(lblTiruloArriendo);
 }
+
+	public JLabel getTxtCosto() {
+		return txtCosto;
+	}
+
+	public void setTxtCosto(JLabel txtCosto) {
+		this.txtCosto = txtCosto;
+	}
+
+	public JTextField getTxtClienteArriendo() {
+		return txtClienteArriendo;
+	}
+
+	public void setTxtClienteArriendo(JTextField txtClienteArriendo) {
+		this.txtClienteArriendo = txtClienteArriendo;
+	}
+
+	public JTextField getTxtCostoArriendo() {
+		return txtCostoArriendo;
+	}
+
+	public void setTxtCostoArriendo(JTextField txtCostoArriendo) {
+		this.txtCostoArriendo = txtCostoArriendo;
+	}
+
+	public JButton getBtnSeleccionarLibros() {
+		return btnSeleccionarLibros;
+	}
+
+	public void setBtnSeleccionarLibros(JButton btnSeleccionarLibros) {
+		this.btnSeleccionarLibros = btnSeleccionarLibros;
+	}
+
+	public JButton getBtnArrendar() {
+		return btnArrendar;
+	}
+
+	public void setBtnArrendar(JButton btnArrendar) {
+		this.btnArrendar = btnArrendar;
+	}
+
+	public JButton getBtnVolverMenu() {
+		return btnVolverMenu;
+	}
+
+	public void setBtnVolverMenu(JButton btnVolverMenu) {
+		this.btnVolverMenu = btnVolverMenu;
+	}
+	
 }

@@ -318,7 +318,6 @@ public class ClientesDAO {
 	public Cliente findByRut(String rut) {
 		try {
 			Cliente c = new Cliente();
-			List<Cliente> clientes = new ArrayList<Cliente>();
 			db.conectar();
 
 			String query = "SELECT idCliente,Rut,Nombre,ApellidoMa,ApellidoPa,FechaNacimiento FROM BibliotecaV2.Clientes WHERE Rut=?";

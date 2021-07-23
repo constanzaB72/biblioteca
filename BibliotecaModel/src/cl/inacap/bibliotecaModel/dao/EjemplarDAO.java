@@ -56,7 +56,8 @@ public class EjemplarDAO {
 			List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
 			db.conectar();
 
-			String query = "SELECT NumSerie, ISBN, Titulo FROM BibliotecaV2.Ejemplares";
+			//String query = "SELECT NumSerie, ISBN, Titulo FROM BibliotecaV2.Ejemplares";
+			String query = "SELECT ej.NumSerie, ej.ISBN, ej.Titulo,es.Estado FROM BibliotecaV2.Ejemplares ej LEFT JOIN BibliotecaV2.Estados es ON es.NumSerie=ej.NumSerie";
 			PreparedStatement st = db.getCon().prepareStatement(query);
 
 			ResultSet rs = st.executeQuery();
@@ -65,6 +66,7 @@ public class EjemplarDAO {
 				e.setNumSerie(rs.getInt(1));
 				e.setIsbn(rs.getString(2));
 				e.setTitulo(rs.getString(3));
+				e.setEstado(rs.getString(4));
 
 				// Guardamos en la lista
 

@@ -2,88 +2,172 @@ package cl.inacap.bibliotecaApp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-import cl.inacap.bibliotecaApp.controller.CompraController.AgregarListener;
-import cl.inacap.bibliotecaApp.controller.CompraController.CancelarAgregarListener;
-import cl.inacap.bibliotecaApp.controller.CompraController.CompraListener;
-import cl.inacap.bibliotecaApp.controller.CompraController.SelectListener;
-import cl.inacap.bibliotecaApp.frames.SelectLibrosJIFrame;
+import cl.inacap.bibliotecaApp.frames.SelectEjemplarFrame;
 import cl.inacap.bibliotecaApp.frames.VentaExitosa;
 import cl.inacap.bibliotecaApp.frames.VentaFrame;
-import cl.inacap.bibliotecaModel.dao.DistribuidorDAO;
+import cl.inacap.bibliotecaModel.dao.BoletasDAO;
+import cl.inacap.bibliotecaModel.dao.ClientesDAO;
+import cl.inacap.bibliotecaModel.dao.DetallesBoletasDAO;
 import cl.inacap.bibliotecaModel.dao.EjemplarDAO;
 import cl.inacap.bibliotecaModel.dao.LibrosDAO;
-import cl.inacap.bibliotecaModel.dto.Distribuidor;
+import cl.inacap.bibliotecaModel.dao.TrabajadoresDAO;
+import cl.inacap.bibliotecaModel.dao.VentasDAO;
+import cl.inacap.bibliotecaModel.dto.Boleta;
+import cl.inacap.bibliotecaModel.dto.Cliente;
+import cl.inacap.bibliotecaModel.dto.DetalleBoleta;
+import cl.inacap.bibliotecaModel.dto.Ejemplar;
 import cl.inacap.bibliotecaModel.dto.Libro;
+import cl.inacap.bibliotecaModel.dto.Trabajador;
+import cl.inacap.bibliotecaModel.service.EjemplaresService;
 import cl.inacap.bibliotecaModel.utils.Generador;
 
 public class VentaController {
+	
+	//Frame
 	private VentaFrame ventaFrame;
+	private VentaExitosa ventaExitosa;
+	private SelectEjemplarFrame selectEjemplarFrame;
+	//DAO
+	private LibrosDAO librosDAO = new LibrosDAO();
+	private LibrosDAO libroDao = new LibrosDAO();
+	private EjemplarDAO ejemplarDAO = new EjemplarDAO();
+	private ClientesDAO clienteDao = new ClientesDAO();
+	private TrabajadoresDAO trabajadorDAO = new TrabajadoresDAO();
+	
+	
+	private VentasDAO ventaDAO = new VentasDAO();
+	private DetallesBoletasDAO detalleBoletasDAO =new DetallesBoletasDAO();
+	private BoletasDAO boletasDAO = new BoletasDAO();
+	
 	private String rut;
 	private String tipoUsuario;
-	private VentaExitosa ventaExitosa;
-	private DistribuidorDAO distribuidorDAO= new DistribuidorDAO();
-	private LibrosDAO librosDAO = new LibrosDAO();
+	private Cliente cliente;
+	private Trabajador trabajador;
+	
+	
 	private List<Libro> libros;
-	private SelectLibrosJIFrame listalibros;
-	private LibrosDAO libroDao=new LibrosDAO();
-	private EjemplarDAO ejemplarDAO=new EjemplarDAO();
-	private Generador generador =new Generador();
+	private List<Ejemplar> ejemplares;
+	
+	
+	private EjemplaresService ejemplarService=new EjemplaresService();
+	
+	private Generador generador = new Generador();
 	
 	public VentaController(String rut, String tipoUsuario) {
 		this.rut=rut;
 		this.tipoUsuario=tipoUsuario;
 		ventaFrame = new VentaFrame();
-		List<Distribuidor> distribuidores = distribuidorDAO.getAll();
 		libros = librosDAO.getAll();
+		if(tipoUsuario.equals("cliente")) {
+			ventaFrame.getTxtClienteVenta().setText(rut);
+			ventaFrame.getTxtClienteVenta().setEditable(false);
+			trabajador = trabajadorDAO.findByRut("20.127.772-9");
+		}else {
+			trabajador =trabajadorDAO.findByRut(rut);
+		}
+		ejemplares = ejemplarService.getAllEjemplaresDisponibles();
 		
 		ventaFrame.addMenuListener(new MenuListener());
 		ventaFrame.addSelectListener(new SelectListener());
+		ventaFrame.addVentaListener(new VenderListener());
+		
 		ventaFrame.repaint();
 	}
 	class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			TrabajadorController trabajador = new TrabajadorController(rut);
+			if(tipoUsuario.equals("cliente")) {
+				ClienteController cliente = new ClienteController(rut);
+			}else {
+				TrabajadorController trabajador = new TrabajadorController(rut);
+			}
 			ventaFrame.dispose();
 		}
 	}
 	//class ventaListener
 	class FinalizarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			if(tipoUsuario.equals("cliente")) {
+				ClienteController cliente = new ClienteController(rut);
+			}else {
+				TrabajadorController trabajador = new TrabajadorController(rut);
+			}
 			ventaFrame.dispose();
 			ventaExitosa.setVisible(false);
 			ventaExitosa.dispose();
 		}
 	}
+
 	class SelectListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			listalibros =new SelectLibrosJIFrame(libros);
-			listalibros.addConfirmarAgregar(new AgregarListener());
-			listalibros.addCancelarAgregar(new CancelarAgregarListener());
-	}
+			selectEjemplarFrame = new SelectEjemplarFrame(ejemplares);
+			selectEjemplarFrame.setVisible(true);
+			selectEjemplarFrame.addConfirmarAgregar(new AgregarListener());
+			selectEjemplarFrame.addCancelarAgregar(new CancelarAgregarListener());
+		}
 	}
 	class AgregarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			DefaultTableModel aux=(DefaultTableModel)listalibros.getTable2().getModel();
+			DefaultTableModel aux=(DefaultTableModel)selectEjemplarFrame.getTable2().getModel();
 			ventaFrame.getTableLibros().setModel(aux);
 			ventaFrame.getTableLibros().removeColumn(ventaFrame.getTableLibros().getColumnModel().getColumn(4));
 			Integer suma=0;
 			for(int fila=0;fila<aux.getRowCount();fila++) {
-				suma=suma+((Integer) aux.getValueAt(fila, 2)/* */);				
+				suma=suma+((Integer) aux.getValueAt(fila, 3)/* */);				
 			}
 			ventaFrame.getTxtCosto().setText("$"+String.valueOf(suma));
-			listalibros.dispose();
+			selectEjemplarFrame.dispose();
 			
 		}
 	}
 	class CancelarAgregarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			listalibros.dispose();
+			selectEjemplarFrame.dispose();
 			
 		}
 	}
+
+	class VenderListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			List<Ejemplar> ejemplaresVendidos = new ArrayList<Ejemplar>();
+			Boleta boleta = new Boleta();
+			int cantidadFilas = ventaFrame.getTableLibros().getModel().getRowCount();
+			for (int i = 0; i < cantidadFilas; i++) {
+				System.out.println("entra for " + i);
+				Ejemplar ejemplar = new Ejemplar();
+				ejemplar.setNumSerie((Integer) (ventaFrame.getTableLibros().getModel().getValueAt(i, 0)));
+				ejemplar.setIsbn(String.valueOf(ventaFrame.getTableLibros().getModel().getValueAt(i, 1)));
+				ejemplar.setTitulo(String.valueOf(ventaFrame.getTableLibros().getModel().getValueAt(i, 2)));
+				ejemplaresVendidos.add(ejemplar);
+			}
+			
+			for(Ejemplar ej : ejemplaresVendidos) {
+				ejemplarDAO.updateEstado(ej, "Vendido");
+				System.out.println("Estado cambiado");
+			}
+			
+			boleta.setFolio(generador.generarFolioBoleta());
+			boleta.setFechaVenta(generador.generarFechaActual());
+			boleta.setHoraVenta(generador.generarHoraActual());
+			boleta.setMetodoPago((String)ventaFrame.getCbxMetodoPago().getSelectedItem());
+			
+			Cliente cliente = clienteDao.findByRut(ventaFrame.getTxtClienteVenta().getText());
+			if(cliente!=null && cliente.getRut()!=null) {
+				boletasDAO.insertBoleta(boleta, cliente, trabajador);
+				detalleBoletasDAO.insertDetalles(ejemplaresVendidos, libros, boleta);
+				ventaDAO.insertVenta(boleta, cliente, trabajador);				
+			}else {
+				System.out.println("Cliente no valido: "+ventaFrame.getTxtClienteVenta().getText());
+			}
+			ventaExitosa= new VentaExitosa();
+			ventaExitosa.addFinalizarListener(new FinalizarListener());
+			ventaExitosa.setVisible(true);
+		}
+	}
+	
 	
 }
