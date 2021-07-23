@@ -20,7 +20,7 @@ public class ArriendoExitoso extends JDialog {
 	public ArriendoExitoso() {
 		getContentPane().setLayout(null);
 		
-		lblAlerta = new JLabel("Arriendo registrado Exitosamente!");
+		lblAlerta = new JLabel("¡Registro Exitoso!");
 		lblAlerta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblAlerta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAlerta.setBounds(0, 120, 436, 14);

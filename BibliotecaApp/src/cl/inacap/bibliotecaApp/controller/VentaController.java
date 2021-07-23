@@ -98,6 +98,7 @@ public class VentaController {
 			}
 			ventaFrame.dispose();
 			ventaExitosa.setVisible(false);
+			TrabajadorController trabajador = new TrabajadorController(rut);
 			ventaExitosa.dispose();
 		}
 	}

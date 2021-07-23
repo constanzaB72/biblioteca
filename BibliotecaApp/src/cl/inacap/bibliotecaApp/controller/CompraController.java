@@ -124,6 +124,7 @@ public class CompraController {
 		public void actionPerformed(ActionEvent e) {
 			compraFrame.dispose();
 			compraExitosa.setVisible(false);
+			TrabajadorController trabajador = new TrabajadorController(rut);
 			compraExitosa.dispose();
 		}
 	}

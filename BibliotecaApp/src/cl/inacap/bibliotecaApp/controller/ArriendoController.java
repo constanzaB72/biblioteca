@@ -39,7 +39,7 @@ public class ArriendoController {
 		if(tipoUsuario.equals("cliente")) {
 			arriendoFrame.getTxtClienteArriendo().setText(rut);
 			arriendoFrame.getTxtClienteArriendo().setEditable(false);
-			trabajador = trabajadorDAO.findByRut("20.127.772-9");
+			trabajador = trabajadorDAO.findByRut("20.127.772-9");//Josué
 		}else {
 			trabajador =trabajadorDAO.findByRut(rut);
 		}
