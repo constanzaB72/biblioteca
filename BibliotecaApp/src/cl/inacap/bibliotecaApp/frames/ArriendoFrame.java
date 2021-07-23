@@ -109,17 +109,17 @@ public class ArriendoFrame extends JFrameBiblioteca {
 		
 		JLabel lblCostoCompra = new JLabel("Costo total: ");
 		lblCostoCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCostoCompra.setBounds(534, 360, 200, 30);
+		lblCostoCompra.setBounds(261, 425, 200, 30);
 		getContentPane().add(lblCostoCompra);
 		
 		txtCosto = new JLabel();
 		txtCosto.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtCosto.setBounds(534, 390, 200, 30);
+		txtCosto.setBounds(261, 450, 200, 30);
 		getContentPane().add(txtCosto);
 		
 		btnArrendar = new JButton("ARRENDAR");
 		btnArrendar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnArrendar.setBounds(579, 476, 150, 30);
+		btnArrendar.setBounds(578, 496, 150, 30);
 		getContentPane().add(btnArrendar);
 		
 		JLabel lblTiruloArriendo = new JLabel("Formulario de Arriendo");
@@ -202,7 +202,4 @@ public class ArriendoFrame extends JFrameBiblioteca {
 	public void setDateChooser(JDateChooser dateChooser) {
 		this.dateChooser = dateChooser;
 	}
-	
-	
-	
 }

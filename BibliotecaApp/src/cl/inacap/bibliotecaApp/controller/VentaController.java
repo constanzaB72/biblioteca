@@ -66,7 +66,7 @@ public class VentaController {
 		if(tipoUsuario.equals("cliente")) {
 			ventaFrame.getTxtClienteVenta().setText(rut);
 			ventaFrame.getTxtClienteVenta().setEditable(false);
-			trabajador = trabajadorDAO.findByRut("20.127.772-9");
+			trabajador = trabajadorDAO.findByRut("20.127.772-9");//Josué
 		}else {
 			trabajador =trabajadorDAO.findByRut(rut);
 		}

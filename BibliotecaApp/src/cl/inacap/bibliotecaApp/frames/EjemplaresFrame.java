@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import cl.inacap.bibliotecaModel.dao.EjemplarDAO;
+import cl.inacap.bibliotecaModel.dto.Ejemplar;
 import cl.inacap.bibliotecaModel.dto.Libro;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,7 +27,7 @@ public class EjemplaresFrame extends JFrame {
 	JTable table2;
 	private JButton btnConfirmar;
 	private JButton btnCancelar;
-	public EjemplaresFrame(List<Libro> listaLibros) {
+	public EjemplaresFrame() {
 		getContentPane().setFont(new Font("Tahoma", Font.BOLD, 18));
 		this.setAlwaysOnTop(true);
 		this.setVisible(true);
@@ -34,63 +36,25 @@ public class EjemplaresFrame extends JFrame {
 		getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 700, 500);
-		String[] columnNames = { "isbn", "titulo", ""};
+	EjemplarDAO ejemplarDAO = new EjemplarDAO();
+	List<Ejemplar> listaLibros=ejemplarDAO.getAll();
+	
+		String[] columnNames = { "Num serie", "Titulo","Estado"};
 		DefaultTableModel model =new DefaultTableModel(columnNames,0); 
+		table2 = new JTable(model);	
 		if(listaLibros!=null & !listaLibros.isEmpty()) {
 			for(int fila=0;fila<listaLibros.size();fila++) {
-				Object[] columna=new Object[] {listaLibros.get(fila).getIsbn(),listaLibros.get(fila).getTitulo(),"Agregar"};
+				Object[] columna=new Object[] {listaLibros.get(fila).getNumSerie(),listaLibros.get(fila).getTitulo(),listaLibros.get(fila).getEstado()};
 				model.addRow(columna);
 			}
+			
 		}
-		String[] columnNames2 = { "NumSerie","isbn", "titulo","estado"};
-		DefaultTableModel model2 =new DefaultTableModel(columnNames2,0); 
-		table2 = new JTable(model2);
+		String[] columnNames2 = { "NumSerie", "titulo","estado"};
+		table2 = new JTable(model);
 		table2.setBounds(30, 40, 100, 200);		
 		JScrollPane sp2 = new JScrollPane(table2);		
 		sp2.setBounds(23, 144, 651, 226);
 		getContentPane().add(sp2);
-		Action Agregar = new AbstractAction()
-		{
-		    
-			private static final long serialVersionUID = 1L;
-
-			public void actionPerformed(ActionEvent e)
-		    {
-		        JTable auxTable = (JTable)e.getSource();
-		        int fila = Integer.valueOf( e.getActionCommand() );
-		        String isbn= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 0);
-		        String titulo= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 1);
-		        String estado= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 2);
-		        Object[] columna=new Object[] {isbn,titulo,listaLibros.get(fila).getPrecio(),"","Quitar"};
-		        ((DefaultTableModel)table2.getModel()).addRow(columna);	       
-		        
-		        ((DefaultTableModel)auxTable.getModel()).removeRow(fila);
-		        
-		    }
-		};
-		
-		Action Quitar = new AbstractAction()
-		{
-			private static final long serialVersionUID = 1L;
-			public void actionPerformed(ActionEvent e)
-		    {
-		        JTable auxTable = (JTable)e.getSource();
-		        int fila = Integer.valueOf( e.getActionCommand() );
-		        String isbn= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 0);
-		        String titulo= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 1);
-		        Object[] columna=new Object[] {isbn,titulo,"Agregar"};
-		        ((DefaultTableModel)table2.getModel()).addRow(columna);	       
-		        
-		        ((DefaultTableModel)auxTable.getModel()).removeRow(fila);
-		        
-		        
-		    }
-			
-		};
-		ButtonColumn buttonColumn = new ButtonColumn(table2, Agregar, 2);	
-		buttonColumn.setMnemonic(KeyEvent.VK_D);
-		ButtonColumn buttonColumnTable2 = new ButtonColumn(table2, Quitar, 4);	
-		buttonColumnTable2.setMnemonic(KeyEvent.VK_D);
 		
 		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setBounds(535, 415, 100, 23);

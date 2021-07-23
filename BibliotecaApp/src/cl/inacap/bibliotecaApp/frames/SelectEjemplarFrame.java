@@ -71,7 +71,7 @@ public class SelectEjemplarFrame extends JFrame {
 			public void actionPerformed(ActionEvent e)
 		    {
 				
-				// "serie","isbn", "titulo","precio",""
+			
 		        JTable auxTable = (JTable)e.getSource();
 		        int fila = Integer.valueOf( e.getActionCommand() );
 		        int serie =(Integer)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 0);

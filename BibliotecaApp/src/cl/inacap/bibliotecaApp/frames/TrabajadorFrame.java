@@ -97,11 +97,12 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		lblTextoEjemplares.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTextoEjemplares.setBounds(589, 468, 150, 30);
 		getContentPane().add(lblTextoEjemplares);
+		
 
-		JLabel lbl = new JLabel("APLICAR MULTAS");
-		lbl.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lbl.setBounds(589, 514, 150, 30);
-		getContentPane().add(lbl);
+		JLabel lblMulta = new JLabel("APLICAR MULTAS");
+		lblMulta.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblMulta.setBounds(589, 514, 150, 30);
+		getContentPane().add(lblMulta);
 
 		JLabel lblAvatar = new JLabel("");
 		lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);

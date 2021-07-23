@@ -16,18 +16,25 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import cl.inacap.biblioteca.utils.ButtonColumn;
+import cl.inacap.bibliotecaModel.dao.ArriendosDAO;
+import cl.inacap.bibliotecaModel.dao.EjemplarDAO;
+import cl.inacap.bibliotecaModel.dto.Arriendo;
+import cl.inacap.bibliotecaModel.dto.Ejemplar;
 import cl.inacap.bibliotecaModel.dto.Libro;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JRadioButton;
 
 public class DevolucionFrame extends JFrame {
 	JTable table;
 	private JTextField txtClienteDevolucion;
 	private JButton btnConfirmar;
 	private JButton btnCancelar;
-	public DevolucionFrame(List<Libro> listaLibros) {
+	private JTextField txtMonto;
+	public DevolucionFrame() {
 		this.setAlwaysOnTop(true);
 		this.setVisible(true);
 		this.setResizable(false);
@@ -35,14 +42,24 @@ public class DevolucionFrame extends JFrame {
 		getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 700, 500);
-		String[] columnNames = { "isbn", "titulo", ""};
-		DefaultTableModel model =new DefaultTableModel(columnNames,0); 
-		if(listaLibros!=null & !listaLibros.isEmpty()) {
-			for(int fila=0;fila<listaLibros.size();fila++) {
-				Object[] columna=new Object[] {listaLibros.get(fila).getIsbn(),listaLibros.get(fila).getTitulo(),"Agregar"};
-				model.addRow(columna);
+		ArriendosDAO arriendosDAO = new ArriendosDAO();
+		List<Arriendo> listaArriendos=arriendosDAO.getAll();
+		
+			String[] columnNames = { "Id Arriendo","Fecha de Arriendo","Fecha de Entrega", "Dias de Retraso","Multa", "Costo total"};
+			DefaultTableModel model =new DefaultTableModel(columnNames,0); 
+			table = new JTable(model);	
+			if(listaArriendos!=null & !listaArriendos.isEmpty()) {
+				for(int fila=0;fila<listaArriendos.size();fila++) {
+					Object[] columna=new Object[] {listaArriendos.get(fila).getIdArriendo(),listaArriendos.get(fila).getFechaArriendo(),listaArriendos.get(fila).getFechaEntrega(),listaArriendos.get(fila).getDiasRetraso()
+							,listaArriendos.get(fila).getMulta(),listaArriendos.get(fila).getCostoTotal()};
+					model.addRow(columna);
+				}
+				
 			}
-		}
+			table.setBounds(30, 40, 100, 200);		
+			JScrollPane sp2 = new JScrollPane(table);		
+			sp2.setBounds(29, 171, 651, 150);
+			getContentPane().add(sp2);
 		
 		JLabel lblClienteDevolucion = new JLabel("Rut de Cliente: ");
 		lblClienteDevolucion.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -53,55 +70,7 @@ public class DevolucionFrame extends JFrame {
 		txtClienteDevolucion.setBounds(29, 130, 200, 30);
 		getContentPane().add(txtClienteDevolucion);
 		txtClienteDevolucion.setColumns(10);
-		
-		table = new JTable(model);
-		String[] columnNames2 = { "isbn", "titulo","Precio","Cantidad", ""};
-		DefaultTableModel model2 =new DefaultTableModel(columnNames2,0);
-		
-		
-		table.setBounds(30, 40, 100, 200);		
-		JScrollPane sp = new JScrollPane(table);		
-		sp.setBounds(29, 167, 630, 150);
-		getContentPane().add(sp);
-		Action Agregar = new AbstractAction()
-		{
-		    
-			private static final long serialVersionUID = 1L;
-
-			public void actionPerformed(ActionEvent e)
-		    {
-		        JTable auxTable = (JTable)e.getSource();
-		        int fila = Integer.valueOf( e.getActionCommand() );
-		        String isbn= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 0);
-		        String titulo= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 1);
-		        String precio= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 2);
-		        Object[] columna=new Object[] {isbn,titulo,listaLibros.get(fila).getPrecio(),"","Quitar"};
-		        ((DefaultTableModel)table.getModel()).addRow(columna);	       
-		        
-		        ((DefaultTableModel)auxTable.getModel()).removeRow(fila);
-		        
-		    }
-		};
-		
-		Action Quitar = new AbstractAction()
-		{
-			private static final long serialVersionUID = 1L;
-			public void actionPerformed(ActionEvent e)
-		    {
-		        JTable auxTable = (JTable)e.getSource();
-		        int fila = Integer.valueOf( e.getActionCommand() );
-		        String isbn= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 0);
-		        String titulo= (String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 1);
-		        //String precio=(String)((DefaultTableModel)auxTable.getModel()).getValueAt(fila, 2);
-		        Object[] columna=new Object[] {isbn,titulo,"Agregar"};
-		        ((DefaultTableModel)table.getModel()).addRow(columna);	       
-		        
-		        ((DefaultTableModel)auxTable.getModel()).removeRow(fila);
-		        
-		        
-		    }
-			
-		};
+	
 		
 		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setBounds(533, 415, 100, 23);
@@ -121,6 +90,30 @@ public class DevolucionFrame extends JFrame {
 		btnBuscar.setBounds(239, 130, 89, 30);
 		getContentPane().add(btnBuscar);
 		
+		JLabel lblMontoMulta = new JLabel("Monto multa:");
+		lblMontoMulta.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMontoMulta.setBounds(29, 331, 200, 30);
+		getContentPane().add(lblMontoMulta);
+		
+		txtMonto = new JTextField();
+		txtMonto.setBounds(29, 358, 175, 30);
+		getContentPane().add(txtMonto);
+		txtMonto.setColumns(10);
+		
+		JButton btnMulta = new JButton("Aplicar multa");
+		btnMulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String montoMulta= txtMonto.getText();
+				try {
+					int multa=Integer.parseInt(montoMulta);
+				}catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Ingrese monto válido");
+					
+				}	
+			}
+		});
+		btnMulta.setBounds(214, 362, 113, 23);
+		getContentPane().add(btnMulta);
 		
 		
 		this.setVisible(true);
@@ -130,6 +123,9 @@ public class DevolucionFrame extends JFrame {
 		btnConfirmar.addActionListener(ing);
 	}
 	public void addCancelarAgregar(ActionListener ing) {
+		btnCancelar.addActionListener(ing);
+	}
+	public void addAgregarMulta(ActionListener ing) {
 		btnCancelar.addActionListener(ing);
 	}
 }
