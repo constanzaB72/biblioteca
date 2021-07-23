@@ -111,7 +111,7 @@ public class DevolucionFrame extends JFrame {
 		btnCancelar.setBounds(423, 415, 100, 23);
 		getContentPane().add(btnCancelar);
 		
-		JLabel lblHeader = new JLabel("New label");
+		JLabel lblHeader = new JLabel("");
 		lblHeader.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeader.setIcon(new ImageIcon(DevolucionFrame.class.getResource("/img/fastheader.jpg")));
 		lblHeader.setBounds(0, 0, 700, 90);
