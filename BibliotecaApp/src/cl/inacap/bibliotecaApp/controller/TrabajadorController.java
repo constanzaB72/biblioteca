@@ -50,7 +50,7 @@ public class TrabajadorController {
 	//TODO falta arrendar controller
 	class ArrendarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {			
-			ArriendoController arriendo = new ArriendoController();
+			ArriendoController arriendo = new ArriendoController(rut,"trabajador");
 			trabajadorFrame.dispose();
 			
 		}
