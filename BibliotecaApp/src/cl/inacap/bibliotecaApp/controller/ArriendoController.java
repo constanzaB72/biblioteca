@@ -35,6 +35,7 @@ import cl.inacap.bibliotecaModel.dto.Libro;
 import cl.inacap.bibliotecaModel.dto.Trabajador;
 import cl.inacap.bibliotecaModel.service.EjemplaresService;
 import cl.inacap.bibliotecaModel.utils.Generador;
+import cl.inacap.bibliotecaModel.utils.RutUtils;
 
 public class ArriendoController {
 	ArriendoFrame arriendoFrame;
@@ -49,6 +50,7 @@ public class ArriendoController {
 	private ArriendosDAO arriendosDAO= new ArriendosDAO();
 	private DetallesArriendosDAO detallesArriendosDAO = new DetallesArriendosDAO();
 	
+	private RutUtils rutUtils=new RutUtils();
 	private String rut;
 	private String tipoUsuario;
 	private Cliente cliente;
@@ -86,6 +88,11 @@ public class ArriendoController {
 	
 	class ArriendoListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			
+			String valido = rutUtils.validarRut(arriendoFrame.getTxtClienteArriendo().getText());
+			if (valido.equals("Valido")) {
+				
+			
 			List<Ejemplar> ejemplaresArrendados = new ArrayList<Ejemplar>();
 			libros=librosDAO.getAll();
 			cliente =clienteDAO.findByRut(arriendoFrame.getTxtClienteArriendo().getText());
@@ -122,7 +129,9 @@ public class ArriendoController {
 			arriendoExitoso.setVisible(true);
 			
 			
-			
+			}else {
+				System.out.println("error "+valido);
+			}
 		}
 	}
 	class FinalizarListener implements ActionListener {
@@ -173,7 +182,7 @@ public class ArriendoController {
 			selectEjemplarFrame.addCancelarAgregar(new CancelarAgregarListener());
 			
 			
-			
+		
 		}
 	}
 	class CancelarAgregarListener implements ActionListener {
@@ -210,7 +219,9 @@ public class ArriendoController {
 			arriendoFrame.getTxtCosto().setText("");
 		}else {
 			arriendoFrame.getDateChooser().setEnabled(true);
+			
 		}
+	
 	}
 	
 	
