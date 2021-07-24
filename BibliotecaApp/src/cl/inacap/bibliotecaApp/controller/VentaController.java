@@ -25,6 +25,7 @@ import cl.inacap.bibliotecaModel.dto.Libro;
 import cl.inacap.bibliotecaModel.dto.Trabajador;
 import cl.inacap.bibliotecaModel.service.EjemplaresService;
 import cl.inacap.bibliotecaModel.utils.Generador;
+import cl.inacap.bibliotecaModel.utils.RutUtils;
 
 public class VentaController {
 	
@@ -48,7 +49,7 @@ public class VentaController {
 	private String tipoUsuario;
 	private Cliente cliente;
 	private Trabajador trabajador;
-	
+	private RutUtils rutUtils=new RutUtils();
 	
 	private List<Libro> libros;
 	private List<Ejemplar> ejemplares;
@@ -134,6 +135,11 @@ public class VentaController {
 
 	class VenderListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			
+			String valido = rutUtils.validarRut(ventaFrame.getTxtClienteVenta().getText());
+			if (valido.equals("Valido")) {
+				
+			
 			List<Ejemplar> ejemplaresVendidos = new ArrayList<Ejemplar>();
 			Boleta boleta = new Boleta();
 			int cantidadFilas = ventaFrame.getTableLibros().getModel().getRowCount();
@@ -167,6 +173,9 @@ public class VentaController {
 			ventaExitosa= new VentaExitosa();
 			ventaExitosa.addFinalizarListener(new FinalizarListener());
 			ventaExitosa.setVisible(true);
+		}else {
+			System.out.println("error "+valido);
+		}
 		}
 	}
 	

@@ -3,6 +3,8 @@ package cl.inacap.bibliotecaApp.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import org.omg.CORBA.Request;
+
 import cl.inacap.bibliotecaApp.frames.ClienteFrame;
 import cl.inacap.bibliotecaApp.frames.LoginFrame;
 import cl.inacap.bibliotecaApp.frames.TrabajadorFrame;
@@ -39,7 +41,10 @@ public class LoginController {
 				loginFrame.getPassFContrasenaLogin().setText("");
 			}
 			
+			
 		}
+		
 	}
 
+	
 }
