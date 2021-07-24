@@ -22,7 +22,21 @@ public class TrabajadorController {
 		trabajadorFrame.addComprarListener( new ComprarListener());
 		trabajadorFrame.addVenderListener(new VenderListener());
 		trabajadorFrame.addArrendarListener(new ArrendarListener());
+		trabajadorFrame.addEjemplaresListener(new EjemplaresListener());
+		trabajadorFrame.addMultasListener(new MultasListener());
 		//trabajadorFrame.setVisible(true);
+	}
+	class EjemplaresListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {			
+			EjemplaresController ejemplarCotroller = new EjemplaresController();
+			
+		}
+	}
+	class MultasListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {			
+			DevolucionController  devolucionController= new DevolucionController();
+			
+		}
 	}
 
 	class SalirListener implements ActionListener {
@@ -47,7 +61,7 @@ public class TrabajadorController {
 			
 		}
 	}
-	//TODO falta arrendar controller
+	
 	class ArrendarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {			
 			ArriendoController arriendo = new ArriendoController(rut,"trabajador");

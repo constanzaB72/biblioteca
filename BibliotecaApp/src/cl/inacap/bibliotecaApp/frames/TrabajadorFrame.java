@@ -20,6 +20,8 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 	private JButton btnComprar;
 	private JButton btnVender;
 	private JButton btnArrendar;
+	private JButton btnVerEjemplares;
+	private JButton btnMultas;
 
 	public TrabajadorFrame(Trabajador trabajador) {
 		getContentPane().setBackground(Color.WHITE);
@@ -136,7 +138,28 @@ public class TrabajadorFrame extends JFrameBiblioteca {
 		btnArrendar.setBorderPainted(false);
 		getContentPane().add(btnArrendar);
 		
+		btnVerEjemplares = new JButton("");
+		btnVerEjemplares.setBounds(542, 463, 197, 35);
+		btnVerEjemplares.setOpaque(false);
+		btnVerEjemplares.setContentAreaFilled(false);
+		btnVerEjemplares.setBorderPainted(false);
+		getContentPane().add(btnVerEjemplares);
 		
+		btnMultas = new JButton("");
+		btnMultas.setBounds(542, 509, 197, 35);
+		btnMultas.setOpaque(false);
+		btnMultas.setContentAreaFilled(false);
+		btnMultas.setBorderPainted(false);
+		getContentPane().add(btnMultas);
+		
+		
+	}
+	
+	public void addEjemplaresListener(ActionListener ing) {
+		btnVerEjemplares.addActionListener(ing);
+	}
+	public void addMultasListener(ActionListener ing) {
+		btnMultas.addActionListener(ing);
 	}
 
 	public JLabel getLblNombreTrabajador() {

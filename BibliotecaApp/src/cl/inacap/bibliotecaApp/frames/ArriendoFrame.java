@@ -128,6 +128,10 @@ public class ArriendoFrame extends JFrameBiblioteca {
 		getContentPane().add(lblTiruloArriendo);
 }
 	
+	public void addMenuListener(ActionListener ing) {
+		btnVolverMenu.addActionListener(ing);
+	}
+	
 	public void addSelectListener(ActionListener ing) {
 		btnSeleccionarLibros.addActionListener(ing);
 	}

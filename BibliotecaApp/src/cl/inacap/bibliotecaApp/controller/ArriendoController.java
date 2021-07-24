@@ -79,11 +79,12 @@ public class ArriendoController {
 		arriendoFrame.addSelectListener(new SelectListener());
 		arriendoFrame.addDateListener(new DateListener());
 		arriendoFrame.addArrendarListener(new ArriendoListener());
+		arriendoFrame.addMenuListener(new MenuListener());
 	}
 	
 	//12.622.028-6
 	//20.780.661-7
-	
+		
 	class ArriendoListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			List<Ejemplar> ejemplaresArrendados = new ArrayList<Ejemplar>();

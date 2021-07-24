@@ -23,10 +23,10 @@ public class main {
 					//VentaFrame v=new VentaFrame();
 					//CompraFrame c=new CompraFrame();
 					//MenuFrame m =new MenuFrame();
-					RegistrarFrame r =new RegistrarFrame();
+					//RegistrarFrame r =new RegistrarFrame();
 					//EjemplaresFrame ej =new EjemplaresFrame();
 					//DevolucionFrame dev = new DevolucionFrame();
-					//LoginController login = new LoginController();	
+					LoginController login = new LoginController();	
 				
 				} catch (Exception e) {
 					e.printStackTrace();

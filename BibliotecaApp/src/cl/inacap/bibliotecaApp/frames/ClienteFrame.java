@@ -19,6 +19,8 @@ public class ClienteFrame extends JFrameBiblioteca {
 
 	private JPanel contentPane;
 	private JButton btnSalirCliente;
+	private JButton btnArrendar;
+	private JButton btnVender;
 
 	public ClienteFrame(Cliente cliente) {
 		getContentPane().setBackground(Color.WHITE);
@@ -57,6 +59,20 @@ public class ClienteFrame extends JFrameBiblioteca {
 		lblArrendarCliente.setBounds(546, 288, 122, 30);
 		getContentPane().add(lblArrendarCliente);
 		
+		btnVender = new JButton("");
+		btnVender.setBounds(360, 288, 110, 30);
+		btnVender.setOpaque(false);
+		btnVender.setContentAreaFilled(false);
+		btnVender.setBorderPainted(false);
+		getContentPane().add(btnVender);
+		
+		btnArrendar = new JButton("");
+		btnArrendar.setBounds(546, 288, 122, 30);
+		btnArrendar.setOpaque(false);
+		btnArrendar.setContentAreaFilled(false);
+		btnArrendar.setBorderPainted(false);
+		getContentPane().add(btnArrendar);
+		
 		JLabel lblBienvenidoCliente = new JLabel("Bienvenido");
 		lblBienvenidoCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBienvenidoCliente.setForeground(Color.WHITE);
@@ -84,6 +100,31 @@ public class ClienteFrame extends JFrameBiblioteca {
 		getContentPane().add(lblLateralColor);
 	}
 	public void addSalirListener(ActionListener ing) {
-		btnSalirCliente.addActionListener(ing);
+		btnSalirCliente.addActionListener(ing);	}	
+	
+	public void addVenderListener(ActionListener ing) {
+		btnVender.addActionListener(ing);
 	}
+	public void addArrendarListener(ActionListener ing) {
+		btnArrendar.addActionListener(ing);
+	}
+	public JButton getBtnSalirCliente() {
+		return btnSalirCliente;
+	}
+	public void setBtnSalirCliente(JButton btnSalirCliente) {
+		this.btnSalirCliente = btnSalirCliente;
+	}
+	public JButton getBtnArrendar() {
+		return btnArrendar;
+	}
+	public void setBtnArrendar(JButton btnArrendar) {
+		this.btnArrendar = btnArrendar;
+	}
+	public JButton getBtnVender() {
+		return btnVender;
+	}
+	public void setBtnVender(JButton btnVender) {
+		this.btnVender = btnVender;
+	}
+	
 }
