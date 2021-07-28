@@ -24,11 +24,11 @@ public class main {
 					//VentaFrame v=new VentaFrame();
 					//CompraFrame c=new CompraFrame();
 					//MenuFrame m =new MenuFrame();
-				//RegistrarFrame r =new RegistrarFrame();
+					//RegistrarFrame r =new RegistrarFrame();
 					//RegistrarController r = new RegistrarController();
 					//EjemplaresFrame ej =new EjemplaresFrame();
-					DevolucionFrame dev = new DevolucionFrame();
-					//LoginController login = new LoginController();	
+					//DevolucionFrame dev = new DevolucionFrame();
+					LoginController login = new LoginController();	
 				
 				} catch (Exception e) {
 					e.printStackTrace();

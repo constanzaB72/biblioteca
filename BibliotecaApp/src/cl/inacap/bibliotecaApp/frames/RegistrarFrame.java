@@ -131,7 +131,7 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		
 		JLabel lblCorreoRegistrar = new JLabel("Correo electr\u00F3nico:");
 		lblCorreoRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCorreoRegistrar.setBounds(386, 361, 212, 30);
+		lblCorreoRegistrar.setBounds(386, 366, 212, 30);
 		getContentPane().add(lblCorreoRegistrar);
 		
 		txtCorreoRegistrar = new JTextField();
@@ -141,7 +141,7 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		
 		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnRegistrar.setBounds(417, 516, 157, 30);
+		btnRegistrar.setBounds(404, 516, 157, 30);
 		getContentPane().add(btnRegistrar);
 		
 		JLabel lblRegistrarUsuario = new JLabel("Registrar Usuario");
@@ -175,23 +175,23 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		
 		DefaultListModel direcionModel = new DefaultListModel();
 		ListaDireccion = new JList(direcionModel);
-		ListaDireccion.setBounds(386, 195, 200, 30);
+		ListaDireccion.setBounds(386, 195, 200, 50);
 		JScrollPane spDireccion = new JScrollPane(ListaDireccion);
-		spDireccion.setBounds(386, 195, 200, 30);
+		spDireccion.setBounds(386, 195, 200, 50);
 		getContentPane().add(spDireccion);
 		
 		DefaultListModel telefonoModel = new DefaultListModel();
 		ListaTelefonos = new JList(telefonoModel);
-		ListaTelefonos.setBounds(386, 317, 200, 30);
+		ListaTelefonos.setBounds(386, 317, 200, 50);
 		JScrollPane spTelefono = new JScrollPane(ListaTelefonos);
-		spTelefono.setBounds(386, 317, 200, 30);
+		spTelefono.setBounds(386, 317, 200, 50);
 		getContentPane().add(spTelefono);
 		
 		DefaultListModel correoModel = new DefaultListModel();
 		ListaCorreos = new JList(correoModel);
-		ListaCorreos.setBounds(386, 432, 200, 30);
+		ListaCorreos.setBounds(386, 432, 200, 50);
 		JScrollPane spCorreo = new JScrollPane(ListaCorreos);
-		spCorreo.setBounds(386, 432, 200, 30);
+		spCorreo.setBounds(386, 432, 200, 50);
 		getContentPane().add(spCorreo);
 		
 		JLabel PlusIcon1 = new JLabel("");

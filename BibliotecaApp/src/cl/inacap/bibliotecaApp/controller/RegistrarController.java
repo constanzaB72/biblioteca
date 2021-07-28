@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.DefaultListModel;
 
 import cl.inacap.bibliotecaApp.frames.RegistrarFrame;
@@ -41,8 +40,22 @@ public class RegistrarController {
 			List<String> correos = traerLista((DefaultListModel<String>) registrarFrame.getListaCorreos().getModel());
 			List<String> telefonos = traerLista((DefaultListModel<String>) registrarFrame.getListaTelefonos().getModel());
 			List<String> Direcciones = traerLista((DefaultListModel<String>) registrarFrame.getListaDireccion().getModel());
-			
-			//TODO falta validar Datos antes de guardar
+			List<String> errores=new ArrayList<String>();
+			if(nombre.isEmpty()) {
+				errores.add("Debe ingresar nombre");
+			}if(apellidoP.isEmpty()) {
+				errores.add("Debe ingresar apellido paterno");
+			}
+			/*
+			 * private RutUtils rutUtils=new RutUtils();
+			 * 
+			 * String valido =
+			 * rutUtils.validarRut(registrarFrame.getTxtRutRegistrar().getText()); if
+			 * (valido.equals("Valido")) {
+			 * 
+			 * 
+			 * }
+			 */
 			
 			if(registrarFrame.getRdbtnTrabajador().isSelected()) {
 				System.out.println("entraif registrar");

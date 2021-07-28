@@ -3,6 +3,8 @@ package cl.inacap.bibliotecaApp.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import org.omg.CORBA.Request;
 
 import cl.inacap.bibliotecaApp.frames.ClienteFrame;
@@ -37,7 +39,7 @@ public class LoginController {
 				}
 				loginFrame.setVisible(false);
 			}else {
-				System.out.println("usuario no valido");
+				JOptionPane.showMessageDialog(null,"Usuario no válido");
 				loginFrame.getPassFContrasenaLogin().setText("");
 			}
 			

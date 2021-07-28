@@ -20,6 +20,7 @@ public class LoginFrame extends JFrameBiblioteca {
 	private JTextField txtUsuarioLogin;
 	private JPasswordField passFContrasenaLogin;
 	private JButton btnIngresar;
+	private JButton btnRegistrar;
 	private JComboBox cbTipoLogin;
 	public LoginFrame() {		
 		contentPane = new JPanel();
@@ -78,9 +79,9 @@ public class LoginFrame extends JFrameBiblioteca {
 		passFContrasenaLogin.setBounds(275, 495, 200, 30);
 		contentPane.add(passFContrasenaLogin);
 		
-		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setForeground(Color.BLACK);
-		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnRegistrar.setBounds(59, 430, 151, 30);
 		contentPane.add(btnRegistrar);
 		
@@ -108,6 +109,11 @@ public class LoginFrame extends JFrameBiblioteca {
 	}
 	public void addIngresarListener(ActionListener ing) {
 		btnIngresar.addActionListener(ing);
+		
+		}
+	public void addRegistrarListener(ActionListener ing) {
+		btnIngresar.addActionListener(ing);
+		
 		}
 
 	public JComboBox getCbTipoLogin() {
@@ -117,4 +123,21 @@ public class LoginFrame extends JFrameBiblioteca {
 	public void setCbTipoLogin(JComboBox cbTipoLogin) {
 		this.cbTipoLogin = cbTipoLogin;
 	}
+
+	public JButton getBtnIngresar() {
+		return btnIngresar;
+	}
+
+	public void setBtnIngresar(JButton btnIngresar) {
+		this.btnIngresar = btnIngresar;
+	}
+
+	public JButton getBtnRegistrar() {
+		return btnRegistrar;
+	}
+
+	public void setBtnRegistrar(JButton btnRegistrar) {
+		this.btnRegistrar = btnRegistrar;
+	}
+
 }
