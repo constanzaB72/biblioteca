@@ -127,13 +127,13 @@ public class TestApp {
 		
 		Libro libro = new Libro();
 		libro.setIsbn("9784166202199");
-		libro.setTitulo("Paranoia1");
+		libro.setTitulo("Caballo de Troya");
 		libro.setNumPagina(621);
 		libro.setPrecio(20100);
 		libro.setAnioPublicacion(1998);
-		libro.setEditorial("Editorial Chalaila");
+		libro.setEditorial("Editorial Chile");
 		
-		//libroDAO.insertLibro(libro, idiomas, autores, categorias);
+		libroDAO.insertLibro(libro, idiomas, autores, categorias);
 		//ejemplarDAO.insertEjemplar(libro);
 		//libroDAO.updatePrecioLibro(libro);
 		//libroDAO.deleteLibro(libro);

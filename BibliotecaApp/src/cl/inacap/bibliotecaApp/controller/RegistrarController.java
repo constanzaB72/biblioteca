@@ -2,6 +2,8 @@ package cl.inacap.bibliotecaApp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -37,8 +39,28 @@ public class RegistrarController {
 			String apellidoP = registrarFrame.getTxtApellidoPaRegistrar().getText();
 			String apellidoM = registrarFrame.getTxtApellidoMaRegistrar().getText();
 			String rut = registrarFrame.getTxtRutRegistrar().getText();
-			String fechaNac = registrarFrame.getDataNacimiento().getDateFormatString();
-			String fechaContrato = registrarFrame.getDataContrato().getDateFormatString();
+			SimpleDateFormat dateFormat = new SimpleDateFormat(
+					registrarFrame.getDataNacimiento().getDateFormatString());
+			List<String> errores = new ArrayList<String>();
+
+			String fechaContrato="";
+			String fechaNac="";
+			if (registrarFrame.getRdbtnCliente().isSelected()) {
+				try {
+					fechaNac = dateFormat.format(registrarFrame.getDataNacimiento().getDate());
+				} catch (Exception exc) {
+					System.out.println(exc);
+					errores.add("Ingrese Fecha de Nacimiento para Cliente");
+				}
+			}
+			if (registrarFrame.getRdbtnTrabajador().isSelected()) {
+				try {
+					fechaContrato = dateFormat.format(registrarFrame.getDataContrato().getDate());
+				} catch (Exception exc) {
+					System.out.println(exc);
+					errores.add("Ingrese Fecha de Contrato para Trabajador");
+				}
+			}
 
 			String password = registrarFrame.getTextPassword().getText();
 			List<String> correos = traerLista((DefaultListModel<String>) registrarFrame.getListaCorreos().getModel());
@@ -46,7 +68,7 @@ public class RegistrarController {
 					(DefaultListModel<String>) registrarFrame.getListaTelefonos().getModel());
 			List<String> Direcciones = traerLista(
 					(DefaultListModel<String>) registrarFrame.getListaDireccion().getModel());
-			List<String> errores = new ArrayList<String>();
+
 			if (nombre.isEmpty()) {
 				errores.add("Debe ingresar nombre");
 			}
@@ -64,9 +86,15 @@ public class RegistrarController {
 			 * 
 			 * }
 			 */
-			
-			if(telefonos.size()==0) {
-				errores.add("Debe ingresar al menos un numero de telefono");
+
+			if (telefonos.size() == 0) {
+				errores.add("Debe ingresar al menos un numero de teléfono");
+			}
+			if (correos.size() == 0) {
+				errores.add("Debe ingresar al menos un correo electrónico");
+			}
+			if (Direcciones.size() == 0) {
+				errores.add("Debe ingresar al menos una dirección");
 			}
 			if (errores.size() == 0) {
 				if (registrarFrame.getRdbtnTrabajador().isSelected()) {
@@ -78,7 +106,12 @@ public class RegistrarController {
 					trabajador.setRut(rut);
 					trabajador.setFechaContrato(fechaContrato);
 					trabajador.setPassword(password);
-					trabajadoresDAO.insertTrabajador(trabajador, telefonos, correos, Direcciones);
+					try {
+						trabajadoresDAO.insertTrabajador(trabajador, telefonos, correos, Direcciones);
+					} catch (Exception ex) {
+						JOptionPane.showMessageDialog(registrarFrame, "usuario ya registrado", "ERROR",
+								JOptionPane.ERROR_MESSAGE);
+					}
 				} else {
 					System.out.println("entra else registrar");
 					Cliente cliente = new Cliente();
@@ -88,16 +121,21 @@ public class RegistrarController {
 					cliente.setApellidoMa(apellidoM);
 					cliente.setFechaNacimiento(fechaNac);
 					cliente.setPassword(password);
-					clientesDAO.insertCliente(cliente, telefonos, correos, Direcciones);
+					try {
+						clientesDAO.insertCliente(cliente, telefonos, correos, Direcciones);
+					
+					} catch (Exception ex) {
+						JOptionPane.showMessageDialog(registrarFrame, "usuario ya registrado", "ERROR",
+								JOptionPane.ERROR_MESSAGE);
+					}
 
 				}
 			} else {
-				String mostrarError="";
-				for(String error :errores) {
-					mostrarError=mostrarError+"-"+error+"\n";					
+				String mostrarError = "";
+				for (String error : errores) {
+					mostrarError = mostrarError + "-" + error + "\n";
 				}
-				JOptionPane.showMessageDialog(registrarFrame, mostrarError, "ERROR",
-						  JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(registrarFrame, mostrarError, "ERROR", JOptionPane.ERROR_MESSAGE);
 
 			}
 

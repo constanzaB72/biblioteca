@@ -112,7 +112,7 @@ public class LoginFrame extends JFrameBiblioteca {
 		
 		}
 	public void addRegistrarListener(ActionListener ing) {
-		btnIngresar.addActionListener(ing);
+		btnRegistrar.addActionListener(ing);
 		
 		}
 

@@ -160,10 +160,11 @@ public class ClientesDAO {
 	 * @param correos
 	 * @param direcciones
 	 * @return Mensaje de insercion Exitosa en la Consola
+	 * @throws Exception 
 	 * @exception Se Agrega el error a la lista de Tipo String llamada
 	 *               erroresClientesDAO
 	 */
-	public void insertCliente(Cliente cliente, List<String> telefonos, List<String> correos, List<String> direcciones) {
+	public void insertCliente(Cliente cliente, List<String> telefonos, List<String> correos, List<String> direcciones) throws Exception {
 		try {
 			db.conectar();
 
@@ -213,6 +214,7 @@ public class ClientesDAO {
 
 		} catch (Exception ex) {
 			erroresClientesDAO.add("Se Produjo un Error al Insertar el Cliente");
+			throw new Exception("Se Produjo un Error al Insertar el Cliente");
 		} finally {
 			db.desconectar();
 		}

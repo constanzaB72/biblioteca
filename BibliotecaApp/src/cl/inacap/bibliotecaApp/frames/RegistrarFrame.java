@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
@@ -50,12 +51,7 @@ public class RegistrarFrame extends JFrameBiblioteca {
 	public RegistrarFrame() {
 		//getContentPane().setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().setLayout(null);
-		
-		JLabel PlusIcon2 = new JLabel("");
-		PlusIcon2.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
-		PlusIcon2.setHorizontalAlignment(SwingConstants.CENTER);
-		PlusIcon2.setBounds(223, 357, 30, 30);
-		getContentPane().add(PlusIcon2);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JLabel lblHeaderRegistrar = new JLabel("");
 		lblHeaderRegistrar.setVerticalAlignment(SwingConstants.TOP);
@@ -171,67 +167,20 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		
 		DefaultListModel telefonoModel = new DefaultListModel();
 		
-		DefaultListModel correoModel = new DefaultListModel();
+		DefaultListModel correoModel = new DefaultListModel();		
 		
-		JLabel PlusIcon1 = new JLabel("");
-		PlusIcon1.setHorizontalAlignment(SwingConstants.CENTER);
-		PlusIcon1.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
-		PlusIcon1.setBounds(752, 357, 30, 30);
-		getContentPane().add(PlusIcon1);
 		
-		JLabel PlusIcon3 = new JLabel("");
-		PlusIcon3.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
-		PlusIcon3.setHorizontalAlignment(SwingConstants.CENTER);
-		PlusIcon3.setBounds(502, 357, 30, 30);
-		getContentPane().add(PlusIcon3);
-		//Btn Add
-		btnCorreos = new JButton("");
-		btnCorreos.setBounds(502, 357, 30, 30);
-		btnCorreos.setOpaque(false);
-		btnCorreos.setContentAreaFilled(false);
-		btnCorreos.setBorderPainted(false);		
-		getContentPane().add(btnCorreos);
-		
-		btnTelefonos = new JButton("");
-		btnTelefonos.setBounds(223, 357, 30, 30);
-		btnTelefonos.setOpaque(false);
-		btnTelefonos.setContentAreaFilled(false);
-		btnTelefonos.setBorderPainted(false);
-		getContentPane().add(btnTelefonos);
-		
-		btnDireccion = new JButton("");
-		btnDireccion.setBounds(752, 357, 30, 30);
-		btnDireccion.setOpaque(false);
-		btnDireccion.setContentAreaFilled(false);
-		btnDireccion.setBorderPainted(false);
-		getContentPane().add(btnDireccion);
 		
 		dataNacimiento = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
-		dataNacimiento.setBounds(551, 159, 200, 30);
+		dataNacimiento.setBounds(551, 221, 200, 30);
 		getContentPane().add(dataNacimiento);
 		
 		dataContrato = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
-		dataContrato.setBounds(551, 221, 200, 30);
+		dataContrato.setBounds(551, 159, 200, 30);
 		getContentPane().add(dataContrato);
 		ListaTelefonos = new JList(telefonoModel);
 		
-		getContentPane().add(ListaTelefonos);
-		ListaTelefonos.setBounds(24, 391, 198, 48);
-		JScrollPane spTelefono = new JScrollPane();
-		spTelefono.setBounds(24, 391, 200, 50);
-		getContentPane().add(spTelefono);
-		ListaCorreos = new JList(correoModel);
-		getContentPane().add(ListaCorreos);
-		ListaCorreos.setBounds(306, 393, 198, 48);
-		JScrollPane spCorreo = new JScrollPane();
-		spCorreo.setBounds(304, 391, 200, 50);
-		getContentPane().add(spCorreo);
-		ListaDireccion = new JList(direcionModel);
-		getContentPane().add(ListaDireccion);
-		ListaDireccion.setBounds(551, 393, 198, 48);
-		JScrollPane spDireccion = new JScrollPane();
-		spDireccion.setBounds(551, 391, 200, 50);
-		getContentPane().add(spDireccion);
+		
 		
 		textPassword = new JTextField();
 		textPassword.setColumns(10);
@@ -242,6 +191,69 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblPassword.setBounds(304, 133, 200, 25);
 		getContentPane().add(lblPassword);
+		
+		JLabel PlusIcon1 = new JLabel("");
+		PlusIcon1.setHorizontalAlignment(SwingConstants.CENTER);
+		PlusIcon1.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
+		PlusIcon1.setBounds(752, 357, 30, 30);
+		getContentPane().add(PlusIcon1);
+		
+		JLabel PlusIcon2 = new JLabel("");
+		PlusIcon2.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
+		PlusIcon2.setHorizontalAlignment(SwingConstants.CENTER);
+		PlusIcon2.setBounds(223, 357, 30, 30);
+		getContentPane().add(PlusIcon2);
+		
+		JLabel PlusIcon3 = new JLabel("");
+		PlusIcon3.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
+		PlusIcon3.setHorizontalAlignment(SwingConstants.CENTER);
+		PlusIcon3.setBounds(502, 357, 30, 30);
+		getContentPane().add(PlusIcon3);
+		
+		
+		
+		// Btn Add
+		btnTelefonos = new JButton("");
+		btnTelefonos.setBounds(223, 357, 30, 30);
+		btnTelefonos.setOpaque(false);
+		btnTelefonos.setContentAreaFilled(false);
+		btnTelefonos.setBorderPainted(false);
+		getContentPane().add(btnTelefonos);
+		
+		btnCorreos = new JButton("");
+		btnCorreos.setBounds(502, 357, 30, 30);
+		btnCorreos.setOpaque(false);
+		btnCorreos.setContentAreaFilled(false);
+		btnCorreos.setBorderPainted(false);
+		getContentPane().add(btnCorreos);
+
+		btnDireccion = new JButton("");
+		btnDireccion.setBounds(752, 357, 30, 30);
+		btnDireccion.setOpaque(false);
+		btnDireccion.setContentAreaFilled(false);
+		btnDireccion.setBorderPainted(false);
+		getContentPane().add(btnDireccion);
+		
+		// getContentPane().add(ListaTelefonos);
+		ListaTelefonos.setBounds(24, 391, 198, 48);
+		JScrollPane spTelefono = new JScrollPane(ListaTelefonos);
+		// spTelefono.add(ListaTelefonos);
+		spTelefono.setBounds(24, 391, 198, 48);
+		getContentPane().add(spTelefono);
+
+		ListaCorreos = new JList(correoModel);
+		getContentPane().add(ListaCorreos);
+		ListaCorreos.setBounds(306, 393, 198, 48);
+		JScrollPane spCorreo = new JScrollPane(ListaCorreos);
+		spCorreo.setBounds(306, 393, 198, 48);
+		getContentPane().add(spCorreo);
+
+		ListaDireccion = new JList(direcionModel);
+		getContentPane().add(ListaDireccion);
+		ListaDireccion.setBounds(551, 393, 198, 48);
+		JScrollPane spDireccion = new JScrollPane(ListaDireccion);
+		spDireccion.setBounds(551, 393, 198, 48);
+		getContentPane().add(spDireccion);
 		
 	}
 	public void addConfirmaRegistrar(ActionListener ing) {

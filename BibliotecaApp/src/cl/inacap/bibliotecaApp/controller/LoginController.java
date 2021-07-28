@@ -9,6 +9,7 @@ import org.omg.CORBA.Request;
 
 import cl.inacap.bibliotecaApp.frames.ClienteFrame;
 import cl.inacap.bibliotecaApp.frames.LoginFrame;
+import cl.inacap.bibliotecaApp.frames.RegistrarFrame;
 import cl.inacap.bibliotecaApp.frames.TrabajadorFrame;
 import cl.inacap.bibliotecaModel.service.LoginService;
 
@@ -37,8 +38,15 @@ public class LoginController {
 	public LoginController() {
 		loginFrame = new LoginFrame();
 		loginFrame.addIngresarListener(new IngresarListener());
+		loginFrame.addRegistrarListener(new RegistrarListener());
 	}
 
+	class RegistrarListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			RegistrarController r =new RegistrarController();
+		}
+	}
+	
 	class IngresarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String usuario=loginFrame.getTxtUsuarioLogin().getText();

@@ -159,11 +159,12 @@ public class TrabajadoresDAO {
 	 * @param telefonos
 	 * @param correos
 	 * @param direcciones
+	 * @throws Exception 
 	 * @exception Se Agrega el error a la lista de Tipo String llamada
 	 *               erroresTrabajadoresDAO
 	 */
 	public void insertTrabajador(Trabajador trabajador, List<String> telefonos, List<String> correos,
-			List<String> direcciones) {
+			List<String> direcciones) throws Exception {
 		try {
 			db.conectar();
 
@@ -213,6 +214,7 @@ public class TrabajadoresDAO {
 		} catch (Exception ex) {
 			System.out.println("error "+ex);
 			erroresTrabajadoresDAO.add("Se Produjo un Error al Ingresar el trabajador");
+			throw new Exception("Se Produjo un Error al Ingresar el trabajador");
 		} finally {
 			db.desconectar();
 		}

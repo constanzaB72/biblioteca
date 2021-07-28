@@ -26,10 +26,10 @@ public class main {
 					//CompraFrame c=new CompraFrame();
 					//MenuFrame m =new MenuFrame();
 					//RegistrarFrame r =new RegistrarFrame();
-					RegistrarController r = new RegistrarController();
+					//RegistrarController r = new RegistrarController();
 					//EjemplaresFrame ej =new EjemplaresFrame();
 					//DevolucionController dev = new DevolucionController();
-					//LoginController login = new LoginController();	
+					LoginController login = new LoginController();	
 				
 				} catch (Exception e) {
 					e.printStackTrace();
