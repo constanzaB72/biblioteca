@@ -64,12 +64,6 @@ public class LoginFrame extends JFrameBiblioteca {
 		lblTipoLogin.setBounds(576, 386, 200, 30);
 		contentPane.add(lblTipoLogin);
 		
-
-		JLabel lbLogoLogin = new JLabel("");
-		lbLogoLogin.setIcon(new ImageIcon(LoginFrame.class.getResource("/img/fastlogo.jpg")));
-		lbLogoLogin.setBounds(0, 0, 265, 563);
-		contentPane.add(lbLogoLogin);
-		
 		btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -83,6 +77,18 @@ public class LoginFrame extends JFrameBiblioteca {
 		passFContrasenaLogin = new JPasswordField();
 		passFContrasenaLogin.setBounds(275, 495, 200, 30);
 		contentPane.add(passFContrasenaLogin);
+		
+		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setForeground(Color.BLACK);
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnRegistrar.setBounds(59, 430, 151, 30);
+		contentPane.add(btnRegistrar);
+		
+
+		JLabel lbLogoLogin = new JLabel("");
+		lbLogoLogin.setIcon(new ImageIcon(LoginFrame.class.getResource("/img/fastlogo.jpg")));
+		lbLogoLogin.setBounds(0, 0, 265, 563);
+		contentPane.add(lbLogoLogin);
 	}
 
 	public JTextField getTxtUsuarioLogin() {
@@ -111,5 +117,4 @@ public class LoginFrame extends JFrameBiblioteca {
 	public void setCbTipoLogin(JComboBox cbTipoLogin) {
 		this.cbTipoLogin = cbTipoLogin;
 	}
-	
 }

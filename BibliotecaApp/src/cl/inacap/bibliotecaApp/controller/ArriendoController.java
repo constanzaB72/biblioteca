@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,13 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.table.DefaultTableModel;
 
-import cl.inacap.bibliotecaApp.controller.CompraController.AgregarListener;
-import cl.inacap.bibliotecaApp.controller.CompraController.CancelarAgregarListener;
 import cl.inacap.bibliotecaApp.frames.ArriendoExitoso;
 import cl.inacap.bibliotecaApp.frames.ArriendoFrame;
-import cl.inacap.bibliotecaApp.frames.CompraExitosa;
 import cl.inacap.bibliotecaApp.frames.SelectEjemplarFrame;
-import cl.inacap.bibliotecaApp.frames.SelectLibrosJIFrame;
 import cl.inacap.bibliotecaModel.dao.ArriendosDAO;
 import cl.inacap.bibliotecaModel.dao.ClientesDAO;
 import cl.inacap.bibliotecaModel.dao.DetallesArriendosDAO;
@@ -27,9 +22,7 @@ import cl.inacap.bibliotecaModel.dao.EjemplarDAO;
 import cl.inacap.bibliotecaModel.dao.LibrosDAO;
 import cl.inacap.bibliotecaModel.dao.TrabajadoresDAO;
 import cl.inacap.bibliotecaModel.dto.Arriendo;
-import cl.inacap.bibliotecaModel.dto.Boleta;
 import cl.inacap.bibliotecaModel.dto.Cliente;
-import cl.inacap.bibliotecaModel.dto.DetalleArriendo;
 import cl.inacap.bibliotecaModel.dto.Ejemplar;
 import cl.inacap.bibliotecaModel.dto.Libro;
 import cl.inacap.bibliotecaModel.dto.Trabajador;
@@ -43,7 +36,6 @@ public class ArriendoController {
 	private SelectEjemplarFrame selectEjemplarFrame;
 	// DAO
 	private LibrosDAO librosDAO = new LibrosDAO();
-	private LibrosDAO libroDao = new LibrosDAO();
 	private EjemplarDAO ejemplarDAO = new EjemplarDAO();
 	private ClientesDAO clienteDAO= new ClientesDAO();
 	private TrabajadoresDAO trabajadorDAO = new TrabajadoresDAO();
