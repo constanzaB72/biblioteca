@@ -307,6 +307,7 @@ public class ArriendosDAO {
 			}
 
 			rs.close();
+			System.out.println("arriendos encontrados: "+arriendos.size());
 			return arriendos;
 
 		} catch (Exception ex) {

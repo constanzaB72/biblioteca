@@ -2,6 +2,7 @@ package cl.inacap.bibliotecaApp.main;
 
 import java.awt.EventQueue;
 
+import cl.inacap.bibliotecaApp.controller.DevolucionController;
 import cl.inacap.bibliotecaApp.controller.EjemplaresController;
 import cl.inacap.bibliotecaApp.controller.LoginController;
 import cl.inacap.bibliotecaApp.controller.RegistrarController;
@@ -25,10 +26,10 @@ public class main {
 					//CompraFrame c=new CompraFrame();
 					//MenuFrame m =new MenuFrame();
 					//RegistrarFrame r =new RegistrarFrame();
-					//RegistrarController r = new RegistrarController();
+					RegistrarController r = new RegistrarController();
 					//EjemplaresFrame ej =new EjemplaresFrame();
-					//DevolucionFrame dev = new DevolucionFrame();
-					LoginController login = new LoginController();	
+					//DevolucionController dev = new DevolucionController();
+					//LoginController login = new LoginController();	
 				
 				} catch (Exception e) {
 					e.printStackTrace();

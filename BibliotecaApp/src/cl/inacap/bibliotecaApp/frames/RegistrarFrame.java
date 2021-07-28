@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.SwingConstants;
+import com.toedter.calendar.JDateChooser;
 
 public class RegistrarFrame extends JFrameBiblioteca {
 
@@ -28,11 +29,9 @@ public class RegistrarFrame extends JFrameBiblioteca {
 	private JTextField txtNombreIngresar;
 	private JTextField txtApellidoPaRegistrar;
 	private JTextField txtApellidoMaRegistrar;
-	private JTextField txtNacimientoRegistrar;
 	private JTextField txtDireccionRegistrar;
 	private JTextField txtTelefonoRegistrar;
 	private JTextField txtCorreoRegistrar;
-	private JTextField textField;
 	private JButton btnRegistrar; 
 	private JButton btnCorreos;
 	private JButton btnTelefonos;
@@ -42,6 +41,10 @@ public class RegistrarFrame extends JFrameBiblioteca {
 	private JList ListaTelefonos; 
 	private JRadioButton rdbtnCliente; 
 	private JRadioButton rdbtnTrabajador;
+	private JDateChooser dataNacimiento;
+	private JDateChooser dataContrato;
+	private JTextField textPassword;
+	private JLabel lblPassword;
 
 	
 	public RegistrarFrame() {
@@ -51,121 +54,112 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		JLabel PlusIcon2 = new JLabel("");
 		PlusIcon2.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
 		PlusIcon2.setHorizontalAlignment(SwingConstants.CENTER);
-		PlusIcon2.setBounds(585, 278, 30, 30);
+		PlusIcon2.setBounds(223, 357, 30, 30);
 		getContentPane().add(PlusIcon2);
 		
 		JLabel lblHeaderRegistrar = new JLabel("");
+		lblHeaderRegistrar.setVerticalAlignment(SwingConstants.TOP);
 		lblHeaderRegistrar.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/fastheader.jpg")));
-		lblHeaderRegistrar.setBounds(0, 0, 800, 80);
+		lblHeaderRegistrar.setBounds(0, 0, 800, 78);
 		getContentPane().add(lblHeaderRegistrar);
 		
 		JLabel lblNombreRegistrar = new JLabel("Nombre: ");
 		lblNombreRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNombreRegistrar.setBounds(64, 200, 200, 25);
+		lblNombreRegistrar.setBounds(24, 196, 200, 25);
 		getContentPane().add(lblNombreRegistrar);
 		
 		txtRutRegistrar = new JTextField();
-		txtRutRegistrar.setBounds(64, 158, 200, 30);
+		txtRutRegistrar.setBounds(24, 159, 200, 30);
 		getContentPane().add(txtRutRegistrar);
 		txtRutRegistrar.setColumns(10);
 		
 		JLabel lblRutRegistrar = new JLabel("Rut: ");
 		lblRutRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblRutRegistrar.setBounds(64, 134, 200, 25);
+		lblRutRegistrar.setBounds(24, 133, 200, 25);
 		getContentPane().add(lblRutRegistrar);
 		
 		txtNombreIngresar = new JTextField();
-		txtNombreIngresar.setBounds(64, 226, 200, 30);
+		txtNombreIngresar.setBounds(24, 221, 200, 30);
 		getContentPane().add(txtNombreIngresar);
 		txtNombreIngresar.setColumns(10);
 		
 		JLabel lblApellidoPaRegistrar = new JLabel("Apellido Paterno: ");
 		lblApellidoPaRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblApellidoPaRegistrar.setBounds(64, 275, 200, 25);
+		lblApellidoPaRegistrar.setBounds(24, 262, 200, 25);
 		getContentPane().add(lblApellidoPaRegistrar);
 		
 		txtApellidoPaRegistrar = new JTextField();
-		txtApellidoPaRegistrar.setBounds(64, 299, 200, 30);
+		txtApellidoPaRegistrar.setBounds(24, 290, 200, 30);
 		getContentPane().add(txtApellidoPaRegistrar);
 		txtApellidoPaRegistrar.setColumns(10);
 		
 		JLabel lblApellidoMaRegistrar = new JLabel("Apellido Materno: ");
 		lblApellidoMaRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblApellidoMaRegistrar.setBounds(64, 340, 200, 25);
+		lblApellidoMaRegistrar.setBounds(304, 262, 200, 25);
 		getContentPane().add(lblApellidoMaRegistrar);
 		
 		txtApellidoMaRegistrar = new JTextField();
-		txtApellidoMaRegistrar.setBounds(64, 365, 200, 30);
+		txtApellidoMaRegistrar.setBounds(304, 290, 200, 30);
 		getContentPane().add(txtApellidoMaRegistrar);
 		txtApellidoMaRegistrar.setColumns(10);
 		
 		JLabel lblNacimientoRegistrar = new JLabel("Fecha de Nacimiento: ");
 		lblNacimientoRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNacimientoRegistrar.setBounds(64, 430, 200, 30);
+		lblNacimientoRegistrar.setBounds(551, 193, 200, 30);
 		getContentPane().add(lblNacimientoRegistrar);
-		
-		txtNacimientoRegistrar = new JTextField();
-		txtNacimientoRegistrar.setBounds(64, 460, 200, 30);
-		getContentPane().add(txtNacimientoRegistrar);
-		txtNacimientoRegistrar.setColumns(10);
 		
 		JLabel lblDireccionRegistrar = new JLabel("Direcci\u00F3n: ");
 		lblDireccionRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblDireccionRegistrar.setBounds(386, 130, 200, 30);
+		lblDireccionRegistrar.setBounds(551, 331, 200, 30);
 		getContentPane().add(lblDireccionRegistrar);
 		
 		txtDireccionRegistrar = new JTextField();
-		txtDireccionRegistrar.setBounds(386, 158, 200, 30);
+		txtDireccionRegistrar.setBounds(551, 357, 200, 30);
 		getContentPane().add(txtDireccionRegistrar);
 		txtDireccionRegistrar.setColumns(10);
 		
 		JLabel lblTelefonoRegistrar = new JLabel("Tel\u00E9fono: ");
 		lblTelefonoRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblTelefonoRegistrar.setBounds(386, 250, 200, 30);
+		lblTelefonoRegistrar.setBounds(24, 331, 200, 30);
 		getContentPane().add(lblTelefonoRegistrar);
 		
 		txtTelefonoRegistrar = new JTextField();
-		txtTelefonoRegistrar.setBounds(386, 278, 200, 30);
+		txtTelefonoRegistrar.setBounds(24, 357, 200, 30);
 		getContentPane().add(txtTelefonoRegistrar);
 		txtTelefonoRegistrar.setColumns(10);
 		
 		JLabel lblCorreoRegistrar = new JLabel("Correo electr\u00F3nico:");
 		lblCorreoRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCorreoRegistrar.setBounds(386, 366, 212, 30);
+		lblCorreoRegistrar.setBounds(304, 331, 212, 30);
 		getContentPane().add(lblCorreoRegistrar);
 		
 		txtCorreoRegistrar = new JTextField();
-		txtCorreoRegistrar.setBounds(386, 396, 200, 30);
+		txtCorreoRegistrar.setBounds(304, 357, 200, 30);
 		getContentPane().add(txtCorreoRegistrar);
 		txtCorreoRegistrar.setColumns(10);
 		
 		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnRegistrar.setBounds(404, 516, 157, 30);
+		btnRegistrar.setBounds(341, 515, 157, 30);
 		getContentPane().add(btnRegistrar);
 		
 		JLabel lblRegistrarUsuario = new JLabel("Registrar Usuario");
 		lblRegistrarUsuario.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblRegistrarUsuario.setBounds(311, 89, 200, 41);
+		lblRegistrarUsuario.setBounds(316, 78, 200, 41);
 		getContentPane().add(lblRegistrarUsuario);
 				
 		JLabel lblNacimientoRegistrar_1 = new JLabel("Fecha de Contrato: ");
 		lblNacimientoRegistrar_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNacimientoRegistrar_1.setBounds(64, 490, 200, 30);
+		lblNacimientoRegistrar_1.setBounds(551, 130, 200, 30);
 		getContentPane().add(lblNacimientoRegistrar_1);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(64, 520, 200, 30);
-		getContentPane().add(textField);
-		
 		rdbtnCliente = new JRadioButton("Cliente");
-		rdbtnCliente.setBounds(186, 393, 99, 30);
+		rdbtnCliente.setBounds(154, 96, 99, 30);
 		rdbtnCliente.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		getContentPane().add(rdbtnCliente);
 		
 		rdbtnTrabajador= new JRadioButton("Trabajador");
-		rdbtnTrabajador.setBounds(64, 393, 120, 30);
+		rdbtnTrabajador.setBounds(24, 96, 120, 30);
 		rdbtnTrabajador.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		getContentPane().add(rdbtnTrabajador);
 		
@@ -174,58 +168,80 @@ public class RegistrarFrame extends JFrameBiblioteca {
 		tipoRegistro.add(rdbtnCliente);
 		
 		DefaultListModel direcionModel = new DefaultListModel();
-		ListaDireccion = new JList(direcionModel);
-		ListaDireccion.setBounds(386, 195, 200, 50);
-		JScrollPane spDireccion = new JScrollPane(ListaDireccion);
-		spDireccion.setBounds(386, 195, 200, 50);
-		getContentPane().add(spDireccion);
 		
 		DefaultListModel telefonoModel = new DefaultListModel();
-		ListaTelefonos = new JList(telefonoModel);
-		ListaTelefonos.setBounds(386, 317, 200, 50);
-		JScrollPane spTelefono = new JScrollPane(ListaTelefonos);
-		spTelefono.setBounds(386, 317, 200, 50);
-		getContentPane().add(spTelefono);
 		
 		DefaultListModel correoModel = new DefaultListModel();
-		ListaCorreos = new JList(correoModel);
-		ListaCorreos.setBounds(386, 432, 200, 50);
-		JScrollPane spCorreo = new JScrollPane(ListaCorreos);
-		spCorreo.setBounds(386, 432, 200, 50);
-		getContentPane().add(spCorreo);
 		
 		JLabel PlusIcon1 = new JLabel("");
 		PlusIcon1.setHorizontalAlignment(SwingConstants.CENTER);
 		PlusIcon1.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
-		PlusIcon1.setBounds(585, 158, 30, 30);
+		PlusIcon1.setBounds(752, 357, 30, 30);
 		getContentPane().add(PlusIcon1);
 		
 		JLabel PlusIcon3 = new JLabel("");
 		PlusIcon3.setIcon(new ImageIcon(RegistrarFrame.class.getResource("/img/plus.png")));
 		PlusIcon3.setHorizontalAlignment(SwingConstants.CENTER);
-		PlusIcon3.setBounds(585, 396, 30, 30);
+		PlusIcon3.setBounds(502, 357, 30, 30);
 		getContentPane().add(PlusIcon3);
 		//Btn Add
 		btnCorreos = new JButton("");
-		btnCorreos.setBounds(585, 396, 30, 30);
+		btnCorreos.setBounds(502, 357, 30, 30);
 		btnCorreos.setOpaque(false);
 		btnCorreos.setContentAreaFilled(false);
 		btnCorreos.setBorderPainted(false);		
 		getContentPane().add(btnCorreos);
 		
 		btnTelefonos = new JButton("");
-		btnTelefonos.setBounds(585, 278, 30, 30);
+		btnTelefonos.setBounds(223, 357, 30, 30);
 		btnTelefonos.setOpaque(false);
 		btnTelefonos.setContentAreaFilled(false);
 		btnTelefonos.setBorderPainted(false);
 		getContentPane().add(btnTelefonos);
 		
 		btnDireccion = new JButton("");
-		btnDireccion.setBounds(585, 158, 30, 30);
+		btnDireccion.setBounds(752, 357, 30, 30);
 		btnDireccion.setOpaque(false);
 		btnDireccion.setContentAreaFilled(false);
 		btnDireccion.setBorderPainted(false);
 		getContentPane().add(btnDireccion);
+		
+		dataNacimiento = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
+		dataNacimiento.setBounds(551, 159, 200, 30);
+		getContentPane().add(dataNacimiento);
+		
+		dataContrato = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
+		dataContrato.setBounds(551, 221, 200, 30);
+		getContentPane().add(dataContrato);
+		ListaTelefonos = new JList(telefonoModel);
+		
+		getContentPane().add(ListaTelefonos);
+		ListaTelefonos.setBounds(24, 391, 198, 48);
+		JScrollPane spTelefono = new JScrollPane();
+		spTelefono.setBounds(24, 391, 200, 50);
+		getContentPane().add(spTelefono);
+		ListaCorreos = new JList(correoModel);
+		getContentPane().add(ListaCorreos);
+		ListaCorreos.setBounds(306, 393, 198, 48);
+		JScrollPane spCorreo = new JScrollPane();
+		spCorreo.setBounds(304, 391, 200, 50);
+		getContentPane().add(spCorreo);
+		ListaDireccion = new JList(direcionModel);
+		getContentPane().add(ListaDireccion);
+		ListaDireccion.setBounds(551, 393, 198, 48);
+		JScrollPane spDireccion = new JScrollPane();
+		spDireccion.setBounds(551, 391, 200, 50);
+		getContentPane().add(spDireccion);
+		
+		textPassword = new JTextField();
+		textPassword.setColumns(10);
+		textPassword.setBounds(304, 159, 200, 30);
+		getContentPane().add(textPassword);
+		
+		lblPassword = new JLabel("Password: ");
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPassword.setBounds(304, 133, 200, 25);
+		getContentPane().add(lblPassword);
 		
 	}
 	public void addConfirmaRegistrar(ActionListener ing) {
@@ -267,12 +283,6 @@ public class RegistrarFrame extends JFrameBiblioteca {
 	public void setTxtApellidoMaRegistrar(JTextField txtApellidoMaRegistrar) {
 		this.txtApellidoMaRegistrar = txtApellidoMaRegistrar;
 	}
-	public JTextField getTxtNacimientoRegistrar() {
-		return txtNacimientoRegistrar;
-	}
-	public void setTxtNacimientoRegistrar(JTextField txtNacimientoRegistrar) {
-		this.txtNacimientoRegistrar = txtNacimientoRegistrar;
-	}
 	public JTextField getTxtDireccionRegistrar() {
 		return txtDireccionRegistrar;
 	}
@@ -290,12 +300,6 @@ public class RegistrarFrame extends JFrameBiblioteca {
 	}
 	public void setTxtCorreoRegistrar(JTextField txtCorreoRegistrar) {
 		this.txtCorreoRegistrar = txtCorreoRegistrar;
-	}
-	public JTextField getTextField() {
-		return textField;
-	}
-	public void setTextField(JTextField textField) {
-		this.textField = textField;
 	}
 	public JButton getBtnRegistrar() {
 		return btnRegistrar;
@@ -351,8 +355,30 @@ public class RegistrarFrame extends JFrameBiblioteca {
 	public void setRdbtnTrabajador(JRadioButton rdbtnTrabajador) {
 		this.rdbtnTrabajador = rdbtnTrabajador;
 	}
-	
-	
+	public JDateChooser getDataNacimiento() {
+		return dataNacimiento;
+	}
+	public void setDataNacimiento(JDateChooser dataNacimiento) {
+		this.dataNacimiento = dataNacimiento;
+	}
+	public JDateChooser getDataContrato() {
+		return dataContrato;
+	}
+	public void setDataContrato(JDateChooser dataContrato) {
+		this.dataContrato = dataContrato;
+	}
+	public JLabel getLblPassword() {
+		return lblPassword;
+	}
+	public void setLblPassword(JLabel lblPassword) {
+		this.lblPassword = lblPassword;
+	}
+	public JTextField getTextPassword() {
+		return textPassword;
+	}
+	public void setTextPassword(JTextField textPassword) {
+		this.textPassword = textPassword;
+	}
 	
 	
 }

@@ -30,7 +30,6 @@ import javax.swing.JRadioButton;
 public class DevolucionFrame extends JFrame {
 	JTable table;
 	private JTextField txtClienteDevolucion;
-	private JButton btnConfirmar;
 	private JButton btnCancelar;
 	private JButton btnMulta; 
 	private JButton btnBuscar;
@@ -52,16 +51,18 @@ public class DevolucionFrame extends JFrame {
 				"Costo total" };
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		table = new JTable(model);
-		if (listaArriendos != null && !listaArriendos.isEmpty()) {
-			for (int fila = 0; fila < listaArriendos.size(); fila++) {
-				Object[] columna = new Object[] { listaArriendos.get(fila).getIdArriendo(),
-						listaArriendos.get(fila).getFechaArriendo(), listaArriendos.get(fila).getFechaEntrega(),
-						listaArriendos.get(fila).getDiasRetraso(), listaArriendos.get(fila).getMulta(),
-						listaArriendos.get(fila).getCostoTotal() };
-				model.addRow(columna);
-			}
-
-		}
+		/*
+		 * if (listaArriendos != null && !listaArriendos.isEmpty()) { for (int fila = 0;
+		 * fila < listaArriendos.size(); fila++) { Object[] columna = new Object[] {
+		 * listaArriendos.get(fila).getIdArriendo(),
+		 * listaArriendos.get(fila).getFechaArriendo(),
+		 * listaArriendos.get(fila).getFechaEntrega(),
+		 * listaArriendos.get(fila).getDiasRetraso(),
+		 * listaArriendos.get(fila).getMulta(), listaArriendos.get(fila).getCostoTotal()
+		 * }; model.addRow(columna); }
+		 * 
+		 * }
+		 */
 		table.setBounds(30, 40, 100, 200);
 		JScrollPane sp2 = new JScrollPane(table);
 		sp2.setBounds(29, 171, 651, 150);
@@ -77,12 +78,8 @@ public class DevolucionFrame extends JFrame {
 		getContentPane().add(txtClienteDevolucion);
 		txtClienteDevolucion.setColumns(10);
 
-		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(533, 415, 100, 23);
-		getContentPane().add(btnConfirmar);
-
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(423, 415, 100, 23);
+		btnCancelar.setBounds(422, 416, 100, 23);
 		getContentPane().add(btnCancelar);
 
 		JLabel lblHeader = new JLabel("");
@@ -133,16 +130,6 @@ public class DevolucionFrame extends JFrame {
 	}
 
 
-	public JButton getBtnConfirmar() {
-		return btnConfirmar;
-	}
-
-
-	public void setBtnConfirmar(JButton btnConfirmar) {
-		this.btnConfirmar = btnConfirmar;
-	}
-
-
 	public JButton getBtnCancelar() {
 		return btnCancelar;
 	}
@@ -178,9 +165,6 @@ public class DevolucionFrame extends JFrame {
 		this.txtMonto = txtMonto;
 	}
 
-	public void addConfirmarAgregar(ActionListener ing) {
-		btnConfirmar.addActionListener(ing);
-	}
 	public void addAplicarMulta(ActionListener ing) {
 		btnMulta.addActionListener(ing);
 	}
