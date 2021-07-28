@@ -146,7 +146,6 @@ public class VentaController {
 				Boleta boleta = new Boleta();
 				int cantidadFilas = ventaFrame.getTableLibros().getModel().getRowCount();
 				for (int i = 0; i < cantidadFilas; i++) {
-					System.out.println("entra for " + i);
 					Ejemplar ejemplar = new Ejemplar();
 					ejemplar.setNumSerie((Integer) (ventaFrame.getTableLibros().getModel().getValueAt(i, 0)));
 					ejemplar.setIsbn(String.valueOf(ventaFrame.getTableLibros().getModel().getValueAt(i, 1)));

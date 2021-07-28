@@ -113,6 +113,7 @@ public class DevolucionFrame extends JFrame {
 
 	}
 
+
 	public JTable getTable() {
 		return table;
 	}
@@ -121,33 +122,41 @@ public class DevolucionFrame extends JFrame {
 		this.table = table;
 	}
 
+
 	public JTextField getTxtClienteDevolucion() {
 		return txtClienteDevolucion;
 	}
+
 
 	public void setTxtClienteDevolucion(JTextField txtClienteDevolucion) {
 		this.txtClienteDevolucion = txtClienteDevolucion;
 	}
 
+
 	public JButton getBtnConfirmar() {
 		return btnConfirmar;
 	}
+
 
 	public void setBtnConfirmar(JButton btnConfirmar) {
 		this.btnConfirmar = btnConfirmar;
 	}
 
+
 	public JButton getBtnCancelar() {
 		return btnCancelar;
 	}
+
 
 	public void setBtnCancelar(JButton btnCancelar) {
 		this.btnCancelar = btnCancelar;
 	}
 
+
 	public JButton getBtnMulta() {
 		return btnMulta;
 	}
+
 
 	public void setBtnMulta(JButton btnMulta) {
 		this.btnMulta = btnMulta;
