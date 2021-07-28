@@ -10,6 +10,21 @@ import cl.inacap.bibliotecaApp.frames.LoginFrame;
 import cl.inacap.bibliotecaApp.frames.TrabajadorFrame;
 import cl.inacap.bibliotecaModel.service.LoginService;
 
+/**
+ * Clase encargada de trabajar como un controlador de cada evento que suceda en
+ * el Frame Anclado, ademas de crear un Frame y mostrarlo en pantalla,
+ * Implementa ActionListener, para poder escuchar cualquier evento ya sea de un
+ * boton, input rellenado , envio de formulario, etc. Su funcion es crear un
+ * FrameLogin, una vez el formulario haya sido llenado y enviado, mediante el
+ * ActionListener, queda escuchando para ir llamando a ciertos controllers para
+ * realizar validaciones sobre el tipo de Usuario.
+ * 
+ * CREADA EL DIA 13-07-2021
+ * 
+ * @author Constanza Benavidez
+ * 
+ *
+ */
 public class LoginController {
 	LoginFrame loginFrame;
 	TrabajadorController trabajadorController;

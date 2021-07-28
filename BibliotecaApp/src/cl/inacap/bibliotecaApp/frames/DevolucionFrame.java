@@ -113,6 +113,80 @@ public class DevolucionFrame extends JFrame {
 
 	}
 
+	
+	
+	public JTextField getTxtClienteDevolucion() {
+		return txtClienteDevolucion;
+	}
+
+
+
+	public void setTxtClienteDevolucion(JTextField txtClienteDevolucion) {
+		this.txtClienteDevolucion = txtClienteDevolucion;
+	}
+
+
+
+	public JButton getBtnConfirmar() {
+		return btnConfirmar;
+	}
+
+
+
+	public void setBtnConfirmar(JButton btnConfirmar) {
+		this.btnConfirmar = btnConfirmar;
+	}
+
+
+
+	public JButton getBtnCancelar() {
+		return btnCancelar;
+	}
+
+
+
+	public void setBtnCancelar(JButton btnCancelar) {
+		this.btnCancelar = btnCancelar;
+	}
+
+
+
+	public JButton getBtnMulta() {
+		return btnMulta;
+	}
+
+
+
+	public void setBtnMulta(JButton btnMulta) {
+		this.btnMulta = btnMulta;
+	}
+
+
+
+	public JButton getBtnBuscar() {
+		return btnBuscar;
+	}
+
+
+
+	public void setBtnBuscar(JButton btnBuscar) {
+		this.btnBuscar = btnBuscar;
+	}
+
+
+
+	public JTextField getTxtMonto() {
+		return txtMonto;
+	}
+
+
+
+	public void setTxtMonto(JTextField txtMonto) {
+		this.txtMonto = txtMonto;
+	}
+
+
+
 	public void addConfirmarAgregar(ActionListener ing) {
 		btnConfirmar.addActionListener(ing);
 	}

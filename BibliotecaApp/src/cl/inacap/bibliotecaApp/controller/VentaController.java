@@ -27,6 +27,22 @@ import cl.inacap.bibliotecaModel.service.EjemplaresService;
 import cl.inacap.bibliotecaModel.utils.Generador;
 import cl.inacap.bibliotecaModel.utils.RutUtils;
 
+/**
+ * Clase encargada de trabajar como un controlador de cada evento que suceda en
+ * el Frame Anclado, ademas de crear un Frame y mostrarlo en pantalla,
+ * Implementa ActionListener, para poder escuchar cualquier evento ya sea de un
+ * boton, input rellenado , envio de formulario, etc. Ademas implementa clases
+ * DAO para la insercion de datos a la BD. Este controlador, cumple la funcion
+ * de obtener los datos provenientes del FrameVenta, y posterior a la captura de
+ * los datos, lanzar un FrameVenta, para que el usuario pueda realizar las
+ * opciones disponibles en la interfaz.
+ * 
+ * CREADA EL DIA 13-07-2021
+ * 
+ * @author Constanza Benavidez
+ * 
+ *
+ */
 public class VentaController {
 	
 	//Frame
