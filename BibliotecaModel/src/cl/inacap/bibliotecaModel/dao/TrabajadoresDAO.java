@@ -211,6 +211,7 @@ public class TrabajadoresDAO {
 			}
 
 		} catch (Exception ex) {
+			System.out.println("error "+ex);
 			erroresTrabajadoresDAO.add("Se Produjo un Error al Ingresar el trabajador");
 		} finally {
 			db.desconectar();

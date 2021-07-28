@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 public class ClienteFrame extends JFrameBiblioteca {
 
-	private JPanel contentPane;
+	//private JPanel contentPane;
 	private JButton btnSalirCliente;
 	private JButton btnArrendar;
 	private JButton btnVender;

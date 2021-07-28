@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import cl.inacap.bibliotecaApp.controller.EjemplaresController;
 import cl.inacap.bibliotecaApp.controller.LoginController;
+import cl.inacap.bibliotecaApp.controller.RegistrarController;
 import cl.inacap.bibliotecaApp.frames.ArriendoFrame;
 import cl.inacap.bibliotecaApp.frames.CompraFrame;
 import cl.inacap.bibliotecaApp.frames.DevolucionFrame;
@@ -23,10 +24,11 @@ public class main {
 					//VentaFrame v=new VentaFrame();
 					//CompraFrame c=new CompraFrame();
 					//MenuFrame m =new MenuFrame();
-					//RegistrarFrame r =new RegistrarFrame();
+				//RegistrarFrame r =new RegistrarFrame();
+					//RegistrarController r = new RegistrarController();
 					//EjemplaresFrame ej =new EjemplaresFrame();
-					//DevolucionFrame dev = new DevolucionFrame();
-					LoginController login = new LoginController();	
+					DevolucionFrame dev = new DevolucionFrame();
+					//LoginController login = new LoginController();	
 				
 				} catch (Exception e) {
 					e.printStackTrace();

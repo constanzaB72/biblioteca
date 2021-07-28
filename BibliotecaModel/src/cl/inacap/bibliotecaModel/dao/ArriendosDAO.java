@@ -277,5 +277,46 @@ public class ArriendosDAO {
 			db.desconectar();
 		}
 	}
+	
+	public List<Arriendo> getByRutCliente(String rutCliente) {
+
+		try {
+			List<Arriendo> arriendos = new ArrayList<Arriendo>();
+			db.conectar();
+
+			String query = "SELECT a.idArriendo,a.FechaArriendo,a.FechaDevolucion,a.FechaEntrega,a.DiasRetraso,a.Multa,a.CostoTotal FROM BibliotecaV2.Arriendos a"
+					+ " LEFT join BibliotecaV2.Clientes c ON c.idCliente = a.idCliente"
+					+ " where c.Rut=?";
+			
+			PreparedStatement st = db.getCon().prepareStatement(query);
+			st.setString(1, rutCliente);
+
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				Arriendo a = new Arriendo();
+				a.setIdArriendo(Integer.parseInt(rs.getString(1)));
+				a.setFechaArriendo(rs.getString(2));
+				a.setFechaDevolucion(rs.getString(3));
+				a.setFechaEntrega(rs.getString(4));
+				a.setDiasRetraso(Integer.parseInt(rs.getString(5)));
+				a.setMulta(Integer.parseInt(rs.getString(6)));
+				a.setCostoTotal(rs.getInt(7));
+
+				// Guardamos en la lista
+				arriendos.add(a);
+			}
+
+			rs.close();
+			return arriendos;
+
+		} catch (Exception ex) {
+			System.out.println(ex);
+			erroresArriendosDAO.add("Se Produjo un Error al Consultar los Arriendos!");
+			return null;
+
+		} finally {
+			db.desconectar();
+		}
+	}
 
 }

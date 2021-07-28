@@ -32,6 +32,8 @@ public class DevolucionFrame extends JFrame {
 	private JTextField txtClienteDevolucion;
 	private JButton btnConfirmar;
 	private JButton btnCancelar;
+	private JButton btnMulta; 
+	private JButton btnBuscar;
 	private JTextField txtMonto;
 
 	public DevolucionFrame() {
@@ -44,13 +46,13 @@ public class DevolucionFrame extends JFrame {
 		this.setBounds(100, 100, 700, 500);
 		
 		ArriendosDAO arriendosDAO = new ArriendosDAO();
-		List<Arriendo> listaArriendos = arriendosDAO.getAll();
+		List<Arriendo> listaArriendos = arriendosDAO.getByRutCliente("20.780.661-7");
 
 		String[] columnNames = { "Id Arriendo", "Fecha de Arriendo", "Fecha de Entrega", "Dias de Retraso", "Multa",
 				"Costo total" };
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		table = new JTable(model);
-		if (listaArriendos != null & !listaArriendos.isEmpty()) {
+		if (listaArriendos != null && !listaArriendos.isEmpty()) {
 			for (int fila = 0; fila < listaArriendos.size(); fila++) {
 				Object[] columna = new Object[] { listaArriendos.get(fila).getIdArriendo(),
 						listaArriendos.get(fila).getFechaArriendo(), listaArriendos.get(fila).getFechaEntrega(),
@@ -89,7 +91,7 @@ public class DevolucionFrame extends JFrame {
 		lblHeader.setBounds(0, 0, 700, 90);
 		getContentPane().add(lblHeader);
 
-		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(239, 130, 89, 30);
 		getContentPane().add(btnBuscar);
 
@@ -103,18 +105,7 @@ public class DevolucionFrame extends JFrame {
 		getContentPane().add(txtMonto);
 		txtMonto.setColumns(10);
 
-		JButton btnMulta = new JButton("Aplicar multa");
-		btnMulta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String montoMulta = txtMonto.getText();
-				try {
-					int multa = Integer.parseInt(montoMulta);
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "Ingrese monto válido");
-
-				}
-			}
-		});
+		btnMulta = new JButton("Aplicar multa");
 		btnMulta.setBounds(214, 362, 113, 23);
 		getContentPane().add(btnMulta);
 
@@ -125,12 +116,15 @@ public class DevolucionFrame extends JFrame {
 	public void addConfirmarAgregar(ActionListener ing) {
 		btnConfirmar.addActionListener(ing);
 	}
+	public void addAplicarMulta(ActionListener ing) {
+		btnMulta.addActionListener(ing);
+	}
 
 	public void addCancelarAgregar(ActionListener ing) {
 		btnCancelar.addActionListener(ing);
 	}
 
-	public void addAgregarMulta(ActionListener ing) {
-		btnCancelar.addActionListener(ing);
+	public void addBuscarRut(ActionListener ing) {
+		btnBuscar.addActionListener(ing);
 	}
 }
